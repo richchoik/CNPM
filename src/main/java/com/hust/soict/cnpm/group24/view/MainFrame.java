@@ -4,6 +4,13 @@
  */
 package com.hust.soict.cnpm.group24.view;
 
+import com.hust.soict.cnpm.group24.CNPMGroup24;
+import com.hust.soict.cnpm.group24.model.GiaoVien;
+
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
+import javax.swing.UIManager;
+
 /**
  *
  * @author LENOVO
@@ -15,6 +22,29 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        DefaultTableModel defaultTableModel =new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+            
+        };
+        jTable1.setModel(defaultTableModel);
+        
+        defaultTableModel.addColumn("ID");
+        defaultTableModel.addColumn("Họ và tên");
+        defaultTableModel.addColumn("Lương");
+        defaultTableModel.addColumn("Giới tính");
+        defaultTableModel.addColumn("Ngày sinh");
+        defaultTableModel.addColumn("Địa chỉ");
+        defaultTableModel.addColumn("GVQL");
+        defaultTableModel.addColumn("Mã bộ môn");
+        List<GiaoVien> gv = CNPMGroup24.getListOfGV();
+        for(GiaoVien g :gv){
+            defaultTableModel.addRow(new Object[]{g.getId(),g.getName(),g.getLuong(),g.getPhai(),
+                                                    g.getNgaySinh(),g.getDiaChi(),g.getGVQL(),g.getBM()});
+        }
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -26,17 +56,34 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 811, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
         );
 
         pack();
@@ -68,7 +115,9 @@ public class MainFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        try { 
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel"); 
+        } catch(Exception ignored){}
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -78,5 +127,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
