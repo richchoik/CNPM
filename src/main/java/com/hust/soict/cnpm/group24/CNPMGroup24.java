@@ -37,7 +37,9 @@ public class CNPMGroup24 {
                 String GVQL = resultSet.getString(7);
                 String boMon = resultSet.getString(7);
                 list.add(new GiaoVien(id,name,luong,phai,ngaySinh,diaChi,GVQL,boMon));
+
             }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
