@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionUtils {
-    public static String database = "jdbc:sqlserver://localhost:1433;databaseName=HowKteam";
+    public static String database = "jdbc:sqlserver://localhost:1433;databaseName=QuanLyChungCu";
     public static String user = "sa";
     public static String password = "123456789;";
 
