@@ -504,7 +504,7 @@ public class UpdateNK extends javax.swing.JFrame {
             ngaySinh = ngaysinhDateChooser.getDateFormatString();
             soDienThoai = sodienthoaiTextField.getText();
 
-            NhanKhau nhanKhau = new NhanKhau(maNhanKhau, tenNhanKhau, soCccd, ngaySinh, soDienThoai);
+            //NhanKhau nhanKhau = new NhanKhau(maNhanKhau, tenNhanKhau, soCccd, ngaySinh, soDienThoai);
             //home.updateNhanKhau(nhanKhau);
             this.dispose();
         }
@@ -601,8 +601,4 @@ public class UpdateNK extends javax.swing.JFrame {
     private com.k33ptoo.components.KButton themButton;
     // End of variables declaration//GEN-END:variables
 
-    public void updateNhanKhau(NhanKhau nk) {
-        // nhankhau.remove();
-        // this.addNhanKhau(nk);
-    }
 }

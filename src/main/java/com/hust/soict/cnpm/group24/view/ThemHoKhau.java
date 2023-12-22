@@ -9,11 +9,11 @@ import com.hust.soict.cnpm.group24.model.entity.HoKhau;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
-public class AddSHK extends javax.swing.JFrame {
+public class ThemHoKhau extends javax.swing.JFrame {
 
     //private HomeFrame home;
     
-    public AddSHK() {
+    public ThemHoKhau() {
         initComponents();
         this.setLocationRelativeTo(null);
         //home = (HomeFrame) parent;
@@ -410,13 +410,13 @@ public class AddSHK extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddSHK.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThemHoKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddSHK.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThemHoKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddSHK.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThemHoKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddSHK.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThemHoKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -428,7 +428,7 @@ public class AddSHK extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddSHK().setVisible(true);
+                new ThemHoKhau().setVisible(true);
             }
         });
     }

@@ -1,4 +1,5 @@
-com\hust\soict\cnpm\group24\model\entity\ThongKe.class
 com\hust\soict\cnpm\group24\model\dao\ThongKeDAO.class
 com\hust\soict\cnpm\group24\model\dao\NhanKhauDAO.class
 com\hust\soict\cnpm\group24\model\dao\NopPhiDAO.class
+com\hust\soict\cnpm\group24\view\themnhankhau$13.class
+com\hust\soict\cnpm\group24\model\entity\ThongKe.class
