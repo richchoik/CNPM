@@ -1,3 +1,4 @@
-com\hust\soict\cnpm\group24\view\MainFrame$2.class
-com\hust\soict\cnpm\group24\view\Login.class
-com\hust\soict\cnpm\group24\view\Login$1.class
+com\hust\soict\cnpm\group24\model\entity\ThongKe.class
+com\hust\soict\cnpm\group24\model\dao\ThongKeDAO.class
+com\hust\soict\cnpm\group24\model\dao\NhanKhauDAO.class
+com\hust\soict\cnpm\group24\model\dao\NopPhiDAO.class
