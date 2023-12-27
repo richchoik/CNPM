@@ -3,14 +3,14 @@ package com.hust.soict.cnpm.group24.view.khoanthuview;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.hust.soict.cnpm.group24.controller.KhoanPhiController;
 import com.hust.soict.cnpm.group24.model.entity.KhoanPhi;
-import com.hust.soict.cnpm.group24.view.MainScreen;
+import com.hust.soict.cnpm.group24.view.MainScreenShow;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class ThemKhoanThu extends javax.swing.JFrame {
-    private MainScreen parentContext;
-    public ThemKhoanThu(MainScreen pContext) {
+    private MainScreenShow parentContext;
+    public ThemKhoanThu(MainScreenShow pContext) {
         initComponents();
         parentContext = pContext;
         this.setLocationRelativeTo(null);
@@ -345,7 +345,7 @@ public class ThemKhoanThu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_loaikhoanthuComboBoxFocusLost
 
-    public static void showThemKhoanThu(MainScreen pContext) {
+    public static void showThemKhoanThu(MainScreenShow pContext) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

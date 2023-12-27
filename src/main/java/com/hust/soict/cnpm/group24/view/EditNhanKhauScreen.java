@@ -12,7 +12,7 @@ import java.awt.Color;
  */
 public class EditNhanKhauScreen extends javax.swing.JFrame {
 
-    private MainScreen parentContext;
+    private MainScreenShow parentContext;
     /**
      * Creates new form EditNhanKhauScreen
      */
@@ -139,11 +139,11 @@ public class EditNhanKhauScreen extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_enter_change_buttonActionPerformed
 
-    public MainScreen getParentContext() {
+    public MainScreenShow getParentContext() {
         return parentContext;
     }
 
-    public void setParentContext(MainScreen parentContext) {
+    public void setParentContext(MainScreenShow parentContext) {
         this.parentContext = parentContext;
     }
 

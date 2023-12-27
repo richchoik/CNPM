@@ -3,14 +3,14 @@ package com.hust.soict.cnpm.group24.view.hokhauview;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.hust.soict.cnpm.group24.controller.HoKhauController;
 import com.hust.soict.cnpm.group24.model.entity.HoKhau;
-import com.hust.soict.cnpm.group24.view.MainScreen;
+import com.hust.soict.cnpm.group24.view.MainScreenShow;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
-public class UpdateHoKhau extends javax.swing.JFrame {
-    private MainScreen parentContext;
-    public UpdateHoKhau(MainScreen pContext) {
+public class CapNhatHoKhau extends javax.swing.JFrame {
+    private MainScreenShow parentContext;
+    public CapNhatHoKhau(MainScreenShow pContext) {
         initComponents();
         parentContext = pContext;
         this.setLocationRelativeTo(null);
@@ -374,7 +374,7 @@ public class UpdateHoKhau extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_themButtonActionPerformed
 
-    public static void showUpdateHoKhau(MainScreen pContext) {
+    public static void showUpdateHoKhau(MainScreenShow pContext) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -388,13 +388,13 @@ public class UpdateHoKhau extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpdateHoKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CapNhatHoKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpdateHoKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CapNhatHoKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpdateHoKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CapNhatHoKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpdateHoKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CapNhatHoKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         try {
@@ -406,7 +406,7 @@ public class UpdateHoKhau extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UpdateHoKhau(pContext).setVisible(true);
+                new CapNhatHoKhau(pContext).setVisible(true);
             }
         });
     }

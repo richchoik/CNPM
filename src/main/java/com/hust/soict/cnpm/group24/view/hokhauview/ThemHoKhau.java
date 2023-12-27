@@ -3,14 +3,14 @@ package com.hust.soict.cnpm.group24.view.hokhauview;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.hust.soict.cnpm.group24.controller.HoKhauController;
 import com.hust.soict.cnpm.group24.model.entity.HoKhau;
-import com.hust.soict.cnpm.group24.view.MainScreen;
+import com.hust.soict.cnpm.group24.view.MainScreenShow;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class ThemHoKhau extends javax.swing.JFrame {
-    private MainScreen parentContext;
-    public ThemHoKhau(MainScreen pContext) {
+    private MainScreenShow parentContext;
+    public ThemHoKhau(MainScreenShow pContext) {
         initComponents();
         parentContext = pContext;
         this.setLocationRelativeTo(null);
@@ -389,7 +389,7 @@ public class ThemHoKhau extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mahoTextFieldFocusLost
 
-    public static void showThemHoKhau(MainScreen pContext) {
+    public static void showThemHoKhau(MainScreenShow pContext) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

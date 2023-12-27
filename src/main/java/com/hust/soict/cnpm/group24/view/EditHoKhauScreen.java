@@ -11,12 +11,12 @@ import java.awt.Color;
  * @author ADMIN
  */
 public class EditHoKhauScreen extends javax.swing.JFrame {
-    private MainScreen parentContext;
+    private MainScreenShow parentContext;
     /**
      * Creates new form EditHoKhauScreen
      */
     
-    public EditHoKhauScreen(MainScreen pContext) {
+    public EditHoKhauScreen(MainScreenShow pContext) {
         initComponents();
         parentContext = pContext;
         String ma_ho_khau = parentContext.getHo_khau_table().getValueAt(parentContext.getHo_khau_table().getSelectedRow(), 0).toString();
@@ -136,14 +136,14 @@ public class EditHoKhauScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_enter_change_buttonActionPerformed
 
     
-    public MainScreen getParentContext() {
+    public MainScreenShow getParentContext() {
         return parentContext;
     }
 
     /**
      * @param args the command line arguments
      */
-    public void setParentContext(MainScreen parentContext) {    
+    public void setParentContext(MainScreenShow parentContext) {    
         this.parentContext = parentContext;
     }
 

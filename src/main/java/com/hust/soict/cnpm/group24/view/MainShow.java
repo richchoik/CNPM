@@ -8,10 +8,9 @@ package com.hust.soict.cnpm.group24.view;
  *
  * @author ADMIN
  */
-public class Main {
-
+public class MainShow {
     public static void main(String[] args) {
-        MainScreen mainScreen = new MainScreen();
+        MainScreenShow mainScreen = new MainScreenShow();
         mainScreen.ShowMain();
         //LoginScreen.ShowLogin();
         //SignupScreen.showSignup();

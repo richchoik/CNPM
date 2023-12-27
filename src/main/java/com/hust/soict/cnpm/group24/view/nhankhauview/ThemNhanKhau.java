@@ -3,15 +3,15 @@ package com.hust.soict.cnpm.group24.view.nhankhauview;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.hust.soict.cnpm.group24.controller.NhanKhauController;
 import com.hust.soict.cnpm.group24.model.entity.NhanKhau;
-import com.hust.soict.cnpm.group24.view.MainScreen;
+import com.hust.soict.cnpm.group24.view.MainScreenShow;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import java.sql.Date;
 
 public class ThemNhanKhau extends javax.swing.JFrame {
-    private MainScreen parentContext;
-    public ThemNhanKhau(MainScreen pContext) {
+    private MainScreenShow parentContext;
+    public ThemNhanKhau(MainScreenShow pContext) {
         initComponents();
         parentContext = pContext;
         setLocationRelativeTo(null);
@@ -527,7 +527,7 @@ public class ThemNhanKhau extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tennhankhauTextFieldFocusLost
 
-    public static void showThemNhanKhau(MainScreen pContext) {
+    public static void showThemNhanKhau(MainScreenShow pContext) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

@@ -3,15 +3,15 @@ package com.hust.soict.cnpm.group24.view.nhankhauview;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.hust.soict.cnpm.group24.controller.NhanKhauController;
 import com.hust.soict.cnpm.group24.model.entity.NhanKhau;
-import com.hust.soict.cnpm.group24.view.MainScreen;
+import com.hust.soict.cnpm.group24.view.MainScreenShow;
 
 import java.sql.Date;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
-public class UpdateNhanKhau extends javax.swing.JFrame {
-    private MainScreen parentContext;
-    public UpdateNhanKhau(MainScreen pContext) {
+public class CapNhatNhanKhau extends javax.swing.JFrame {
+    private MainScreenShow parentContext;
+    public CapNhatNhanKhau(MainScreenShow pContext) {
         initComponents();
         this.setLocationRelativeTo(null);
         parentContext = pContext;
@@ -513,7 +513,7 @@ public class UpdateNhanKhau extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_quocTichTextFieldFocusLost
 
-    public static void showUpdateNhanKhau(MainScreen pContext) {
+    public static void showUpdateNhanKhau(MainScreenShow pContext) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -527,13 +527,13 @@ public class UpdateNhanKhau extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpdateNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CapNhatNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpdateNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CapNhatNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpdateNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CapNhatNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpdateNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CapNhatNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         try {
@@ -545,7 +545,7 @@ public class UpdateNhanKhau extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UpdateNhanKhau(pContext).setVisible(true);
+                new CapNhatNhanKhau(pContext).setVisible(true);
             }
         });
     }

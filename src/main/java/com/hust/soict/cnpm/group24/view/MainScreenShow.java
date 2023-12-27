@@ -5,7 +5,7 @@
 package com.hust.soict.cnpm.group24.view;
 
 import com.hust.soict.cnpm.group24.view.hokhauview.ThemHoKhau;
-import com.hust.soict.cnpm.group24.view.hokhauview.UpdateHoKhau;
+import com.hust.soict.cnpm.group24.view.hokhauview.CapNhatHoKhau;
 import com.hust.soict.cnpm.group24.view.khoanthuview.CapNhatKhoanThu;
 import com.hust.soict.cnpm.group24.view.khoanthuview.ThemKhoanThu;
 import com.hust.soict.cnpm.group24.view.nhankhauview.ThemNhanKhau;
@@ -18,14 +18,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author ADMIN
  */
-public class MainScreen extends javax.swing.JFrame {
+public class MainScreenShow extends javax.swing.JFrame {
 
     /**
      * Creates new form MainScreen
      */
     //ImageIcon icon = new ImageIcon("Search_Icon.png");
     
-    public MainScreen() {
+    public MainScreenShow() {
         initComponents();
         show_ho_so_panel.setVisible(false);
         show_khoan_phi_panel.setVisible(false);
@@ -1626,12 +1626,12 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void sua_tt_ho_khau_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sua_tt_ho_khau_panelMousePressed
         // TODO add your handling code here:
-        UpdateHoKhau.showUpdateHoKhau(this);
+        CapNhatHoKhau.showUpdateHoKhau(this);
     }//GEN-LAST:event_sua_tt_ho_khau_panelMousePressed
 
     private void sua_tt_nhan_khau_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sua_tt_nhan_khau_panelMousePressed
         // TODO add your handling code here:
-        UpdateHoKhau.showUpdateHoKhau(this);
+        CapNhatHoKhau.showUpdateHoKhau(this);
     }//GEN-LAST:event_sua_tt_nhan_khau_panelMousePressed
 
     private void searching_tai_khoan_fieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searching_tai_khoan_fieldMouseClicked
@@ -1782,21 +1782,23 @@ public class MainScreen extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainScreenShow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainScreenShow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainScreenShow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainScreenShow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainScreen().setVisible(true);
+                new MainScreenShow().setVisible(true);
             }
         });
     }

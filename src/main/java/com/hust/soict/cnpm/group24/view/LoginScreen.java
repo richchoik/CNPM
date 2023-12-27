@@ -188,7 +188,7 @@ public class LoginScreen extends javax.swing.JFrame {
         {
             if("1".equals(password))
             {
-                MainScreen mainScreen = new MainScreen();
+                MainScreenShow mainScreen = new MainScreenShow();
                 this.dispose();
             }
             else
