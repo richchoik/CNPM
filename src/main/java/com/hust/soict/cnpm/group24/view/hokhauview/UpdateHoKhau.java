@@ -14,6 +14,11 @@ public class UpdateHoKhau extends javax.swing.JFrame {
         initComponents();
         parentContext = pContext;
         this.setLocationRelativeTo(null);
+        String maHoKhau = parentContext.getHo_khau_table().getValueAt(parentContext.getHo_khau_table().getSelectedRow(), 0).toString();
+        String tenChuHo = parentContext.getHo_khau_table().getValueAt(parentContext.getHo_khau_table().getSelectedRow(), 1).toString();
+        String dienTich = parentContext.getHo_khau_table().getValueAt(parentContext.getHo_khau_table().getSelectedRow(), 2).toString();
+        String soXeMay = parentContext.getHo_khau_table().getValueAt(parentContext.getHo_khau_table().getSelectedRow(), 3).toString();
+        String soOto = parentContext.getHo_khau_table().getValueAt(parentContext.getHo_khau_table().getSelectedRow(), 4).toString();
     }
 
     @SuppressWarnings("unchecked")

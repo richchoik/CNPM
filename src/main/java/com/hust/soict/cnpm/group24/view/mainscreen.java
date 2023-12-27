@@ -4,6 +4,11 @@
  */
 package com.hust.soict.cnpm.group24.view;
 
+import com.hust.soict.cnpm.group24.view.hokhauview.ThemHoKhau;
+import com.hust.soict.cnpm.group24.view.hokhauview.UpdateHoKhau;
+import com.hust.soict.cnpm.group24.view.khoanthuview.CapNhatKhoanThu;
+import com.hust.soict.cnpm.group24.view.khoanthuview.ThemKhoanThu;
+import com.hust.soict.cnpm.group24.view.nhankhauview.ThemNhanKhau;
 import com.hust.soict.cnpm.group24.view.nopphiview.NopPhiScreen;
 import javax.swing.*;
 import java.awt.*;
@@ -109,6 +114,12 @@ public class MainScreen extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
+        them_tt_khoan_phi_panel = new javax.swing.JPanel();
+        them_tt_khoan_phi_label = new javax.swing.JLabel();
+        sua_tt_khoan_phi_panel = new javax.swing.JPanel();
+        sua_tt_khoan_phi_label = new javax.swing.JLabel();
+        xoa_tt_khoan_phi_panel = new javax.swing.JPanel();
+        xoa_tt_khoan_phi_label = new javax.swing.JLabel();
         menu_panel = new javax.swing.JPanel();
         nhan_khau_bt_panel = new javax.swing.JPanel();
         nhan_khau_bt_label = new javax.swing.JLabel();
@@ -275,6 +286,9 @@ public class MainScreen extends javax.swing.JFrame {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 them_tt_ho_khau_panelMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                them_tt_ho_khau_panelMousePressed(evt);
+            }
         });
 
         them_tt_ho_khau_label.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -410,6 +424,9 @@ public class MainScreen extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 them_tt_nhan_khau_panelMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                them_tt_nhan_khau_panelMousePressed(evt);
             }
         });
 
@@ -906,6 +923,96 @@ public class MainScreen extends javax.swing.JFrame {
         );
 
         show_khoan_phi_panel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 510, -1, 60));
+
+        them_tt_khoan_phi_panel.setBackground(new java.awt.Color(129, 143, 180));
+        them_tt_khoan_phi_panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                them_tt_khoan_phi_panelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                them_tt_khoan_phi_panelMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                them_tt_khoan_phi_panelMousePressed(evt);
+            }
+        });
+
+        them_tt_khoan_phi_label.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        them_tt_khoan_phi_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        them_tt_khoan_phi_label.setText("Thêm");
+
+        javax.swing.GroupLayout them_tt_khoan_phi_panelLayout = new javax.swing.GroupLayout(them_tt_khoan_phi_panel);
+        them_tt_khoan_phi_panel.setLayout(them_tt_khoan_phi_panelLayout);
+        them_tt_khoan_phi_panelLayout.setHorizontalGroup(
+            them_tt_khoan_phi_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(them_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+        them_tt_khoan_phi_panelLayout.setVerticalGroup(
+            them_tt_khoan_phi_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(them_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        show_khoan_phi_panel.add(them_tt_khoan_phi_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 500, -1, 40));
+
+        sua_tt_khoan_phi_panel.setBackground(new java.awt.Color(129, 143, 180));
+        sua_tt_khoan_phi_panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                sua_tt_khoan_phi_panelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                sua_tt_khoan_phi_panelMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                sua_tt_khoan_phi_panelMousePressed(evt);
+            }
+        });
+
+        sua_tt_khoan_phi_label.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        sua_tt_khoan_phi_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        sua_tt_khoan_phi_label.setText("Sửa");
+
+        javax.swing.GroupLayout sua_tt_khoan_phi_panelLayout = new javax.swing.GroupLayout(sua_tt_khoan_phi_panel);
+        sua_tt_khoan_phi_panel.setLayout(sua_tt_khoan_phi_panelLayout);
+        sua_tt_khoan_phi_panelLayout.setHorizontalGroup(
+            sua_tt_khoan_phi_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(sua_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+        sua_tt_khoan_phi_panelLayout.setVerticalGroup(
+            sua_tt_khoan_phi_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(sua_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        show_khoan_phi_panel.add(sua_tt_khoan_phi_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 500, -1, 40));
+
+        xoa_tt_khoan_phi_panel.setBackground(new java.awt.Color(129, 143, 180));
+        xoa_tt_khoan_phi_panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                xoa_tt_khoan_phi_panelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                xoa_tt_khoan_phi_panelMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                xoa_tt_khoan_phi_panelMousePressed(evt);
+            }
+        });
+
+        xoa_tt_khoan_phi_label.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        xoa_tt_khoan_phi_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        xoa_tt_khoan_phi_label.setText("Xóa");
+
+        javax.swing.GroupLayout xoa_tt_khoan_phi_panelLayout = new javax.swing.GroupLayout(xoa_tt_khoan_phi_panel);
+        xoa_tt_khoan_phi_panel.setLayout(xoa_tt_khoan_phi_panelLayout);
+        xoa_tt_khoan_phi_panelLayout.setHorizontalGroup(
+            xoa_tt_khoan_phi_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(xoa_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+        xoa_tt_khoan_phi_panelLayout.setVerticalGroup(
+            xoa_tt_khoan_phi_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(xoa_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        show_khoan_phi_panel.add(xoa_tt_khoan_phi_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 500, -1, -1));
 
         show_panel.add(show_khoan_phi_panel, "card6");
 
@@ -1519,27 +1626,12 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void sua_tt_ho_khau_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sua_tt_ho_khau_panelMousePressed
         // TODO add your handling code here:
-        int selectedRow = ho_khau_table.getSelectedRow();
-        if(selectedRow != -1)
-        {
-            
-            EditHoKhauScreen editHoKhauScreen = new EditHoKhauScreen(this);
-           
-            editHoKhauScreen.setVisible(true);
-        }
-        else JOptionPane.showMessageDialog(null, "Chọn một dòng để sửa");
+        UpdateHoKhau.showUpdateHoKhau(this);
     }//GEN-LAST:event_sua_tt_ho_khau_panelMousePressed
 
     private void sua_tt_nhan_khau_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sua_tt_nhan_khau_panelMousePressed
         // TODO add your handling code here:
-        int selectedRow = nhan_khau_table.getSelectedRow();
-        if(selectedRow != -1)
-        {
-            EditNhanKhauScreen editNhanKhauScreen = new EditNhanKhauScreen();
-            editNhanKhauScreen.setParentContext(this);
-            editNhanKhauScreen.setVisible(true);
-        }
-        else JOptionPane.showMessageDialog(null, "Chọn một dòng để sửa");
+        UpdateHoKhau.showUpdateHoKhau(this);
     }//GEN-LAST:event_sua_tt_nhan_khau_panelMousePressed
 
     private void searching_tai_khoan_fieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searching_tai_khoan_fieldMouseClicked
@@ -1608,6 +1700,54 @@ public class MainScreen extends javax.swing.JFrame {
         if(selectedRow != -1) tblModel.removeRow(selectedRow);
         else JOptionPane.showMessageDialog(null, "Chọn một dòng để xóa");
     }//GEN-LAST:event_xoa_tai_khoan_panelMousePressed
+
+    private void them_tt_ho_khau_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_them_tt_ho_khau_panelMousePressed
+        // TODO add your handling code here:
+        ThemHoKhau.showThemHoKhau(this);
+    }//GEN-LAST:event_them_tt_ho_khau_panelMousePressed
+
+    private void them_tt_nhan_khau_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_them_tt_nhan_khau_panelMousePressed
+        // TODO add your handling code here:
+        ThemNhanKhau.showThemNhanKhau(this);
+    }//GEN-LAST:event_them_tt_nhan_khau_panelMousePressed
+
+    private void them_tt_khoan_phi_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_them_tt_khoan_phi_panelMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_them_tt_khoan_phi_panelMouseEntered
+
+    private void them_tt_khoan_phi_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_them_tt_khoan_phi_panelMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_them_tt_khoan_phi_panelMouseExited
+
+    private void them_tt_khoan_phi_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_them_tt_khoan_phi_panelMousePressed
+        // TODO add your handling code here:
+        ThemKhoanThu.showThemKhoanThu(this);
+    }//GEN-LAST:event_them_tt_khoan_phi_panelMousePressed
+
+    private void sua_tt_khoan_phi_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sua_tt_khoan_phi_panelMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sua_tt_khoan_phi_panelMouseEntered
+
+    private void sua_tt_khoan_phi_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sua_tt_khoan_phi_panelMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sua_tt_khoan_phi_panelMouseExited
+
+    private void sua_tt_khoan_phi_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sua_tt_khoan_phi_panelMousePressed
+        // TODO add your handling code here:
+        CapNhatKhoanThu.showCapNhatKhoanThu(this);
+    }//GEN-LAST:event_sua_tt_khoan_phi_panelMousePressed
+
+    private void xoa_tt_khoan_phi_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xoa_tt_khoan_phi_panelMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_xoa_tt_khoan_phi_panelMouseEntered
+
+    private void xoa_tt_khoan_phi_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xoa_tt_khoan_phi_panelMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_xoa_tt_khoan_phi_panelMouseExited
+
+    private void xoa_tt_khoan_phi_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xoa_tt_khoan_phi_panelMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_xoa_tt_khoan_phi_panelMousePressed
 
     public JTable getHo_khau_table() {
         return ho_khau_table;
@@ -1721,6 +1861,8 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JPanel show_thu_phi_panel;
     private javax.swing.JLabel sua_tt_ho_khau_label;
     private javax.swing.JPanel sua_tt_ho_khau_panel;
+    private javax.swing.JLabel sua_tt_khoan_phi_label;
+    private javax.swing.JPanel sua_tt_khoan_phi_panel;
     private javax.swing.JLabel sua_tt_nhan_khau_label;
     private javax.swing.JPanel sua_tt_nhan_khau_panel;
     private javax.swing.JTable tai_khoan_table;
@@ -1730,6 +1872,8 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JPanel them_tai_khoan_panel;
     private javax.swing.JLabel them_tt_ho_khau_label;
     private javax.swing.JPanel them_tt_ho_khau_panel;
+    private javax.swing.JLabel them_tt_khoan_phi_label;
+    private javax.swing.JPanel them_tt_khoan_phi_panel;
     private javax.swing.JLabel them_tt_nhan_khau_label;
     private javax.swing.JPanel them_tt_nhan_khau_panel;
     private javax.swing.JLabel thu_phi_bt_label;
@@ -1746,6 +1890,8 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JPanel xoa_tai_khoan_panel;
     private javax.swing.JLabel xoa_tt_ho_khau_label;
     private javax.swing.JPanel xoa_tt_ho_khau_panel;
+    private javax.swing.JLabel xoa_tt_khoan_phi_label;
+    private javax.swing.JPanel xoa_tt_khoan_phi_panel;
     private javax.swing.JLabel xoa_tt_nhan_khau_label;
     private javax.swing.JPanel xoa_tt_nhan_khau_panel;
     // End of variables declaration//GEN-END:variables

@@ -14,6 +14,7 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
         initComponents();
         parentContext = pContext;
         this.setLocationRelativeTo(null);
+        
     }
 
     @SuppressWarnings("unchecked")
