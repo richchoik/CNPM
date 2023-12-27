@@ -20,6 +20,6 @@ public class CNPMGroup24 {
     public static void main(String[] args) {
 //        ThemHoKhau.showThemHoKhau();
 //        ThemKhoanThu.showThemKhoanThu();
-//        ThemNhanKhau.showThemNhanKhau();
+        ThemNhanKhau.showThemNhanKhau();
     }
 }
