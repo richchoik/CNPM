@@ -125,7 +125,6 @@ public class MainScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Blue Manager");
         setBounds(new java.awt.Rectangle(0, 0, 900, 560));
-        setPreferredSize(new java.awt.Dimension(870, 600));
         setResizable(false);
 
         show_panel.setLayout(new java.awt.CardLayout());
