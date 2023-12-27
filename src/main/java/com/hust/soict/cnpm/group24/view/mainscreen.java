@@ -4,6 +4,7 @@
  */
 package com.hust.soict.cnpm.group24.view;
 
+import com.hust.soict.cnpm.group24.view.nopphiview.NopPhiScreen;
 import javax.swing.*;
 import java.awt.*;
 import static java.awt.Color.yellow;
@@ -15,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 public class MainScreen extends javax.swing.JFrame {
 
     /**
-     * Creates new form mainscreen
+     * Creates new form MainScreen
      */
     //ImageIcon icon = new ImageIcon("Search_Icon.png");
     
@@ -96,6 +97,8 @@ public class MainScreen extends javax.swing.JFrame {
         searching_thu_phi_button = new javax.swing.JButton();
         them_giao_dich_panel = new javax.swing.JPanel();
         them_giao_dich_label = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         show_khoan_phi_panel = new javax.swing.JPanel();
         tt_khoan_phi_panel = new javax.swing.JPanel();
         tt_khoan_phi_label = new javax.swing.JLabel();
@@ -203,16 +206,34 @@ public class MainScreen extends javax.swing.JFrame {
 
         ho_khau_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"A01", "Tùng", "20210001", " "},
-                {"A02", "Trung", "20210002", " "},
-                {"B01", "Tú", "20210003", " "},
-                {null, " ", " ", " "}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã hộ", "Tên chủ hộ ", "Số thành viên", "Diện tích", "Số xe máy", "Số ô tô"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        ho_khau_table.setColumnSelectionAllowed(true);
+        ho_khau_table.getTableHeader().setReorderingAllowed(false);
         ho_khau_scroll_pane.setViewportView(ho_khau_table);
+        ho_khau_table.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         show_ho_khau_panel.add(ho_khau_scroll_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 560, 300));
 
@@ -411,18 +432,31 @@ public class MainScreen extends javax.swing.JFrame {
 
         nhan_khau_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"20210001", "Hoàng Quang Tùng", "A01", "0382469108"},
-                {"20210002", "Phạm Tuấn Trung", "A02", "0987654321"},
-                {"20210003", "Vũ Đức Lương", "B01", "0912345678"}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Họ và tên", "Giới tính", "Số CCCD", "Quốc tịch", "Ngày sinh", "Số điện thoại", "Mã hộ", "QH với chủ hộ"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, true, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        nhan_khau_table.setColumnSelectionAllowed(true);
+        nhan_khau_table.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(nhan_khau_table);
-        if (nhan_khau_table.getColumnModel().getColumnCount() > 0) {
-            nhan_khau_table.getColumnModel().getColumn(3).setHeaderValue("Title 4");
-        }
+        nhan_khau_table.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         show_nhan_khau_panel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 560, 300));
 
@@ -732,6 +766,39 @@ public class MainScreen extends javax.swing.JFrame {
 
         show_thu_phi_panel.add(them_giao_dich_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 510, 400, 30));
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Mã hộ", "Mã phí", "Tên người đóng", "Tên phí", "Số tiền", "Ngày đóng"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setColumnSelectionAllowed(true);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(jTable1);
+        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        show_thu_phi_panel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 560, 320));
+
         show_panel.add(show_thu_phi_panel, "card7");
 
         show_khoan_phi_panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -800,10 +867,28 @@ public class MainScreen extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã phí ", "Tên phí", "Loại phí", "Đơn giá"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable3.setColumnSelectionAllowed(true);
+        jTable3.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable3);
+        jTable3.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         show_khoan_phi_panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 560, 310));
 
@@ -1428,7 +1513,7 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void them_giao_dich_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_them_giao_dich_panelMousePressed
         // TODO add your handling code here:
-        AddFeeScreen addFeeScreen = new AddFeeScreen();
+        NopPhiScreen addFeeScreen = new NopPhiScreen();
         addFeeScreen.setVisible(true);
     }//GEN-LAST:event_them_giao_dich_panelMousePressed
 
@@ -1594,8 +1679,10 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
     private javax.swing.JLabel khoan_phi_bt_label;
     private javax.swing.JPanel khoan_phi_bt_panel;

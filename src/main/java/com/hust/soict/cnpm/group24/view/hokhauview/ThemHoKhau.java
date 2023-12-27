@@ -1,22 +1,19 @@
-package com.hust.soict.cnpm.group24.view;
+package com.hust.soict.cnpm.group24.view.hokhauview;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import com.hust.soict.cnpm.group24.controller.HoKhauController;
 import com.hust.soict.cnpm.group24.model.entity.HoKhau;
+import com.hust.soict.cnpm.group24.view.MainScreen;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class ThemHoKhau extends javax.swing.JFrame {
-
-    public ThemHoKhau() {
+    private MainScreen parentContext;
+    public ThemHoKhau(MainScreen pContext) {
         initComponents();
+        parentContext = pContext;
         this.setLocationRelativeTo(null);
-        try {
-            UIManager.setLookAndFeel(new FlatLightLaf());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @SuppressWarnings("unchecked")
@@ -392,7 +389,7 @@ public class ThemHoKhau extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mahoTextFieldFocusLost
 
-    public static void showThemHoKhau() {
+    public static void showThemHoKhau(MainScreen pContext) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -424,7 +421,7 @@ public class ThemHoKhau extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ThemHoKhau().setVisible(true);
+                new ThemHoKhau(pContext).setVisible(true);
             }
         });
     }

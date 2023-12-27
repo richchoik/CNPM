@@ -1,28 +1,27 @@
-package com.hust.soict.cnpm.group24.view;
+package com.hust.soict.cnpm.group24.view.nhankhauview;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import com.hust.soict.cnpm.group24.controller.NhanKhauController;
 import com.hust.soict.cnpm.group24.model.entity.NhanKhau;
-import java.sql.Date;
+import com.hust.soict.cnpm.group24.view.MainScreen;
+
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import java.sql.Date;
 
-public class UpdateNhanKhau extends javax.swing.JFrame {
-
-    public UpdateNhanKhau() {
+public class ThemNhanKhau extends javax.swing.JFrame {
+    private MainScreen parentContext;
+    public ThemNhanKhau(MainScreen pContext) {
         initComponents();
-        this.setLocationRelativeTo(null);
-        try {
-            UIManager.setLookAndFeel(new FlatLightLaf());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        parentContext = pContext;
+        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        gioitinhbuttonGroup = new javax.swing.ButtonGroup();
         kGradientPanel1 = new com.k33ptoo.components.KGradientPanel();
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -58,7 +57,7 @@ public class UpdateNhanKhau extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Thay đổi thông tin nhân khẩu");
+        setTitle("Thêm nhân khẩu");
 
         kGradientPanel2.setkBorderRadius(70);
         kGradientPanel2.setkEndColor(new java.awt.Color(255, 255, 255));
@@ -86,7 +85,7 @@ public class UpdateNhanKhau extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel18.setText("Mã nhân khẩu");
 
-        tennhankhauTextField.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        tennhankhauTextField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         tennhankhauTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         tennhankhauTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -126,7 +125,7 @@ public class UpdateNhanKhau extends javax.swing.JFrame {
             }
         });
 
-        themButton.setText("Lưu");
+        themButton.setText("Thêm");
         themButton.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         themButton.setkBackGroundColor(new java.awt.Color(36, 193, 93));
         themButton.setkEndColor(new java.awt.Color(36, 193, 93));
@@ -176,9 +175,11 @@ public class UpdateNhanKhau extends javax.swing.JFrame {
             }
         });
 
+        gioitinhbuttonGroup.add(namRadioButton);
         namRadioButton.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         namRadioButton.setText("Nam");
 
+        gioitinhbuttonGroup.add(nuRadioButton);
         nuRadioButton.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         nuRadioButton.setText("Nữ");
 
@@ -221,21 +222,25 @@ public class UpdateNhanKhau extends javax.swing.JFrame {
             }
         });
 
-        manhankhauTextField.setEditable(false);
         manhankhauTextField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         manhankhauTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        manhankhauTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                manhankhauTextFieldFocusLost(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
-        jLabel1.setText("Cập nhật thông tin nhân khẩu");
+        jLabel1.setText("Thêm nhân khẩu");
 
         javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
         kGradientPanel2.setLayout(kGradientPanel2Layout);
         kGradientPanel2Layout.setHorizontalGroup(
             kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(70, 70, 70)
+                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(kGradientPanel2Layout.createSequentialGroup()
                                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,24 +296,24 @@ public class UpdateNhanKhau extends javax.swing.JFrame {
                                 .addComponent(jLabel25)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(huyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
-                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(mahokhauTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(quanhevoichuhoTextField)
-                            .addComponent(sodienthoaiTextField)
-                            .addComponent(quocTichTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(huyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                        .addGap(446, 446, 446)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1)
+                        .addGap(115, 115, 115)))
+                .addGap(23, 23, 23)
+                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(mahokhauTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(quanhevoichuhoTextField)
+                    .addComponent(sodienthoaiTextField)
+                    .addComponent(quocTichTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(70, Short.MAX_VALUE))
         );
         kGradientPanel2Layout.setVerticalGroup(
             kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
+                .addGap(50, 50, 50)
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -367,14 +372,17 @@ public class UpdateNhanKhau extends javax.swing.JFrame {
                 .addGap(53, 53, 53))
         );
 
+        ngaysinhDateChooser.getAccessibleContext().setAccessibleName("");
+        ngaysinhDateChooser.getAccessibleContext().setAccessibleDescription("");
+
         javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
         kGradientPanel1.setLayout(kGradientPanel1Layout);
         kGradientPanel1Layout.setHorizontalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(70, 70, 70)
                 .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,68 +408,30 @@ public class UpdateNhanKhau extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tennhankhauTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tennhankhauTextFieldFocusLost
+    private void manhankhauTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_manhankhauTextFieldFocusLost
         // TODO add your handling code here:
-        if (this.isVisible()) {
-            String tenNhanKhau = tennhankhauTextField.getText().trim();
-            // Kiểm tra xem văn bản có rỗng không
-            if (tenNhanKhau.isEmpty()) {
-                // Hiển thị thông báo nếu rỗng
-                JOptionPane.showMessageDialog(this, "Vui lòng nhập tên nhân khẩu.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            } else {
-                // Thực hiện xử lý khi có dữ liệu
-                // TODO: Thêm mã xử lý khi có dữ liệu nhập vào đây
-            }
-        }
-    }//GEN-LAST:event_tennhankhauTextFieldFocusLost
+    }//GEN-LAST:event_manhankhauTextFieldFocusLost
 
-    private void socccdTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_socccdTextFieldFocusLost
+    private void quocTichTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_quocTichTextFieldFocusLost
         // TODO add your handling code here:
-        if (this.isVisible()) {
-            String socccd = socccdTextField.getText();
-            if (socccd.length() > 0) {
-            } else if (socccd.length() == 0) {
-                JOptionPane.showMessageDialog(rootPane, "Quan hệ với chủ hộ không được để trống");
-            } else if (socccd.length() > 12) {
-                JOptionPane.showMessageDialog(rootPane, "Căn cước công dân nhỏ hơn 12 số");
-            }
-        }
-    }//GEN-LAST:event_socccdTextFieldFocusLost
+    }//GEN-LAST:event_quocTichTextFieldFocusLost
 
-    private void quanhevoichuhoTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_quanhevoichuhoTextFieldFocusLost
+    private void ngaysinhDateChooserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ngaysinhDateChooserFocusLost
         // TODO add your handling code here:
         if (this.isVisible()) {
-            String quanhevoichuho = quanhevoichuhoTextField.getText();
-            if (quanhevoichuho.length() > 0) {
-            } else if (quanhevoichuho.length() == 0) {
-                JOptionPane.showMessageDialog(rootPane, "Quan hệ với chủ hộ không được để trống");
+            String ngaysinh = ngaysinhDateChooser.getDateFormatString();
+            if (ngaysinh.length() > 0) {
+            } else if (ngaysinh.length() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Ngày sinh không được để trống");
             }
         }
-    }//GEN-LAST:event_quanhevoichuhoTextFieldFocusLost
+    }//GEN-LAST:event_ngaysinhDateChooserFocusLost
 
-    private void mahokhauTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_mahokhauTextFieldFocusLost
+    private void huyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huyButtonActionPerformed
         // TODO add your handling code here:
-        if (this.isVisible()) {
-            String mahokhau = mahokhauTextField.getText();
-            if (mahokhau.length() > 0) {
-            } else if (mahokhau.length() == 0) {
-                JOptionPane.showMessageDialog(rootPane, "Mã hộ khẩu không được để trống");
-            }
-        }
-    }//GEN-LAST:event_mahokhauTextFieldFocusLost
-
-    private void sodienthoaiTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_sodienthoaiTextFieldFocusLost
-        // TODO add your handling code here:
-        if (this.isVisible()) {
-            String sodienthoai = sodienthoaiTextField.getText();
-            if (sodienthoai.length() > 0) {
-            } else if (sodienthoai.length() == 0) {
-                JOptionPane.showMessageDialog(rootPane, "Số điện thoại không được để trống");
-            } else if (sodienthoai.length() > 10) {
-                JOptionPane.showMessageDialog(rootPane, "Số điện thoại nhỏ hơn 10 số");
-            }
-        }
-    }//GEN-LAST:event_sodienthoaiTextFieldFocusLost
+        this.dispose();
+        this.setLocationRelativeTo(null);
+    }//GEN-LAST:event_huyButtonActionPerformed
 
     private void themButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themButtonActionPerformed
         int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thêm không?");
@@ -478,44 +448,86 @@ public class UpdateNhanKhau extends javax.swing.JFrame {
             }
             String cccd = socccdTextField.getText();
             String quocTich = quocTichTextField.getText();
-            //Date ngaySinh = Date.valueOf("2003-02-27");
+            //Date ngaySinh = Date.valueOf("2023-07-06");
             java.sql.Date ngaySinh = new java.sql.Date(ns.getTime());
             String soDienThoai = sodienthoaiTextField.getText();
             String maHo = mahokhauTextField.getText();
             String quanHeChuHo = quanhevoichuhoTextField.getText();
 
             NhanKhau nhanKhau = new NhanKhau(id, hoTen, gioiTinh, cccd, quocTich, ngaySinh, soDienThoai, maHo, quanHeChuHo);
-            if (NhanKhauController.suaNhanKhau(nhanKhau)) {
-                JOptionPane.showMessageDialog(this, "Sửa thành công!", "Cập nhật nhân khẩu", JOptionPane.INFORMATION_MESSAGE);
+            if (NhanKhauController.themNhanKhau(nhanKhau)) {
+                JOptionPane.showMessageDialog(this, "Thêm thành công!", "Thêm nhân khẩu", JOptionPane.INFORMATION_MESSAGE);
                 this.dispose();
             } else {
-                JOptionPane.showMessageDialog(this, "Sửa thất bại!", "Cập nhật nhân khẩu", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Thêm thất bại, mã nhân khẩu đã tồn tại!", "Thêm nhân khẩu", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_themButtonActionPerformed
 
-    private void huyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huyButtonActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        this.setLocationRelativeTo(null);
-    }//GEN-LAST:event_huyButtonActionPerformed
-
-    private void ngaysinhDateChooserFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ngaysinhDateChooserFocusLost
+    private void sodienthoaiTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_sodienthoaiTextFieldFocusLost
         // TODO add your handling code here:
         if (this.isVisible()) {
-            String ngaysinh = ngaysinhDateChooser.getDateFormatString();
-            if (ngaysinh.length() > 0) {
-            } else if (ngaysinh.length() == 0) {
-                JOptionPane.showMessageDialog(rootPane, "Ngày sinh không được để trống");
+            String sodienthoai = sodienthoaiTextField.getText();
+            if (sodienthoai.length() > 0) {
+            } else if (sodienthoai.length() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Số điện thoại không được để trống");
+            } else if (sodienthoai.length() > 10) {
+                JOptionPane.showMessageDialog(rootPane, "Số điện thoại nhỏ hơn 10 số");
             }
         }
-    }//GEN-LAST:event_ngaysinhDateChooserFocusLost
+    }//GEN-LAST:event_sodienthoaiTextFieldFocusLost
 
-    private void quocTichTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_quocTichTextFieldFocusLost
+    private void mahokhauTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_mahokhauTextFieldFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_quocTichTextFieldFocusLost
+        if (this.isVisible()) {
+            String mahokhau = mahokhauTextField.getText();
+            if (mahokhau.length() > 0) {
+            } else if (mahokhau.length() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Mã hộ khẩu không được để trống");
+            }
+        }
+    }//GEN-LAST:event_mahokhauTextFieldFocusLost
 
-    public static void showUpdateNhanKhau() {
+    private void quanhevoichuhoTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_quanhevoichuhoTextFieldFocusLost
+        // TODO add your handling code here:
+        if (this.isVisible()) {
+            String quanhevoichuho = quanhevoichuhoTextField.getText();
+            if (quanhevoichuho.length() > 0) {
+            } else if (quanhevoichuho.length() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Quan hệ với chủ hộ không được để trống");
+            }
+        }
+    }//GEN-LAST:event_quanhevoichuhoTextFieldFocusLost
+
+    private void socccdTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_socccdTextFieldFocusLost
+        // TODO add your handling code here:
+        if (this.isVisible()) {
+            String socccd = socccdTextField.getText();
+            if (socccd.length() > 0) {
+            } else if (socccd.length() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Quan hệ với chủ hộ không được để trống");
+            } else if (socccd.length() > 12) {
+                JOptionPane.showMessageDialog(rootPane, "Căn cước công dân nhỏ hơn 12 số");
+            }
+        }
+    }//GEN-LAST:event_socccdTextFieldFocusLost
+
+    private void tennhankhauTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tennhankhauTextFieldFocusLost
+        // TODO add your handling code here:
+        if (this.isVisible()) {
+            String tenNhanKhau = tennhankhauTextField.getText().trim();
+            // Kiểm tra xem văn bản có rỗng không
+            if (tenNhanKhau.isEmpty()) {
+                // Hiển thị thông báo nếu rỗng
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập tên nhân khẩu.", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            } else {
+                // Thực hiện xử lý khi có dữ liệu
+                // TODO: Thêm mã xử lý khi có dữ liệu nhập vào đây
+            }
+        }
+    }//GEN-LAST:event_tennhankhauTextFieldFocusLost
+
+    public static void showThemNhanKhau(MainScreen pContext) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -529,13 +541,13 @@ public class UpdateNhanKhau extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UpdateNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThemNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UpdateNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThemNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UpdateNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThemNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UpdateNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThemNhanKhau.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         try {
@@ -547,12 +559,13 @@ public class UpdateNhanKhau extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UpdateNhanKhau().setVisible(true);
+                new ThemNhanKhau(pContext).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup gioitinhbuttonGroup;
     private com.k33ptoo.components.KButton huyButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -587,5 +600,4 @@ public class UpdateNhanKhau extends javax.swing.JFrame {
     private javax.swing.JTextField tennhankhauTextField;
     private com.k33ptoo.components.KButton themButton;
     // End of variables declaration//GEN-END:variables
-
 }

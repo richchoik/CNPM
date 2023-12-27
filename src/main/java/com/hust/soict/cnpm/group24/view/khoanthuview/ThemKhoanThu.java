@@ -1,21 +1,19 @@
-package com.hust.soict.cnpm.group24.view;
+package com.hust.soict.cnpm.group24.view.khoanthuview;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import com.hust.soict.cnpm.group24.controller.KhoanPhiController;
 import com.hust.soict.cnpm.group24.model.entity.KhoanPhi;
+import com.hust.soict.cnpm.group24.view.MainScreen;
+
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
-public class CapNhatKhoanThu extends javax.swing.JFrame {
-
-    public CapNhatKhoanThu() {
+public class ThemKhoanThu extends javax.swing.JFrame {
+    private MainScreen parentContext;
+    public ThemKhoanThu(MainScreen pContext) {
         initComponents();
+        parentContext = pContext;
         this.setLocationRelativeTo(null);
-        try {
-            UIManager.setLookAndFeel(new FlatLightLaf());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @SuppressWarnings("unchecked")
@@ -41,7 +39,7 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cập nhật khoản thu");
+        setTitle("Thêm khoản thu");
 
         kGradientPanel1.setOpaque(false);
         kGradientPanel1.setPreferredSize(new java.awt.Dimension(900, 750));
@@ -52,7 +50,7 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
         kGradientPanel2.setOpaque(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
-        jLabel1.setText("Cập nhật khoản thu");
+        jLabel1.setText("Thêm khoản thu");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel5.setText("Loại khoản thu");
@@ -74,9 +72,13 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
             }
         });
 
-        makhoanthuTextField.setEditable(false);
         makhoanthuTextField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         makhoanthuTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        makhoanthuTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                makhoanthuTextFieldFocusLost(evt);
+            }
+        });
 
         dongiaTextField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         dongiaTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -86,7 +88,7 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
             }
         });
 
-        themButton.setText("Lưu");
+        themButton.setText("Thêm");
         themButton.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         themButton.setkBackGroundColor(new java.awt.Color(36, 193, 93));
         themButton.setkEndColor(new java.awt.Color(36, 193, 93));
@@ -150,13 +152,12 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE))
-                        .addGroup(kGradientPanel2Layout.createSequentialGroup()
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel11)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel11))
+                        .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)))
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(kGradientPanel2Layout.createSequentialGroup()
@@ -169,7 +170,7 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
                                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)))
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(dongiaTextField, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(makhoanthuTextField, javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,8 +183,8 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
                 .addGap(100, 100, 100))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(229, 229, 229))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(263, 263, 263))
         );
         kGradientPanel2Layout.setVerticalGroup(
             kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,7 +225,7 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
                 .addGap(90, 90, 90)
-                .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(100, 100, 100))
         );
         kGradientPanel1Layout.setVerticalGroup(
@@ -255,36 +256,6 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void themButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themButtonActionPerformed
-        // TODO add your handling code here:
-        int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thêm không?");
-        if (x == JOptionPane.YES_OPTION) {
-
-            String maKhoanThu;
-            String tenKhoanThu;
-            String loaiKhoanThu;
-            float donGia;
-
-            maKhoanThu = makhoanthuTextField.getText();
-            tenKhoanThu = tenkhoanthuTextField.getText();
-            loaiKhoanThu = loaikhoanthuComboBox.getSelectedItem().toString();
-            donGia = Float.parseFloat(dongiaTextField.getText());
-
-            KhoanPhi khoanPhi = new KhoanPhi(maKhoanThu, tenKhoanThu, loaiKhoanThu, donGia);
-            if (KhoanPhiController.suaKhoanPhi(khoanPhi)) {
-                JOptionPane.showMessageDialog(this, "Sửa thành công!", "Cập nhật khoản phí", JOptionPane.INFORMATION_MESSAGE);
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Sửa thất bại!", "Cập nhật khoản phí", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }//GEN-LAST:event_themButtonActionPerformed
-
-    private void huyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huyButtonActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_huyButtonActionPerformed
-
     private void tenkhoanthuTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tenkhoanthuTextFieldFocusLost
         // TODO add your handling code here:
         if (this.isVisible()) {
@@ -296,15 +267,16 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tenkhoanthuTextFieldFocusLost
 
-    private void loaikhoanthuComboBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_loaikhoanthuComboBoxFocusLost
+    private void makhoanthuTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_makhoanthuTextFieldFocusLost
         // TODO add your handling code here:
         if (this.isVisible()) {
-            String loaikhoanthu = loaikhoanthuComboBox.getSelectedItem().toString();
-            if (loaikhoanthu.trim().isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "Loại khoản thu không được để trống");
+            String makhoanthu = makhoanthuTextField.getText();
+            if (makhoanthu.length() > 0) {
+            } else if (makhoanthu.length() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Mã khoản thu không được để trống");
             }
         }
-    }//GEN-LAST:event_loaikhoanthuComboBoxFocusLost
+    }//GEN-LAST:event_makhoanthuTextFieldFocusLost
 
     private void dongiaTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_dongiaTextFieldFocusLost
         // TODO add your handling code here:
@@ -333,7 +305,47 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_dongiaTextFieldFocusLost
 
-    public static void showCapNhatKhoanThu() {
+    private void themButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themButtonActionPerformed
+        // TODO add your handling code here:
+        int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thêm không?");
+        if (x == JOptionPane.YES_OPTION) {
+
+            String maKhoanThu;
+            String tenKhoanThu;
+            String loaiKhoanThu;
+            float donGia;
+
+            maKhoanThu = makhoanthuTextField.getText();
+            tenKhoanThu = tenkhoanthuTextField.getText();
+            loaiKhoanThu = loaikhoanthuComboBox.getSelectedItem().toString();
+            donGia = Float.parseFloat(dongiaTextField.getText());
+
+            KhoanPhi khoanPhi = new KhoanPhi(maKhoanThu, tenKhoanThu, loaiKhoanThu, donGia);
+            if (KhoanPhiController.themKhoanPhi(khoanPhi)) {
+                JOptionPane.showMessageDialog(this, "Thêm thành công!", "Thêm khoản phí", JOptionPane.INFORMATION_MESSAGE);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Thêm thất bại, mã khoản thu đã tồn tại!", "Thêm khoản phí", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_themButtonActionPerformed
+
+    private void huyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huyButtonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_huyButtonActionPerformed
+
+    private void loaikhoanthuComboBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_loaikhoanthuComboBoxFocusLost
+        // TODO add your handling code here:
+        if (this.isVisible()) {
+            String loaikhoanthu = loaikhoanthuComboBox.getSelectedItem().toString();
+            if (loaikhoanthu.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Loại khoản thu không được để trống");
+            }
+        }
+    }//GEN-LAST:event_loaikhoanthuComboBoxFocusLost
+
+    public static void showThemKhoanThu(MainScreen pContext) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -347,26 +359,24 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CapNhatKhoanThu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThemKhoanThu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CapNhatKhoanThu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThemKhoanThu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CapNhatKhoanThu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThemKhoanThu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CapNhatKhoanThu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThemKhoanThu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CapNhatKhoanThu().setVisible(true);
+                new ThemKhoanThu(pContext).setVisible(true);
             }
         });
     }
@@ -390,5 +400,4 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
     private javax.swing.JTextField tenkhoanthuTextField;
     private com.k33ptoo.components.KButton themButton;
     // End of variables declaration//GEN-END:variables
-
 }

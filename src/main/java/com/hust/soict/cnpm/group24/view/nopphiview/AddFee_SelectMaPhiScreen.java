@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.hust.soict.cnpm.group24.view;
+package com.hust.soict.cnpm.group24.view.nopphiview;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
  * @author ADMIN
  */
 public class AddFee_SelectMaPhiScreen extends javax.swing.JFrame {
-    private AddFeeScreen parentContext;
+    private NopPhiScreen parentContext;
 
     /**
      * Creates new form AddFee_SelectMaPhiScreen
@@ -167,11 +167,11 @@ public class AddFee_SelectMaPhiScreen extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_confirm_buttonActionPerformed
 
-    public AddFeeScreen getParentContext() {
+    public NopPhiScreen getParentContext() {
         return parentContext;
     }
 
-    public void setParentContext(AddFeeScreen parentContext) {
+    public void setParentContext(NopPhiScreen parentContext) {
         this.parentContext = parentContext;
     }
     
