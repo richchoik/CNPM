@@ -14,13 +14,12 @@ import java.util.List;
 public class NopPhiDAO {
     public static final int MA_HO = 0;
     public static final int MA_PHI = 1;
-    public static final int TEN_NGUOI_DONG = 2;
-    public static final int TEN_PHI = 3;
+    public static final int NGAY_DONG = 2;
 
     public static List<NopPhi> getListNopPhi() {
         Connection connection = ConnectionUtils.getConnection();
         List<NopPhi> list = new ArrayList<>();
-        String sql = "SELECT * FROM NopPhi";
+        String sql = "SELECT * FROM NopPhi ORDER BY NgayDong DESC";
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
@@ -111,8 +110,7 @@ public class NopPhiDAO {
         switch (type) {
             case MA_HO -> sql = "SELECT * FROM NopPhi WHERE MaHo LIKE N'%" + s + "%'";
             case MA_PHI -> sql = "SELECT * FROM NopPhi WHERE MaPhi LIKE N'%" + s + "%'";
-            case TEN_NGUOI_DONG -> sql = "SELECT * FROM NopPhi WHERE TenNguoiDong LIKE N'%" + s + "%'";
-            case TEN_PHI -> sql = "SELECT * FROM NopPhi WHERE TenPhi LIKE N'%" + s + "%'";
+            case NGAY_DONG -> sql = "SELECT * FROM NopPhi WHERE NgayDong LIKE '%" + s + "%'";
             default -> {
                 return list;
             }
@@ -139,31 +137,6 @@ public class NopPhiDAO {
         }
     }
 
-    public static List<NopPhi> findNgayDong(String date) {
-        Connection connection = ConnectionUtils.getConnection();
-        List<NopPhi> list = new ArrayList<>();
-        String sql = "SELECT * FROM NopPhi WHERE NgayDong = " + date;
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
-            while (resultSet.next()) {
-                NopPhi nopPhi = new NopPhi();
-                nopPhi.setMaHo(resultSet.getString(1));
-                nopPhi.setMaPhi(resultSet.getString(2));
-                nopPhi.setTenNguoiDong(resultSet.getString(3));
-                nopPhi.setTenPhi(resultSet.getString(4));
-                nopPhi.setSoTien(resultSet.getDouble(5));
-                nopPhi.setNgayDong(resultSet.getDate(6));
-                list.add(nopPhi);
-            }
-            return list;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return list;
-        } finally {
-            ConnectionUtils.closeConnection(connection);
-        }
-    }
 
     public static double getSoTienPhaiDong(String maHo, String maPhi) {
         Connection connection = ConnectionUtils.getConnection();
@@ -173,7 +146,7 @@ public class NopPhiDAO {
             HoKhau hoKhau = listHoKhau.get(0);
             List<KhoanPhi> listKhoanPhi = KhoanPhiDAO.find(maPhi, KhoanPhiDAO.MA_PHI);
             KhoanPhi khoanPhi = listKhoanPhi.get(0);
-            if (khoanPhi.getLoaiPhi().equals("Sinh Hoạt") || khoanPhi.getLoaiPhi().equals("Tự Nguyện")) return 0;
+            if (khoanPhi.getLoaiPhi().equals("Sinh hoạt") || khoanPhi.getLoaiPhi().equals("Tự nguyện")) return 0;
             else if (khoanPhi.getLoaiPhi().equals("Bắt buộc")) return hoKhau.getDienTich() * khoanPhi.getDonGia();
             else if (khoanPhi.getLoaiPhi().equals("Phí gửi xe máy")) return hoKhau.getSoXe() * khoanPhi.getDonGia();
             else if (khoanPhi.getLoaiPhi().equals("Phí gửi ô tô")) return hoKhau.getSoOto() * khoanPhi.getDonGia();

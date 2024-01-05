@@ -14,18 +14,14 @@ import com.hust.soict.cnpm.group24.model.entity.KhoanPhi;
 public class KhoanPhiController {
 
     public static boolean themKhoanPhi(KhoanPhi khoanPhi) {
-        if (KhoanPhiDAO.addKhoanPhi(khoanPhi) > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return KhoanPhiDAO.addKhoanPhi(khoanPhi) > 0;
     }
 
     public static boolean suaKhoanPhi(KhoanPhi khoanPhi) {
-        if (KhoanPhiDAO.mdfKhoanPhi(khoanPhi) > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return KhoanPhiDAO.mdfKhoanPhi(khoanPhi) > 0;
+    }
+
+    public static boolean xoaKhoanPhi(String maPhi){
+        return KhoanPhiDAO.delKhoanPhi(maPhi) > 0;
     }
 }

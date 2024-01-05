@@ -3,17 +3,24 @@ package com.hust.soict.cnpm.group24.view.hokhauview;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.hust.soict.cnpm.group24.controller.HoKhauController;
 import com.hust.soict.cnpm.group24.model.entity.HoKhau;
-import com.hust.soict.cnpm.group24.view.MainScreenShow;
-
+import com.hust.soict.cnpm.group24.view.MainScreen;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class ThemHoKhau extends javax.swing.JFrame {
-    private MainScreenShow parentContext;
-    public ThemHoKhau(MainScreenShow pContext) {
+    private MainScreen parentContext;
+    public ThemHoKhau(MainScreen pContext) {
         initComponents();
         parentContext = pContext;
+        parentContext.setEnabled(false);
         this.setLocationRelativeTo(null);
+    }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        parentContext.setEnabled(true);
+        parentContext.setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -40,7 +47,7 @@ public class ThemHoKhau extends javax.swing.JFrame {
         loiLable = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Thêm mới hộ khẩu");
 
         kGradientPanel2.setkBorderRadius(70);
@@ -272,19 +279,20 @@ public class ThemHoKhau extends javax.swing.JFrame {
         if (x == JOptionPane.YES_OPTION) {
 
             String maHo, chuHo;
-            float dienTich;
+            double dienTich;
             int soXeMay = 0;
             int soOTo = 0;
 
             maHo = mahoTextField.getText();
             chuHo = tenchuhoTextField.getText();
-            dienTich = Float.parseFloat(dientichTextField.getText());
+            dienTich = Double.parseDouble(dientichTextField.getText());
             soXeMay = Integer.parseInt(soxemayTextField.getText());
             soOTo = Integer.parseInt(sootoTextField.getText());
 
             HoKhau hoKhau = new HoKhau(maHo, chuHo, dienTich, soXeMay, soOTo);
             if (HoKhauController.themHoKhau(hoKhau)) {
                 JOptionPane.showMessageDialog(this, "Thêm thành công!", "Thêm hộ khẩu", JOptionPane.INFORMATION_MESSAGE);
+                parentContext.loadHoKhauTable();
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Thêm thất bại, mã hộ đã tồn tại!", "Thêm hộ khẩu", JOptionPane.ERROR_MESSAGE);
@@ -389,7 +397,7 @@ public class ThemHoKhau extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mahoTextFieldFocusLost
 
-    public static void showThemHoKhau(MainScreenShow pContext) {
+    public static void showThemHoKhau(MainScreen pContext) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

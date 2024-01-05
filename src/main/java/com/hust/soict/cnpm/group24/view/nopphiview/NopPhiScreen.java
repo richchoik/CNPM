@@ -4,11 +4,15 @@
  */
 package com.hust.soict.cnpm.group24.view.nopphiview;
 
-import java.awt.Color;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import com.formdev.flatlaf.FlatLightLaf;
+import com.hust.soict.cnpm.group24.controller.NopPhiController;
+import com.hust.soict.cnpm.group24.model.dao.NopPhiDAO;
+import com.hust.soict.cnpm.group24.model.entity.NopPhi;
+import com.hust.soict.cnpm.group24.view.MainScreen;
+
+import javax.swing.*;
+import java.sql.Date;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -16,13 +20,23 @@ import javax.swing.JTextField;
  */
 public class NopPhiScreen extends javax.swing.JFrame {
 
+    private MainScreen parentContext;
     /**
      * Creates new form AddFeeScreen
      */
-    public NopPhiScreen() {
+    public NopPhiScreen(MainScreen pContext) {
         initComponents();
+        parentContext = pContext;
+        parentContext.setEnabled(false);
+        setLocationRelativeTo(null);
     }
 
+    @Override
+    public void dispose() {
+        super.dispose();
+        parentContext.setEnabled(true);
+        parentContext.setVisible(true);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,9 +46,8 @@ public class NopPhiScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        logo_panel = new javax.swing.JPanel();
-        logo_label = new javax.swing.JLabel();
-        manipulating_panel = new javax.swing.JPanel();
+        kGradientPanel1 = new com.k33ptoo.components.KGradientPanel();
+        kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
         tieu_de_label = new javax.swing.JLabel();
         ma_ho_label = new javax.swing.JLabel();
         ma_phi_label = new javax.swing.JLabel();
@@ -42,95 +55,64 @@ public class NopPhiScreen extends javax.swing.JFrame {
         ngay_nop_label = new javax.swing.JLabel();
         ma_ho_field = new javax.swing.JTextField();
         so_tien_field = new javax.swing.JTextField();
-        enter_pay_button = new javax.swing.JButton();
         so_tien_label = new javax.swing.JLabel();
         ten_phi_field = new javax.swing.JTextField();
         ma_phi_select_button = new javax.swing.JButton();
         ma_ho_select_button = new javax.swing.JButton();
         ma_phi_field = new javax.swing.JTextField();
+        ngayNopDateChooser = new com.toedter.calendar.JDateChooser();
+        money_calc_button = new javax.swing.JButton();
+        themButton = new com.k33ptoo.components.KButton();
+        huyButton = new com.k33ptoo.components.KButton();
+        ten_nguoi_dong_label = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        ten_nguoi_dong_field = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setTitle("Thêm giao dịch");
 
-        logo_panel.setBackground(new java.awt.Color(67, 85, 133));
+        kGradientPanel1.setOpaque(false);
+        kGradientPanel1.setPreferredSize(new java.awt.Dimension(900, 750));
 
-        logo_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/hust/soict/cnpm/group24/icon/Blue Manager-logos_white.png"))); // NOI18N
+        kGradientPanel2.setkBorderRadius(70);
+        kGradientPanel2.setkEndColor(new java.awt.Color(255, 255, 255));
+        kGradientPanel2.setkStartColor(new java.awt.Color(255, 255, 255));
+        kGradientPanel2.setOpaque(false);
+        kGradientPanel2.setPreferredSize(new java.awt.Dimension(788, 534));
 
-        javax.swing.GroupLayout logo_panelLayout = new javax.swing.GroupLayout(logo_panel);
-        logo_panel.setLayout(logo_panelLayout);
-        logo_panelLayout.setHorizontalGroup(
-            logo_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logo_panelLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(logo_label, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
-        );
-        logo_panelLayout.setVerticalGroup(
-            logo_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logo_panelLayout.createSequentialGroup()
-                .addComponent(logo_label, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(logo_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
-
-        manipulating_panel.setBackground(new java.awt.Color(255, 255, 255));
-        manipulating_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tieu_de_label.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tieu_de_label.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
         tieu_de_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        tieu_de_label.setText("THÊM GIAO DỊCH MỚI");
-        manipulating_panel.add(tieu_de_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 10, 221, 38));
+        tieu_de_label.setText("THÊM GIAO DỊCH");
 
-        ma_ho_label.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ma_ho_label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         ma_ho_label.setText("Mã hộ");
-        manipulating_panel.add(ma_ho_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 123, 40));
 
-        ma_phi_label.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ma_phi_label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         ma_phi_label.setText("Mã phí");
-        manipulating_panel.add(ma_phi_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 123, 40));
 
-        ten_phi_label.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        ten_phi_label.setText("Tên phí:");
-        manipulating_panel.add(ten_phi_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 123, 40));
+        ten_phi_label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        ten_phi_label.setText("Tên phí");
 
-        ngay_nop_label.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ngay_nop_label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         ngay_nop_label.setText("Ngày nộp");
-        manipulating_panel.add(ngay_nop_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 123, 40));
 
         ma_ho_field.setEditable(false);
-        ma_ho_field.setBackground(new java.awt.Color(255, 255, 255));
-        ma_ho_field.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        manipulating_panel.add(ma_ho_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 154, 40));
+        ma_ho_field.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        ma_ho_field.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         so_tien_field.setEditable(false);
         so_tien_field.setBackground(new java.awt.Color(255, 255, 255));
-        so_tien_field.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        manipulating_panel.add(so_tien_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 154, 40));
+        so_tien_field.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        so_tien_field.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        enter_pay_button.setBackground(new java.awt.Color(129, 143, 180));
-        enter_pay_button.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        enter_pay_button.setText("THÊM");
-        enter_pay_button.setFocusable(false);
-        enter_pay_button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                enter_pay_buttonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                enter_pay_buttonMouseExited(evt);
-            }
-        });
-        manipulating_panel.add(enter_pay_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 181, 50));
-
-        so_tien_label.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        so_tien_label.setText("Số tiền cần nộp:");
-        manipulating_panel.add(so_tien_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 123, 40));
+        so_tien_label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        so_tien_label.setText("Số tiền cần nộp");
 
         ten_phi_field.setEditable(false);
-        ten_phi_field.setBackground(new java.awt.Color(255, 255, 255));
-        ten_phi_field.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        manipulating_panel.add(ten_phi_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 154, 40));
+        ten_phi_field.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        ten_phi_field.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        ma_phi_select_button.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         ma_phi_select_button.setText("Chọn");
         ma_phi_select_button.setFocusable(false);
         ma_phi_select_button.addActionListener(new java.awt.event.ActionListener() {
@@ -138,8 +120,8 @@ public class NopPhiScreen extends javax.swing.JFrame {
                 ma_phi_select_buttonActionPerformed(evt);
             }
         });
-        manipulating_panel.add(ma_phi_select_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 60, 40));
 
+        ma_ho_select_button.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         ma_ho_select_button.setText("Chọn");
         ma_ho_select_button.setFocusable(false);
         ma_ho_select_button.addActionListener(new java.awt.event.ActionListener() {
@@ -147,46 +129,258 @@ public class NopPhiScreen extends javax.swing.JFrame {
                 ma_ho_select_buttonActionPerformed(evt);
             }
         });
-        manipulating_panel.add(ma_ho_select_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 60, 40));
 
         ma_phi_field.setEditable(false);
-        ma_phi_field.setBackground(new java.awt.Color(255, 255, 255));
-        ma_phi_field.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        manipulating_panel.add(ma_phi_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 154, 40));
+        ma_phi_field.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        ma_phi_field.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        getContentPane().add(manipulating_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 400, 430));
+        ngayNopDateChooser.setDateFormatString("dd/MM/yyyy");
+        ngayNopDateChooser.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+
+        money_calc_button.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        money_calc_button.setText("Tính phí");
+        money_calc_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                money_calc_buttonActionPerformed(evt);
+            }
+        });
+
+        themButton.setText("Thêm");
+        themButton.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        themButton.setkBackGroundColor(new java.awt.Color(36, 193, 93));
+        themButton.setkEndColor(new java.awt.Color(36, 193, 93));
+        themButton.setkHoverEndColor(new java.awt.Color(36, 193, 93));
+        themButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        themButton.setkHoverStartColor(new java.awt.Color(0, 153, 153));
+        themButton.setkPressedColor(new java.awt.Color(0, 51, 51));
+        themButton.setkStartColor(new java.awt.Color(36, 193, 93));
+        themButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                themButtonActionPerformed(evt);
+            }
+        });
+
+        huyButton.setText("Hủy");
+        huyButton.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        huyButton.setkBackGroundColor(new java.awt.Color(102, 102, 102));
+        huyButton.setkEndColor(new java.awt.Color(153, 153, 153));
+        huyButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
+        huyButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        huyButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
+        huyButton.setkPressedColor(new java.awt.Color(153, 153, 153));
+        huyButton.setkStartColor(new java.awt.Color(153, 153, 153));
+        huyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                huyButtonActionPerformed(evt);
+            }
+        });
+
+        ten_nguoi_dong_label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        ten_nguoi_dong_label.setText("Tên người đóng");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel11.setText("(*)");
+
+        ten_nguoi_dong_field.setBackground(new java.awt.Color(255, 255, 255));
+        ten_nguoi_dong_field.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        ten_nguoi_dong_field.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        ten_nguoi_dong_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ten_nguoi_dong_fieldActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
+        kGradientPanel2.setLayout(kGradientPanel2Layout);
+        kGradientPanel2Layout.setHorizontalGroup(
+            kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel2Layout.createSequentialGroup()
+                .addGap(0, 242, Short.MAX_VALUE)
+                .addComponent(themButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90)
+                .addComponent(huyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(226, 226, 226))
+            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                .addGap(131, 131, 131)
+                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(so_tien_label)
+                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ma_ho_label, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ma_phi_label, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ngay_nop_label, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(tieu_de_label, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(so_tien_field, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                                            .addComponent(ngayNopDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(money_calc_button))
+                                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(ten_phi_field, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                                            .addComponent(ma_phi_field, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                                            .addComponent(ma_ho_field, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(ma_phi_select_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(ma_ho_select_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                        .addComponent(ten_nguoi_dong_label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ten_nguoi_dong_field, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ten_phi_label, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        kGradientPanel2Layout.setVerticalGroup(
+            kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(tieu_de_label, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                        .addComponent(ma_phi_label, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))
+                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ma_ho_label, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ma_ho_field, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ma_ho_select_button, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ma_phi_field, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ma_phi_select_button, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)))
+                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ten_phi_label, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ten_phi_field, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15)
+                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ten_nguoi_dong_label, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel11)
+                                .addComponent(ten_nguoi_dong_field, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(14, 14, 14)
+                        .addComponent(so_tien_label, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(so_tien_field, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(money_calc_button, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(15, 15, 15)
+                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ngay_nop_label, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ngayNopDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(huyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(themButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
+        kGradientPanel1.setLayout(kGradientPanel1Layout);
+        kGradientPanel1Layout.setHorizontalGroup(
+            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+        kGradientPanel1Layout.setVerticalGroup(
+            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void enter_pay_buttonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enter_pay_buttonMouseEntered
+    private void ten_nguoi_dong_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ten_nguoi_dong_fieldActionPerformed
         // TODO add your handling code here:
-        enter_pay_button.setBackground(new Color(245,232,199));
-    }//GEN-LAST:event_enter_pay_buttonMouseEntered
+    }//GEN-LAST:event_ten_nguoi_dong_fieldActionPerformed
 
-    private void enter_pay_buttonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enter_pay_buttonMouseExited
+    private void huyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huyButtonActionPerformed
         // TODO add your handling code here:
-        enter_pay_button.setBackground(new Color(129,143,180));
-    }//GEN-LAST:event_enter_pay_buttonMouseExited
+        this.dispose();
+    }//GEN-LAST:event_huyButtonActionPerformed
+
+    private void themButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themButtonActionPerformed
+        // TODO add your handling code here:
+        int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thêm không?");
+        if (x == JOptionPane.YES_OPTION) {
+            try {
+                NopPhi nopPhi = new NopPhi();
+                nopPhi.setMaHo(ma_ho_field.getText());
+                nopPhi.setMaPhi(ma_phi_field.getText());
+                nopPhi.setTenNguoiDong(ten_nguoi_dong_field.getText());
+                nopPhi.setTenPhi(ten_phi_field.getText());
+                DecimalFormat df = new DecimalFormat();
+                df.setMaximumFractionDigits(340);
+                nopPhi.setSoTien(df.parse(so_tien_field.getText()).doubleValue());
+                java.util.Date ngayNop = ngayNopDateChooser.getDate();
+                nopPhi.setNgayDong(new Date(ngayNop.getTime()));
+                if (NopPhiController.themNopPhi(nopPhi)) {
+                    JOptionPane.showMessageDialog(this, "Thêm thành công!", "Thêm giao dịch", JOptionPane.INFORMATION_MESSAGE);
+                    parentContext.loadThuPhiTable();
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Thêm thất bại!", "Thêm giao dịch", JOptionPane.ERROR_MESSAGE);
+                }
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, "Thêm thất bại!", "Thêm giao dịch", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_themButtonActionPerformed
+
+    private void money_calc_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_money_calc_buttonActionPerformed
+        // TODO add your handling code here:
+        String ma_ho = ma_ho_field.getText();
+        String ma_phi = ma_phi_field.getText();
+        DecimalFormat df = new DecimalFormat();
+        df.setMaximumFractionDigits(340);
+        if(ma_ho.length() != 0 && ma_phi.length() != 0)
+        {
+            so_tien_field.setText(String.valueOf(df.format(NopPhiDAO.getSoTienPhaiDong(ma_ho, ma_phi))));
+        }
+        else JOptionPane.showMessageDialog(null, "Hãy chọn đầy đủ mã hộ và mã phí!");
+    }//GEN-LAST:event_money_calc_buttonActionPerformed
 
     private void ma_ho_select_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ma_ho_select_buttonActionPerformed
         // TODO add your handling code here:
-        AddFee_SelectMaHoScreen addFee_SelectMaHoScreen = new AddFee_SelectMaHoScreen();
-        addFee_SelectMaHoScreen.setParentContext(this);
-        addFee_SelectMaHoScreen.setVisible(true);
+        AddFee_SelectMaHoScreen.showScreen(this);
     }//GEN-LAST:event_ma_ho_select_buttonActionPerformed
 
     private void ma_phi_select_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ma_phi_select_buttonActionPerformed
         // TODO add your handling code here:
-        AddFee_SelectMaPhiScreen addFee_SelectMaPhiScreen = new AddFee_SelectMaPhiScreen();
-        addFee_SelectMaPhiScreen.setParentContext(this);
-        addFee_SelectMaPhiScreen.setVisible(true);
+        AddFee_SelectMaPhiScreen.showScreen(this);
     }//GEN-LAST:event_ma_phi_select_buttonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public void showAddFee() {
+
+    public static void showAddFee(MainScreen pContext) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -211,36 +405,17 @@ public class NopPhiScreen extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
+        try {
+            UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NopPhiScreen().setVisible(true);
+                new NopPhiScreen(pContext).setVisible(true);
             }
         });
-    }
-
-    public JButton getEnter_pay_button() {
-        return enter_pay_button;
-    }
-
-    public void setEnter_pay_button(JButton enter_pay_button) {
-        this.enter_pay_button = enter_pay_button;
-    }
-
-    public JLabel getLogo_label() {
-        return logo_label;
-    }
-
-    public void setLogo_label(JLabel logo_label) {
-        this.logo_label = logo_label;
-    }
-
-    public JPanel getLogo_panel() {
-        return logo_panel;
-    }
-
-    public void setLogo_panel(JPanel logo_panel) {
-        this.logo_panel = logo_panel;
     }
 
     public JTextField getMa_ho_field() {
@@ -289,14 +464,6 @@ public class NopPhiScreen extends javax.swing.JFrame {
 
     public void setMa_phi_select_button(JButton ma_phi_select_button) {
         this.ma_phi_select_button = ma_phi_select_button;
-    }
-
-    public JPanel getManipulating_panel() {
-        return manipulating_panel;
-    }
-
-    public void setManipulating_panel(JPanel manipulating_panel) {
-        this.manipulating_panel = manipulating_panel;
     }
 
     public JLabel getNgay_nop_label() {
@@ -348,21 +515,26 @@ public class NopPhiScreen extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton enter_pay_button;
-    private javax.swing.JLabel logo_label;
-    private javax.swing.JPanel logo_panel;
+    private com.k33ptoo.components.KButton huyButton;
+    private javax.swing.JLabel jLabel11;
+    private com.k33ptoo.components.KGradientPanel kGradientPanel1;
+    private com.k33ptoo.components.KGradientPanel kGradientPanel2;
     private javax.swing.JTextField ma_ho_field;
     private javax.swing.JLabel ma_ho_label;
     private javax.swing.JButton ma_ho_select_button;
     private javax.swing.JTextField ma_phi_field;
     private javax.swing.JLabel ma_phi_label;
     private javax.swing.JButton ma_phi_select_button;
-    private javax.swing.JPanel manipulating_panel;
+    private javax.swing.JButton money_calc_button;
+    private com.toedter.calendar.JDateChooser ngayNopDateChooser;
     private javax.swing.JLabel ngay_nop_label;
     private javax.swing.JTextField so_tien_field;
     private javax.swing.JLabel so_tien_label;
+    private javax.swing.JTextField ten_nguoi_dong_field;
+    private javax.swing.JLabel ten_nguoi_dong_label;
     private javax.swing.JTextField ten_phi_field;
     private javax.swing.JLabel ten_phi_label;
+    private com.k33ptoo.components.KButton themButton;
     private javax.swing.JLabel tieu_de_label;
     // End of variables declaration//GEN-END:variables
 }

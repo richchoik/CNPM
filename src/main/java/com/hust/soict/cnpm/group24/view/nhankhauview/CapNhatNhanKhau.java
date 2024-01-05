@@ -3,24 +3,65 @@ package com.hust.soict.cnpm.group24.view.nhankhauview;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.hust.soict.cnpm.group24.controller.NhanKhauController;
 import com.hust.soict.cnpm.group24.model.entity.NhanKhau;
-import com.hust.soict.cnpm.group24.view.MainScreenShow;
+import com.hust.soict.cnpm.group24.view.MainScreen;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.table.TableModel;
 
 public class CapNhatNhanKhau extends javax.swing.JFrame {
-    private MainScreenShow parentContext;
-    public CapNhatNhanKhau(MainScreenShow pContext) {
+    private MainScreen parentContext;
+    private int selectedRow;
+    public CapNhatNhanKhau(MainScreen pContext,int row) {
         initComponents();
-        this.setLocationRelativeTo(null);
         parentContext = pContext;
+        parentContext.setEnabled(false);
+        this.selectedRow = row;
+        this.setLocationRelativeTo(null);
+        String id = parentContext.getNhan_khau_table().getValueAt(parentContext.getNhan_khau_table().getSelectedRow(), 0).toString();
+        String hoTen = parentContext.getNhan_khau_table().getValueAt(parentContext.getNhan_khau_table().getSelectedRow(), 1).toString();
+        String gioiTinh = parentContext.getNhan_khau_table().getValueAt(parentContext.getNhan_khau_table().getSelectedRow(), 2).toString();
+        String cccd = parentContext.getNhan_khau_table().getValueAt(parentContext.getNhan_khau_table().getSelectedRow(), 3).toString();
+        String ngaySinh = parentContext.getNhan_khau_table().getValueAt(parentContext.getNhan_khau_table().getSelectedRow(), 4).toString();
+        String quocTich = parentContext.getNhan_khau_table().getValueAt(parentContext.getNhan_khau_table().getSelectedRow(), 5).toString();
+        String sdt = parentContext.getNhan_khau_table().getValueAt(parentContext.getNhan_khau_table().getSelectedRow(), 6).toString();
+        String maHo = parentContext.getNhan_khau_table().getValueAt(parentContext.getNhan_khau_table().getSelectedRow(), 7).toString();
+        String quanHeVoiChuHo = parentContext.getNhan_khau_table().getValueAt(parentContext.getNhan_khau_table().getSelectedRow(), 8).toString();
+        manhankhauTextField.setText(id);
+        tennhankhauTextField.setText(hoTen);
+        if(gioiTinh.equals("Nam")){
+            namRadioButton.setSelected(true);
+        }else if(gioiTinh.equals("Nữ")){
+            nuRadioButton.setSelected(true);
+        }
+        socccdTextField.setText(cccd);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            ngaysinhDateChooser.setDate(formatter.parse(ngaySinh));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        quocTichTextField.setText(quocTich);
+        sodienthoaiTextField.setText(sdt);
+        mahokhauTextField.setText(maHo);
+        quanhevoichuhoTextField.setText(quanHeVoiChuHo);
     }
 
+    @Override
+    public void dispose() {
+        super.dispose();
+        parentContext.setEnabled(true);
+        parentContext.setVisible(true);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         kGradientPanel1 = new com.k33ptoo.components.KGradientPanel();
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -35,7 +76,7 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
         quanhevoichuhoTextField = new javax.swing.JTextField();
         mahokhauTextField = new javax.swing.JTextField();
         sodienthoaiTextField = new javax.swing.JTextField();
-        themButton = new com.k33ptoo.components.KButton();
+        luuButton = new com.k33ptoo.components.KButton();
         huyButton = new com.k33ptoo.components.KButton();
         jLabel19 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -55,7 +96,7 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
         manhankhauTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Thay đổi thông tin nhân khẩu");
 
         kGradientPanel2.setkBorderRadius(70);
@@ -124,18 +165,18 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
             }
         });
 
-        themButton.setText("Lưu");
-        themButton.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        themButton.setkBackGroundColor(new java.awt.Color(36, 193, 93));
-        themButton.setkEndColor(new java.awt.Color(36, 193, 93));
-        themButton.setkHoverEndColor(new java.awt.Color(36, 193, 93));
-        themButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        themButton.setkHoverStartColor(new java.awt.Color(0, 153, 153));
-        themButton.setkPressedColor(new java.awt.Color(0, 51, 51));
-        themButton.setkStartColor(new java.awt.Color(36, 193, 93));
-        themButton.addActionListener(new java.awt.event.ActionListener() {
+        luuButton.setText("Lưu");
+        luuButton.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        luuButton.setkBackGroundColor(new java.awt.Color(36, 193, 93));
+        luuButton.setkEndColor(new java.awt.Color(36, 193, 93));
+        luuButton.setkHoverEndColor(new java.awt.Color(36, 193, 93));
+        luuButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        luuButton.setkHoverStartColor(new java.awt.Color(0, 153, 153));
+        luuButton.setkPressedColor(new java.awt.Color(0, 51, 51));
+        luuButton.setkStartColor(new java.awt.Color(36, 193, 93));
+        luuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                themButtonActionPerformed(evt);
+                luuButtonActionPerformed(evt);
             }
         });
 
@@ -174,9 +215,11 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(namRadioButton);
         namRadioButton.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         namRadioButton.setText("Nam");
 
+        buttonGroup1.add(nuRadioButton);
         nuRadioButton.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         nuRadioButton.setText("Nữ");
 
@@ -260,7 +303,7 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(nuRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(themButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(luuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(socccdTextField)
                                             .addComponent(ngaysinhDateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
@@ -360,7 +403,7 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
                     .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(themButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(luuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(huyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53))
         );
@@ -461,8 +504,8 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_sodienthoaiTextFieldFocusLost
 
-    private void themButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themButtonActionPerformed
-        int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thêm không?");
+    private void luuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_luuButtonActionPerformed
+        int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn sửa không?");
         if (x == JOptionPane.YES_OPTION) {
 
             String id = manhankhauTextField.getText();
@@ -476,7 +519,6 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
             }
             String cccd = socccdTextField.getText();
             String quocTich = quocTichTextField.getText();
-            //Date ngaySinh = Date.valueOf("2003-02-27");
             java.sql.Date ngaySinh = new java.sql.Date(ns.getTime());
             String soDienThoai = sodienthoaiTextField.getText();
             String maHo = mahokhauTextField.getText();
@@ -485,12 +527,13 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
             NhanKhau nhanKhau = new NhanKhau(id, hoTen, gioiTinh, cccd, quocTich, ngaySinh, soDienThoai, maHo, quanHeChuHo);
             if (NhanKhauController.suaNhanKhau(nhanKhau)) {
                 JOptionPane.showMessageDialog(this, "Sửa thành công!", "Cập nhật nhân khẩu", JOptionPane.INFORMATION_MESSAGE);
+                parentContext.loadNhanKhauTable();
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Sửa thất bại!", "Cập nhật nhân khẩu", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_themButtonActionPerformed
+    }//GEN-LAST:event_luuButtonActionPerformed
 
     private void huyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huyButtonActionPerformed
         // TODO add your handling code here:
@@ -513,7 +556,7 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_quocTichTextFieldFocusLost
 
-    public static void showUpdateNhanKhau(MainScreenShow pContext) {
+    public static void showUpdateNhanKhau(MainScreen pContext,int row) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -545,12 +588,13 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CapNhatNhanKhau(pContext).setVisible(true);
+                new CapNhatNhanKhau(pContext,row).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private com.k33ptoo.components.KButton huyButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -573,6 +617,7 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private com.k33ptoo.components.KGradientPanel kGradientPanel1;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
+    private com.k33ptoo.components.KButton luuButton;
     private javax.swing.JTextField mahokhauTextField;
     private javax.swing.JTextField manhankhauTextField;
     private javax.swing.JRadioButton namRadioButton;
@@ -583,7 +628,5 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
     private javax.swing.JTextField socccdTextField;
     private javax.swing.JTextField sodienthoaiTextField;
     private javax.swing.JTextField tennhankhauTextField;
-    private com.k33ptoo.components.KButton themButton;
     // End of variables declaration//GEN-END:variables
-
 }

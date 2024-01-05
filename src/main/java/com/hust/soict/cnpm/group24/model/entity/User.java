@@ -1,12 +1,19 @@
 package com.hust.soict.cnpm.group24.model.entity;
 
+import java.util.Objects;
+
 public class User {
     private String userName;
     private String password;
+    private String chuTaiKhoan;
 
-    public User(String userName, String password) {
+    public User() {
+    }
+
+    public User(String userName, String password, String chuTaiKhoan) {
         this.userName = userName;
         this.password = password;
+        this.chuTaiKhoan = chuTaiKhoan;
     }
 
     public String getUserName() {
@@ -25,11 +32,24 @@ public class User {
         this.password = password;
     }
 
+    public String getChuTaiKhoan() {
+        return chuTaiKhoan;
+    }
+
+    public void setChuTaiKhoan(String chuTaiKhoan) {
+        this.chuTaiKhoan = chuTaiKhoan;
+    }
+
     @Override
-    public String toString() {
-        return "User{" +
-                "userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userName, user.userName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userName);
     }
 }

@@ -10,18 +10,14 @@ import javax.swing.JOptionPane;
 public class HoKhauController {
 
     public static boolean themHoKhau(HoKhau hoKhau) {
-        if (HoKhauDAO.addHoKhau(hoKhau) > 0) {
-            return true;
-        }
-        return false;
+        return HoKhauDAO.addHoKhau(hoKhau) > 0;
     }
 
     public static boolean suaHoKhau(HoKhau hoKhau) {
-        if (HoKhauDAO.mdfHoKhau(hoKhau) > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return HoKhauDAO.mdfHoKhau(hoKhau) > 0;
+    }
 
+    public static boolean xoaHoKhau(String maHo){
+        return HoKhauDAO.delHoKhau(maHo) > 0;
     }
 }

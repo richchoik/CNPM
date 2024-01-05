@@ -61,11 +61,17 @@ public class HoKhauDAO {
 
     public static int delHoKhau(String maHo) {
         Connection connection = ConnectionUtils.getConnection();
-        String sql = "DELETE FROM HoKhau WHERE MaHo=?";
+        String sql1 = "DELETE FROM NhanKhau WHERE MaHo=?";
+        String sql2 = "DELETE FROM HoKhau WHERE MaHo=?";
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, maHo);
-            return preparedStatement.executeUpdate();
+            PreparedStatement preparedStatement1 = connection.prepareStatement(sql1);
+            preparedStatement1.setString(1, maHo);
+            preparedStatement1.executeUpdate();
+
+            PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
+            preparedStatement2.setString(1, maHo);
+            preparedStatement2.executeUpdate();
+            return 1;
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;

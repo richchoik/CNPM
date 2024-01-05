@@ -4,11 +4,15 @@
  */
 package com.hust.soict.cnpm.group24.view;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.hust.soict.cnpm.group24.controller.LoginController;
+import com.hust.soict.cnpm.group24.model.dao.LoginDAO;
+
+import javax.swing.*;
 import java.awt.Color;
-import java.awt.Font;
+import java.awt.event.KeyEvent;
 
 /**
- *
  * @author ADMIN
  */
 public class LoginScreen extends javax.swing.JFrame {
@@ -18,6 +22,7 @@ public class LoginScreen extends javax.swing.JFrame {
      */
     public LoginScreen() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -35,9 +40,6 @@ public class LoginScreen extends javax.swing.JFrame {
         password_label = new javax.swing.JLabel();
         account_field = new javax.swing.JTextField();
         password_field = new javax.swing.JPasswordField();
-        question_label = new javax.swing.JLabel();
-        signup_bt_panel = new javax.swing.JPanel();
-        signup_bt_label = new javax.swing.JLabel();
         login_bt_panel = new javax.swing.JPanel();
         login_bt_label = new javax.swing.JLabel();
         login_message_panel = new javax.swing.JPanel();
@@ -54,58 +56,35 @@ public class LoginScreen extends javax.swing.JFrame {
         login_label.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         login_label.setForeground(new java.awt.Color(255, 255, 255));
         login_label.setText("ĐĂNG NHẬP");
-        login_panel.add(login_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, 41));
+        login_panel.add(login_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, 41));
 
-        account_label.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        account_label.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         account_label.setForeground(new java.awt.Color(255, 255, 255));
         account_label.setText("Tài khoản:");
         login_panel.add(account_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 87, 40));
 
-        password_label.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        password_label.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         password_label.setForeground(new java.awt.Color(255, 255, 255));
         password_label.setText("Mật khẩu:");
-        login_panel.add(password_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 75, 40));
+        login_panel.add(password_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 90, 40));
 
+        account_field.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         account_field.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        login_panel.add(account_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 135, 40));
-
-        password_field.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        login_panel.add(password_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 135, 40));
-
-        question_label.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        question_label.setForeground(new java.awt.Color(255, 255, 255));
-        question_label.setText("Bạn chưa có tài khoản?");
-        login_panel.add(question_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 139, 28));
-
-        signup_bt_panel.setBackground(new java.awt.Color(204, 255, 255));
-        signup_bt_panel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                signup_bt_panelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                signup_bt_panelMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                signup_bt_panelMousePressed(evt);
+        account_field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                account_fieldKeyPressed(evt);
             }
         });
+        login_panel.add(account_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 190, 40));
 
-        signup_bt_label.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        signup_bt_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        signup_bt_label.setText("Đăng ký");
-
-        javax.swing.GroupLayout signup_bt_panelLayout = new javax.swing.GroupLayout(signup_bt_panel);
-        signup_bt_panel.setLayout(signup_bt_panelLayout);
-        signup_bt_panelLayout.setHorizontalGroup(
-            signup_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(signup_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-        );
-        signup_bt_panelLayout.setVerticalGroup(
-            signup_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(signup_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-        );
-
-        login_panel.add(signup_bt_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 90, 50));
+        password_field.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        password_field.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        password_field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                password_fieldKeyPressed(evt);
+            }
+        });
+        login_panel.add(password_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 190, 40));
 
         login_bt_panel.setBackground(new java.awt.Color(204, 255, 255));
         login_bt_panel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -135,7 +114,7 @@ public class LoginScreen extends javax.swing.JFrame {
             .addComponent(login_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        login_panel.add(login_bt_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+        login_panel.add(login_bt_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, -1, -1));
 
         login_message_panel.setBackground(new java.awt.Color(0, 0, 0,0));
 
@@ -155,7 +134,7 @@ public class LoginScreen extends javax.swing.JFrame {
 
         login_panel.add(login_message_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, 30));
 
-        getContentPane().add(login_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 310, 390));
+        getContentPane().add(login_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 370, 300));
 
         back_ground_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/blue_moon3.jpg"))); // NOI18N
         getContentPane().add(back_ground_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -163,86 +142,52 @@ public class LoginScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void signup_bt_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signup_bt_panelMouseEntered
-        // TODO add your handling code here:
-        signup_bt_panel.setBackground(new Color(51,255,255));
-    }//GEN-LAST:event_signup_bt_panelMouseEntered
-
-    private void signup_bt_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signup_bt_panelMouseExited
-        // TODO add your handling code here:
-        signup_bt_panel.setBackground(new Color(204,255,255));
-    }//GEN-LAST:event_signup_bt_panelMouseExited
-
-    private void signup_bt_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signup_bt_panelMousePressed
-        // TODO add your handling code here:
-        SignupScreen.showSignup();
-        this.dispose();
-    }//GEN-LAST:event_signup_bt_panelMousePressed
-
     private void login_bt_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_login_bt_panelMousePressed
         // TODO add your handling code here:
+        login();
+    }//GEN-LAST:event_login_bt_panelMousePressed
+
+    public void login(){
         String username = account_field.getText();
         char[] passwordChar = password_field.getPassword();
         String password = new String(passwordChar);
-        if("admin".equals(username))
-        {
-            if("1".equals(password))
-            {
-                MainScreenShow mainScreen = new MainScreenShow();
-                this.dispose();
-            }
-            else
-            {
-                if("".equals(password))
-                {
-                    login_message_label.setText("Hãy nhập mật khẩu");
-                    login_message_label.setForeground(Color.white);
-                    login_message_panel.setBackground(Color.red);
-                }
-                else
-                {
-                    login_message_label.setText("Sai mật khẩu");
-                    login_message_label.setForeground(Color.white);
-                    login_message_panel.setBackground(Color.red);
-                }
-            }
+        if (LoginController.dangNhap(username,password)) {
+            MainScreen.showMainScreen();
+            this.dispose();
+        } else{
+            JOptionPane.showMessageDialog(this, "Nhập sai tên đăng nhập hoặc mật khẩu, mời nhập lại!","Đăng nhập",JOptionPane.ERROR_MESSAGE);
         }
-        else
-        {
-            if("".equals(username))
-            {
-                login_message_label.setText("Hãy nhập tài khoản");
-                login_message_label.setForeground(Color.white);
-                login_message_panel.setBackground(Color.red);
-            }
-            else
-            {
-                login_message_label.setText("Tài khoản không tồn tại");
-                login_message_label.setForeground(Color.white);
-                login_message_panel.setBackground(Color.red);
-            }
-            
-        }
-    }//GEN-LAST:event_login_bt_panelMousePressed
-
+    }
+    
     private void login_bt_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_login_bt_panelMouseExited
         // TODO add your handling code here:
-        login_bt_panel.setBackground(new Color(204,255,255));
+        login_bt_panel.setBackground(new Color(204, 255, 255));
     }//GEN-LAST:event_login_bt_panelMouseExited
 
     private void login_bt_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_login_bt_panelMouseEntered
         // TODO add your handling code here:
-        login_bt_panel.setBackground(new Color(51,255,255));
+        login_bt_panel.setBackground(new Color(51, 255, 255));
     }//GEN-LAST:event_login_bt_panelMouseEntered
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void ShowLogin() {
+    private void account_fieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_account_fieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            login();
+        }
+    }//GEN-LAST:event_account_fieldKeyPressed
+
+    private void password_fieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_password_fieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            login();
+        }
+    }//GEN-LAST:event_password_fieldKeyPressed
+
+    public static void showLogin() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -262,6 +207,11 @@ public class LoginScreen extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        try {
+            UIManager.setLookAndFeel(new FlatIntelliJLaf());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -282,8 +232,5 @@ public class LoginScreen extends javax.swing.JFrame {
     private javax.swing.JPanel login_panel;
     private javax.swing.JPasswordField password_field;
     private javax.swing.JLabel password_label;
-    private javax.swing.JLabel question_label;
-    private javax.swing.JLabel signup_bt_label;
-    private javax.swing.JPanel signup_bt_panel;
     // End of variables declaration//GEN-END:variables
 }

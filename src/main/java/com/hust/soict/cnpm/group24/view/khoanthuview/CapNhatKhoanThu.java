@@ -3,20 +3,37 @@ package com.hust.soict.cnpm.group24.view.khoanthuview;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.hust.soict.cnpm.group24.controller.KhoanPhiController;
 import com.hust.soict.cnpm.group24.model.entity.KhoanPhi;
-import com.hust.soict.cnpm.group24.view.MainScreenShow;
+import com.hust.soict.cnpm.group24.view.MainScreen;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class CapNhatKhoanThu extends javax.swing.JFrame {
-    private MainScreenShow parentContext;
-    public CapNhatKhoanThu(MainScreenShow pContext) {
+    private MainScreen parentContext;
+    private int selectedRow;
+    public CapNhatKhoanThu(MainScreen pContext,int row) {
         initComponents();
         parentContext = pContext;
+        parentContext.setEnabled(false);
+        this.selectedRow = row;
         this.setLocationRelativeTo(null);
-        
+        String maPhi = parentContext.getKhoan_phi_table().getValueAt(selectedRow, 0).toString();
+        String tenPhi = parentContext.getKhoan_phi_table().getValueAt(selectedRow, 1).toString();
+        String loaiPhi = parentContext.getKhoan_phi_table().getValueAt(selectedRow, 2).toString();
+        String donGia = parentContext.getKhoan_phi_table().getValueAt(selectedRow, 3).toString();
+
+        makhoanthuTextField.setText(maPhi);
+        tenkhoanthuTextField.setText(tenPhi);
+        loaikhoanthuComboBox.setSelectedItem(loaiPhi);
+        dongiaTextField.setText(donGia);
     }
 
+    @Override
+    public void dispose() {
+        super.dispose();
+        parentContext.setEnabled(true);
+        parentContext.setVisible(true);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -31,7 +48,7 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
         tenkhoanthuTextField = new javax.swing.JTextField();
         makhoanthuTextField = new javax.swing.JTextField();
         dongiaTextField = new javax.swing.JTextField();
-        themButton = new com.k33ptoo.components.KButton();
+        luuButton = new com.k33ptoo.components.KButton();
         huyButton = new com.k33ptoo.components.KButton();
         loaikhoanthuComboBox = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
@@ -39,7 +56,7 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cập nhật khoản thu");
 
         kGradientPanel1.setOpaque(false);
@@ -65,6 +82,7 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel8.setText("Mã khoản thu");
 
+        tenkhoanthuTextField.setEditable(false);
         tenkhoanthuTextField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         tenkhoanthuTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         tenkhoanthuTextField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -85,18 +103,18 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
             }
         });
 
-        themButton.setText("Lưu");
-        themButton.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        themButton.setkBackGroundColor(new java.awt.Color(36, 193, 93));
-        themButton.setkEndColor(new java.awt.Color(36, 193, 93));
-        themButton.setkHoverEndColor(new java.awt.Color(36, 193, 93));
-        themButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        themButton.setkHoverStartColor(new java.awt.Color(0, 153, 153));
-        themButton.setkPressedColor(new java.awt.Color(0, 51, 51));
-        themButton.setkStartColor(new java.awt.Color(36, 193, 93));
-        themButton.addActionListener(new java.awt.event.ActionListener() {
+        luuButton.setText("Lưu");
+        luuButton.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        luuButton.setkBackGroundColor(new java.awt.Color(36, 193, 93));
+        luuButton.setkEndColor(new java.awt.Color(36, 193, 93));
+        luuButton.setkHoverEndColor(new java.awt.Color(36, 193, 93));
+        luuButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        luuButton.setkHoverStartColor(new java.awt.Color(0, 153, 153));
+        luuButton.setkPressedColor(new java.awt.Color(0, 51, 51));
+        luuButton.setkStartColor(new java.awt.Color(36, 193, 93));
+        luuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                themButtonActionPerformed(evt);
+                luuButtonActionPerformed(evt);
             }
         });
 
@@ -118,6 +136,11 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
         loaikhoanthuComboBox.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         loaikhoanthuComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bắt buộc", "Tự nguyện", "Sinh hoạt", "Phí gửi xe máy", "Phí gửi ô tô" }));
         loaikhoanthuComboBox.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        loaikhoanthuComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                loaikhoanthuComboBoxItemStateChanged(evt);
+            }
+        });
         loaikhoanthuComboBox.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 loaikhoanthuComboBoxFocusLost(evt);
@@ -175,7 +198,7 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
                     .addComponent(loaikhoanthuComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, 416, Short.MAX_VALUE)
                     .addComponent(tenkhoanthuTextField, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, kGradientPanel2Layout.createSequentialGroup()
-                        .addComponent(themButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(luuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(90, 90, 90)
                         .addComponent(huyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(100, 100, 100))
@@ -213,7 +236,7 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(huyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(themButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(luuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
 
@@ -254,30 +277,32 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void themButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themButtonActionPerformed
+
+    private void luuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_luuButtonActionPerformed
         // TODO add your handling code here:
-        int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thêm không?");
+        int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn sửa không?");
         if (x == JOptionPane.YES_OPTION) {
 
             String maKhoanThu;
             String tenKhoanThu;
             String loaiKhoanThu;
-            float donGia;
+            double donGia;
 
             maKhoanThu = makhoanthuTextField.getText();
             tenKhoanThu = tenkhoanthuTextField.getText();
             loaiKhoanThu = loaikhoanthuComboBox.getSelectedItem().toString();
-            donGia = Float.parseFloat(dongiaTextField.getText());
+            donGia = Double.parseDouble(dongiaTextField.getText());
 
             KhoanPhi khoanPhi = new KhoanPhi(maKhoanThu, tenKhoanThu, loaiKhoanThu, donGia);
             if (KhoanPhiController.suaKhoanPhi(khoanPhi)) {
                 JOptionPane.showMessageDialog(this, "Sửa thành công!", "Cập nhật khoản phí", JOptionPane.INFORMATION_MESSAGE);
+                parentContext.loadKhoanPhiTable();
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Sửa thất bại!", "Cập nhật khoản phí", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_themButtonActionPerformed
+    }//GEN-LAST:event_luuButtonActionPerformed
 
     private void huyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huyButtonActionPerformed
         // TODO add your handling code here:
@@ -313,9 +338,10 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
                 //  dientichTextField.requestFocus();
                 return;
             }
-
+            if(String.valueOf(loaikhoanthuComboBox.getSelectedItem()).equals("Tự Nguyện")
+                    || String.valueOf(loaikhoanthuComboBox.getSelectedItem()).equals("Sinh hoạt")) return;
             try {
-                float donGia = Float.parseFloat(dongiaTextField.getText());
+                double donGia = Double.parseDouble(dongiaTextField.getText());
 
                 if (donGia <= 0) {
                     JOptionPane.showMessageDialog(rootPane, "Đơn giá lớn hơn không");
@@ -332,7 +358,19 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_dongiaTextFieldFocusLost
 
-    public static void showCapNhatKhoanThu(MainScreenShow pContext) {
+    private void loaikhoanthuComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_loaikhoanthuComboBoxItemStateChanged
+        // TODO add your handling code here:
+        if(String.valueOf(loaikhoanthuComboBox.getSelectedItem()).equals("Tự nguyện")
+                || String.valueOf(loaikhoanthuComboBox.getSelectedItem()).equals("Sinh hoạt")){
+            dongiaTextField.setText(Double.toString(0));
+            dongiaTextField.setEditable(false);
+        }else{
+            dongiaTextField.setText("");
+            dongiaTextField.setEditable(true);
+        }
+    }//GEN-LAST:event_loaikhoanthuComboBoxItemStateChanged
+
+    public static void showCapNhatKhoanThu(MainScreen pContext,int row) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -365,7 +403,7 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CapNhatKhoanThu(pContext).setVisible(true);
+                new CapNhatKhoanThu(pContext,row).setVisible(true);
             }
         });
     }
@@ -385,9 +423,9 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
     private com.k33ptoo.components.KGradientPanel kGradientPanel1;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
     private javax.swing.JComboBox<String> loaikhoanthuComboBox;
+    private com.k33ptoo.components.KButton luuButton;
     private javax.swing.JTextField makhoanthuTextField;
     private javax.swing.JTextField tenkhoanthuTextField;
-    private com.k33ptoo.components.KButton themButton;
     // End of variables declaration//GEN-END:variables
 
 }

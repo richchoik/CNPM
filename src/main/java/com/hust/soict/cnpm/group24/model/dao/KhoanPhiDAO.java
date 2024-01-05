@@ -11,6 +11,7 @@ import java.util.List;
 public class KhoanPhiDAO {
     public static int MA_PHI = 0;
     public static int TEN_PHI = 1;
+    public static int LOAI_PHI = 2;
 
     public static List<KhoanPhi> getListKhoanPhi() {
         Connection connection = ConnectionUtils.getConnection();
@@ -56,11 +57,17 @@ public class KhoanPhiDAO {
 
     public static int delKhoanPhi(String maPhi) {
         Connection connection = ConnectionUtils.getConnection();
-        String sql = "DELETE FROM KhoanPhi WHERE MaPhi=?";
+        String sql1 = "DELETE FROM NopPhi WHERE MaPhi=?";
+        String sql2 = "DELETE FROM KhoanPhi WHERE MaPhi=?";
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, maPhi);
-            return preparedStatement.executeUpdate();
+            PreparedStatement preparedStatement1 = connection.prepareStatement(sql1);
+            preparedStatement1.setString(1, maPhi);
+            preparedStatement1.executeUpdate();
+
+            PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
+            preparedStatement2.setString(1, maPhi);
+            preparedStatement2.executeUpdate();
+            return 1;
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;
@@ -104,10 +111,12 @@ public class KhoanPhiDAO {
         Connection connection = ConnectionUtils.getConnection();
         List<KhoanPhi> listKhoanPhi = new ArrayList<>();
         String sql;
-        if (type == 0)
+        if (type == MA_PHI)
             sql = "Select * FROM KhoanPhi WHERE MaPhi LIKE N'%" + s + "%'";
-        else if (type == 1)
+        else if (type == TEN_PHI)
             sql = "Select * FROM KhoanPhi WHERE TenPhi LIKE N'%" + s + "%'";
+        else if (type == LOAI_PHI)
+            sql = "Select * FROM KhoanPhi WHERE LoaiPhi LIKE N'%" + s + "%'";
         else return listKhoanPhi;
         try {
             Statement statement = connection.createStatement();

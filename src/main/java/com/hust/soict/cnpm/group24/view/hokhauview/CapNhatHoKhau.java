@@ -3,22 +3,29 @@ package com.hust.soict.cnpm.group24.view.hokhauview;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.hust.soict.cnpm.group24.controller.HoKhauController;
 import com.hust.soict.cnpm.group24.model.entity.HoKhau;
-import com.hust.soict.cnpm.group24.view.MainScreenShow;
-
+import com.hust.soict.cnpm.group24.view.MainScreen;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class CapNhatHoKhau extends javax.swing.JFrame {
-    private MainScreenShow parentContext;
-    public CapNhatHoKhau(MainScreenShow pContext) {
+    private MainScreen parentContext;
+    private int selectedRow;
+    public CapNhatHoKhau(MainScreen pContext,int row) {
         initComponents();
         parentContext = pContext;
+        parentContext.setEnabled(false);
+        this.selectedRow = row;
         this.setLocationRelativeTo(null);
-        String maHoKhau = parentContext.getHo_khau_table().getValueAt(parentContext.getHo_khau_table().getSelectedRow(), 0).toString();
-        String tenChuHo = parentContext.getHo_khau_table().getValueAt(parentContext.getHo_khau_table().getSelectedRow(), 1).toString();
-        String dienTich = parentContext.getHo_khau_table().getValueAt(parentContext.getHo_khau_table().getSelectedRow(), 2).toString();
-        String soXeMay = parentContext.getHo_khau_table().getValueAt(parentContext.getHo_khau_table().getSelectedRow(), 3).toString();
-        String soOto = parentContext.getHo_khau_table().getValueAt(parentContext.getHo_khau_table().getSelectedRow(), 4).toString();
+        String maHoKhau = parentContext.getHo_khau_table().getValueAt(selectedRow, 0).toString();
+        String tenChuHo = parentContext.getHo_khau_table().getValueAt(selectedRow, 1).toString();
+        String dienTich = parentContext.getHo_khau_table().getValueAt(selectedRow, 3).toString();
+        String soXeMay = parentContext.getHo_khau_table().getValueAt(selectedRow, 4).toString();
+        String soOto = parentContext.getHo_khau_table().getValueAt(selectedRow, 5).toString();
+        mahoTextField.setText(maHoKhau);
+        tenchuhoTextField.setText(tenChuHo);
+        dientichTextField.setText(dienTich);
+        soxemayTextField.setText(soXeMay);
+        sootoTextField.setText(soOto);
     }
 
     @SuppressWarnings("unchecked")
@@ -45,7 +52,7 @@ public class CapNhatHoKhau extends javax.swing.JFrame {
         loiLable = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sủa thông tin Sổ hộ khẩu");
 
         kGradientPanel2.setkBorderRadius(70);
@@ -350,23 +357,24 @@ public class CapNhatHoKhau extends javax.swing.JFrame {
 
     private void themButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themButtonActionPerformed
         // TODO add your handling code here:
-        int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn thêm không?");
+        int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn sửa không?");
         if (x == JOptionPane.YES_OPTION) {
 
             String maHo, chuHo;
-            float dienTich;
+            double dienTich;
             int soXeMay = 0;
             int soOTo = 0;
 
             maHo = mahoTextField.getText();
             chuHo = tenchuhoTextField.getText();
-            dienTich = Float.parseFloat(dientichTextField.getText());
+            dienTich = Double.parseDouble(dientichTextField.getText());
             soXeMay = Integer.parseInt(soxemayTextField.getText());
             soOTo = Integer.parseInt(sootoTextField.getText());
 
             HoKhau hoKhau = new HoKhau(maHo, chuHo, dienTich, soOTo, soXeMay);
             if (HoKhauController.suaHoKhau(hoKhau)) {
                 JOptionPane.showMessageDialog(this, "Sửa thành công!", "Cập nhật hộ khẩu", JOptionPane.INFORMATION_MESSAGE);
+                parentContext.loadHoKhauTable();
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Sửa thất bại!", "Cập nhật hộ khẩu", JOptionPane.ERROR_MESSAGE);
@@ -374,7 +382,7 @@ public class CapNhatHoKhau extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_themButtonActionPerformed
 
-    public static void showUpdateHoKhau(MainScreenShow pContext) {
+    public static void showUpdateHoKhau(MainScreen pContext, int row) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -406,7 +414,7 @@ public class CapNhatHoKhau extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CapNhatHoKhau(pContext).setVisible(true);
+                new CapNhatHoKhau(pContext,row).setVisible(true);
             }
         });
     }
@@ -438,4 +446,10 @@ public class CapNhatHoKhau extends javax.swing.JFrame {
         // this.addHoKhau(hk);
     }
 
+    @Override
+    public void dispose() {
+        super.dispose();
+        parentContext.setEnabled(true);
+        parentContext.setVisible(true);
+    }
 }

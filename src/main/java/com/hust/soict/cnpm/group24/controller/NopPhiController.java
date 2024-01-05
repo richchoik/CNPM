@@ -11,11 +11,9 @@ import com.hust.soict.cnpm.group24.model.dao.NopPhiDAO;
  */
 public class NopPhiController {
     public static boolean themNopPhi(NopPhi nopPhi){
-       if(NopPhiDAO.addNopPhi(nopPhi) > 0) return true;
-       else return false;
+        return NopPhiDAO.addNopPhi(nopPhi) > 0;
     }
-    public static boolean suaNopPhi(NopPhi nopPhi){
-        if(NopPhiDAO.mdfNopPhi(nopPhi) > 0) return true;
-        else return false;
+    public static boolean xoaNopPhi(NopPhi nopPhi){
+        return NopPhiDAO.delNopPhi(nopPhi) > 0;
     }
 }

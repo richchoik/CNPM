@@ -3,20 +3,27 @@ package com.hust.soict.cnpm.group24.view.nhankhauview;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.hust.soict.cnpm.group24.controller.NhanKhauController;
 import com.hust.soict.cnpm.group24.model.entity.NhanKhau;
-import com.hust.soict.cnpm.group24.view.MainScreenShow;
+import com.hust.soict.cnpm.group24.view.MainScreen;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import java.sql.Date;
 
 public class ThemNhanKhau extends javax.swing.JFrame {
-    private MainScreenShow parentContext;
-    public ThemNhanKhau(MainScreenShow pContext) {
+    private MainScreen parentContext;
+    public ThemNhanKhau(MainScreen pContext) {
         initComponents();
         parentContext = pContext;
+        parentContext.setEnabled(false);
         setLocationRelativeTo(null);
     }
 
+    @Override
+    public void dispose() {
+        super.dispose();
+        parentContext.setEnabled(true);
+        parentContext.setVisible(true);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -56,7 +63,7 @@ public class ThemNhanKhau extends javax.swing.JFrame {
         manhankhauTextField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Thêm nhân khẩu");
 
         kGradientPanel2.setkBorderRadius(70);
@@ -448,7 +455,6 @@ public class ThemNhanKhau extends javax.swing.JFrame {
             }
             String cccd = socccdTextField.getText();
             String quocTich = quocTichTextField.getText();
-            //Date ngaySinh = Date.valueOf("2023-07-06");
             java.sql.Date ngaySinh = new java.sql.Date(ns.getTime());
             String soDienThoai = sodienthoaiTextField.getText();
             String maHo = mahokhauTextField.getText();
@@ -457,9 +463,10 @@ public class ThemNhanKhau extends javax.swing.JFrame {
             NhanKhau nhanKhau = new NhanKhau(id, hoTen, gioiTinh, cccd, quocTich, ngaySinh, soDienThoai, maHo, quanHeChuHo);
             if (NhanKhauController.themNhanKhau(nhanKhau)) {
                 JOptionPane.showMessageDialog(this, "Thêm thành công!", "Thêm nhân khẩu", JOptionPane.INFORMATION_MESSAGE);
+                parentContext.loadNhanKhauTable();
                 this.dispose();
             } else {
-                JOptionPane.showMessageDialog(this, "Thêm thất bại, mã nhân khẩu đã tồn tại!", "Thêm nhân khẩu", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Thêm thất bại, mã nhân khẩu đã tồn tại hoặc chưa tồn tại mã hộ khẩu!", "Thêm nhân khẩu", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_themButtonActionPerformed
@@ -527,7 +534,7 @@ public class ThemNhanKhau extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tennhankhauTextFieldFocusLost
 
-    public static void showThemNhanKhau(MainScreenShow pContext) {
+    public static void showThemNhanKhau(MainScreen pContext) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

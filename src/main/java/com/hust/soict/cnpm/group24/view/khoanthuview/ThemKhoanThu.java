@@ -3,19 +3,27 @@ package com.hust.soict.cnpm.group24.view.khoanthuview;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.hust.soict.cnpm.group24.controller.KhoanPhiController;
 import com.hust.soict.cnpm.group24.model.entity.KhoanPhi;
-import com.hust.soict.cnpm.group24.view.MainScreenShow;
+import com.hust.soict.cnpm.group24.view.MainScreen;
 
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 public class ThemKhoanThu extends javax.swing.JFrame {
-    private MainScreenShow parentContext;
-    public ThemKhoanThu(MainScreenShow pContext) {
+    private MainScreen parentContext;
+
+    public ThemKhoanThu(MainScreen pContext) {
         initComponents();
         parentContext = pContext;
+        parentContext.setEnabled(false);
         this.setLocationRelativeTo(null);
     }
 
+    @Override
+    public void dispose() {
+        super.dispose();
+        parentContext.setEnabled(true);
+        parentContext.setVisible(true);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -38,7 +46,7 @@ public class ThemKhoanThu extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Thêm khoản thu");
 
         kGradientPanel1.setOpaque(false);
@@ -121,6 +129,11 @@ public class ThemKhoanThu extends javax.swing.JFrame {
         loaikhoanthuComboBox.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         loaikhoanthuComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bắt buộc", "Tự nguyện", "Sinh hoạt", "Phí gửi xe máy", "Phí gửi ô tô" }));
         loaikhoanthuComboBox.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        loaikhoanthuComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                loaikhoanthuComboBoxItemStateChanged(evt);
+            }
+        });
         loaikhoanthuComboBox.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 loaikhoanthuComboBoxFocusLost(evt);
@@ -224,16 +237,16 @@ public class ThemKhoanThu extends javax.swing.JFrame {
         kGradientPanel1Layout.setHorizontalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addGap(90, 90, 90)
+                .addGap(100, 100, 100)
                 .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(100, 100, 100))
         );
         kGradientPanel1Layout.setVerticalGroup(
             kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kGradientPanel1Layout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addGap(84, 84, 84)
                 .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -287,8 +300,10 @@ public class ThemKhoanThu extends javax.swing.JFrame {
                 return;
             }
 
+            if(String.valueOf(loaikhoanthuComboBox.getSelectedItem()).equals("Tự Nguyện")
+                    || String.valueOf(loaikhoanthuComboBox.getSelectedItem()).equals("Sinh hoạt")) return;
             try {
-                float donGia = Float.parseFloat(dongiaTextField.getText());
+                double donGia = Double.parseDouble(dongiaTextField.getText());
 
                 if (donGia <= 0) {
                     JOptionPane.showMessageDialog(rootPane, "Đơn giá lớn hơn không");
@@ -313,16 +328,17 @@ public class ThemKhoanThu extends javax.swing.JFrame {
             String maKhoanThu;
             String tenKhoanThu;
             String loaiKhoanThu;
-            float donGia;
+            double donGia;
 
             maKhoanThu = makhoanthuTextField.getText();
             tenKhoanThu = tenkhoanthuTextField.getText();
             loaiKhoanThu = loaikhoanthuComboBox.getSelectedItem().toString();
-            donGia = Float.parseFloat(dongiaTextField.getText());
+            donGia = Double.parseDouble(dongiaTextField.getText());
 
             KhoanPhi khoanPhi = new KhoanPhi(maKhoanThu, tenKhoanThu, loaiKhoanThu, donGia);
             if (KhoanPhiController.themKhoanPhi(khoanPhi)) {
                 JOptionPane.showMessageDialog(this, "Thêm thành công!", "Thêm khoản phí", JOptionPane.INFORMATION_MESSAGE);
+                parentContext.loadKhoanPhiTable();
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Thêm thất bại, mã khoản thu đã tồn tại!", "Thêm khoản phí", JOptionPane.ERROR_MESSAGE);
@@ -345,7 +361,19 @@ public class ThemKhoanThu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_loaikhoanthuComboBoxFocusLost
 
-    public static void showThemKhoanThu(MainScreenShow pContext) {
+    private void loaikhoanthuComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_loaikhoanthuComboBoxItemStateChanged
+        // TODO add your handling code here:
+        if(String.valueOf(loaikhoanthuComboBox.getSelectedItem()).equals("Tự nguyện")
+                || String.valueOf(loaikhoanthuComboBox.getSelectedItem()).equals("Sinh hoạt")){
+            dongiaTextField.setText(Double.toString(0));
+            dongiaTextField.setEditable(false);
+        }else{
+            dongiaTextField.setText("");
+            dongiaTextField.setEditable(true);
+        }
+    }//GEN-LAST:event_loaikhoanthuComboBoxItemStateChanged
+
+    public static void showThemKhoanThu(MainScreen pContext) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

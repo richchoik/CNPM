@@ -1,8 +1,12 @@
 package com.hust.soict.cnpm.group24.model.dao;
 
 import com.hust.soict.cnpm.group24.connection.ConnectionUtils;
+import com.hust.soict.cnpm.group24.model.entity.HoKhau;
+import com.hust.soict.cnpm.group24.model.entity.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginDAO {
     public static boolean login(String userName,String password){
@@ -25,32 +29,55 @@ public class LoginDAO {
         }
     }
 
-    public static boolean addUser(String userName,String password){
+    public static List<User> getListUser(){
         Connection connection = ConnectionUtils.getConnection();
+        List<User> userList = new ArrayList<>();
+        String sql = "Select * FROM TaiKhoan";
         try {
-            String sql = "INSERT INTO TaiKhoan VALUES(?,?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, userName);
-            preparedStatement.setString(2, password);
-            return !preparedStatement.execute();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                User user = new User();
+                user.setUserName(resultSet.getString(1));
+                user.setChuTaiKhoan(resultSet.getString(3));
+                userList.add(user);
+            }
+            return userList;
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return userList;
+        } finally {
+            ConnectionUtils.closeConnection(connection);
+        }
+    }
+
+    public static int addUser(User user){
+        Connection connection = ConnectionUtils.getConnection();
+        try {
+            String sql = "INSERT INTO TaiKhoan VALUES(?,?,?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, user.getUserName());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getChuTaiKhoan());
+            return preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
         }finally {
             ConnectionUtils.closeConnection(connection);
         }
     }
 
-    public static boolean deleteUser(String userName){
+    public static int deleteUser(String userName){
         Connection connection = ConnectionUtils.getConnection();
         try {
             String sql = "DELETE FROM TaiKhoan WHERE UserName=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, userName);
-            return !preparedStatement.execute();
+            return preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return 0;
         }finally {
             ConnectionUtils.closeConnection(connection);
         }

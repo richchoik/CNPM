@@ -9,16 +9,15 @@ import com.hust.soict.cnpm.group24.model.entity.NhanKhau;
 
 
 public class NhanKhauController {
-   // public static void themNhanKhau(String maNhanKhau,....)
     public static boolean themNhanKhau(NhanKhau nhanKhau){
-        if(NhanKhauDAO.addNhanKhau(nhanKhau) > 0)
-            return true;
-        return false;
+        return NhanKhauDAO.addNhanKhau(nhanKhau) > 0;
     }
     
     public static boolean suaNhanKhau(NhanKhau nhanKhau){
-        if(NhanKhauDAO.mdfNhanKhau(nhanKhau) > 0)
-            return true;
-        else return false;
+        return NhanKhauDAO.mdfNhanKhau(nhanKhau) > 0;
+    }
+
+    public static boolean xoaNhanKhau(String ID){
+        return NhanKhauDAO.delNhanKhau(ID) > 0;
     }
 }

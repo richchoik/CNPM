@@ -13,7 +13,15 @@ import com.hust.soict.cnpm.group24.model.dao.LoginDAO;
  */
 public class LoginController {
 
-    public static boolean dangNhap(String userName, String password) {
-        return LoginDAO.login(userName, password);
+    public static boolean dangNhap(String userName,String password) {
+        return LoginDAO.login(userName,password);
+    }
+
+    public static boolean themTaiKhoan(User user){
+        return LoginDAO.addUser(user) > 0;
+    }
+
+    public static boolean xoaTaiKhoan(String userName){
+        return LoginDAO.deleteUser(userName) > 0;
     }
 }

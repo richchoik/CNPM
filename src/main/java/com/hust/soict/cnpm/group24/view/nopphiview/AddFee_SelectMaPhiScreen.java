@@ -4,6 +4,14 @@
  */
 package com.hust.soict.cnpm.group24.view.nopphiview;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.hust.soict.cnpm.group24.model.dao.KhoanPhiDAO;
+import com.hust.soict.cnpm.group24.model.entity.KhoanPhi;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -12,14 +20,48 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AddFee_SelectMaPhiScreen extends javax.swing.JFrame {
     private NopPhiScreen parentContext;
-
     /**
      * Creates new form AddFee_SelectMaPhiScreen
      */
-    public AddFee_SelectMaPhiScreen() {
+    public AddFee_SelectMaPhiScreen(NopPhiScreen pContext) {
         initComponents();
+        parentContext = pContext;
+        loadKhoanPhiTable();
+        parentContext.setEnabled(false);
+        setLocationRelativeTo(null);
     }
+    
+    @Override
+    public void dispose() {
+        super.dispose();
+        parentContext.setEnabled(true);
+        parentContext.setVisible(true);
+    }
+    
+    public void findKhoanPhiTable(List<KhoanPhi> khoanPhiList){
+        DefaultTableModel tableModel = (DefaultTableModel)khoan_phi_table.getModel();
+        int rowCount = tableModel.getRowCount();
+        for (int i = rowCount; i > 0 ; i--){
+            tableModel.removeRow(i-1);
+        }
 
+        for(KhoanPhi khoanPhi : khoanPhiList){
+            tableModel.addRow(new Object[]{khoanPhi.getMaPhi(),khoanPhi.getTenPhi(),
+                    khoanPhi.getLoaiPhi(),khoanPhi.getDonGia()});
+        }
+    }
+    public void loadKhoanPhiTable(){
+        DefaultTableModel tableModel = (DefaultTableModel)khoan_phi_table.getModel();
+        int rowCount = tableModel.getRowCount();
+        for (int i = rowCount; i > 0 ; i--){
+            tableModel.removeRow(i-1);
+        }
+        List<KhoanPhi> khoanPhiList = KhoanPhiDAO.getListKhoanPhi();
+        for(KhoanPhi khoanPhi : khoanPhiList){
+            tableModel.addRow(new Object[]{khoanPhi.getMaPhi(),khoanPhi.getTenPhi(),
+                              khoanPhi.getLoaiPhi(),khoanPhi.getDonGia()});
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,69 +71,36 @@ public class AddFee_SelectMaPhiScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        searching_phi_field = new javax.swing.JTextField();
-        searching_phi_button = new javax.swing.JButton();
-        searching_phi_question_label = new javax.swing.JLabel();
-        searching_phi_type_box = new javax.swing.JComboBox<>();
         confirm_button = new com.k33ptoo.components.KButton();
-        phi_scroll_pane = new javax.swing.JScrollPane();
-        phi_table = new javax.swing.JTable();
         tt_phi_panel = new javax.swing.JPanel();
         tt_phi_label = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        searching_khoan_phi_field = new javax.swing.JTextField();
+        searching_khoan_phi_button = new javax.swing.JButton();
+        searching_khoan_phi_question_label = new javax.swing.JLabel();
+        searching_khoan_phi_type_box = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        khoan_phi_table = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(700, 620));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        searching_phi_field.setText("Tìm kiếm theo mã hộ khẩu");
-        searching_phi_field.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        searching_phi_field.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                searching_phi_fieldMouseClicked(evt);
-            }
-        });
-        getContentPane().add(searching_phi_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 213, 40));
-
-        searching_phi_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search_Icon.png"))); // NOI18N
-        searching_phi_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searching_phi_buttonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(searching_phi_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 40, 40));
-
-        searching_phi_question_label.setText("Bạn muốn tìm kiếm theo:");
-        getContentPane().add(searching_phi_question_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 134, 40));
-
-        searching_phi_type_box.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã hộ khẩu", "Số nhân khẩu", " " }));
-        searching_phi_type_box.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searching_phi_type_boxActionPerformed(evt);
-            }
-        });
-        getContentPane().add(searching_phi_type_box, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, 150, 40));
-
         confirm_button.setText("Xác nhận");
+        confirm_button.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        confirm_button.setkBackGroundColor(new java.awt.Color(36, 193, 93));
+        confirm_button.setkEndColor(new java.awt.Color(36, 193, 93));
+        confirm_button.setkHoverEndColor(new java.awt.Color(36, 193, 93));
+        confirm_button.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        confirm_button.setkHoverStartColor(new java.awt.Color(0, 153, 153));
+        confirm_button.setkPressedColor(new java.awt.Color(0, 51, 51));
+        confirm_button.setkStartColor(new java.awt.Color(36, 193, 93));
         confirm_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirm_buttonActionPerformed(evt);
             }
         });
-        getContentPane().add(confirm_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, -1, -1));
-
-        phi_table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"HQT", "dmm", "  ", "  "},
-                {"1212", "tiền nước", "333", "  "}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        phi_scroll_pane.setViewportView(phi_table);
-
-        getContentPane().add(phi_scroll_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 560, 300));
+        getContentPane().add(confirm_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 500, -1, -1));
 
         tt_phi_panel.setBackground(new java.awt.Color(67, 85, 133));
 
@@ -119,53 +128,127 @@ public class AddFee_SelectMaPhiScreen extends javax.swing.JFrame {
 
         getContentPane().add(tt_phi_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, -1));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        searching_khoan_phi_field.setToolTipText("");
+        searching_khoan_phi_field.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        searching_khoan_phi_field.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searching_khoan_phi_fieldMouseClicked(evt);
+            }
+        });
+        searching_khoan_phi_field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searching_khoan_phi_fieldKeyPressed(evt);
+            }
+        });
+        getContentPane().add(searching_khoan_phi_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 213, 40));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
+        searching_khoan_phi_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search_Icon.png"))); // NOI18N
+        searching_khoan_phi_button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                searching_khoan_phi_buttonMousePressed(evt);
+            }
+        });
+        getContentPane().add(searching_khoan_phi_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 40, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 530, -1, 70));
+        searching_khoan_phi_question_label.setText("Bạn muốn tìm kiếm theo:");
+        getContentPane().add(searching_khoan_phi_question_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 134, 40));
+
+        searching_khoan_phi_type_box.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã khoản phí", "Tên khoản phí", "Loại phí" }));
+        searching_khoan_phi_type_box.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searching_khoan_phi_type_boxActionPerformed(evt);
+            }
+        });
+        getContentPane().add(searching_khoan_phi_type_box, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, 150, 40));
+
+        khoan_phi_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã phí ", "Tên phí", "Loại phí", "Đơn giá"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        khoan_phi_table.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(khoan_phi_table);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 560, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searching_phi_fieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searching_phi_fieldMouseClicked
-        // TODO add your handling code here:
-        searching_phi_field.setText("");
-    }//GEN-LAST:event_searching_phi_fieldMouseClicked
-
-    private void searching_phi_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searching_phi_buttonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searching_phi_buttonActionPerformed
-
-    private void searching_phi_type_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searching_phi_type_boxActionPerformed
-        // TODO add your handling code here:
-        String searching_type = String.valueOf(searching_phi_type_box.getSelectedItem());
-        if(searching_type == "Mã hộ khẩu") {
-            searching_phi_field.setText("Tìm kiếm theo mã hộ khẩu");
-        }
-        else if(searching_type == "Số nhân khẩu") {
-            searching_phi_field.setText("Tìm kiếm theo số lượng nhân khẩu");
-        }
-    }//GEN-LAST:event_searching_phi_type_boxActionPerformed
-
     private void confirm_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirm_buttonActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel tblModel = (DefaultTableModel)phi_table.getModel();
-        String ma_phi = tblModel.getValueAt(phi_table.getSelectedRow(), 0).toString();
-        String ten_phi = tblModel.getValueAt(phi_table.getSelectedRow(),1).toString();
-        parentContext.getMa_phi_field().setText(ma_phi);
-        parentContext.getTen_phi_field().setText(ten_phi);
-        this.dispose();
+        DefaultTableModel tblModel = (DefaultTableModel)khoan_phi_table.getModel();
+        int selectedRow = khoan_phi_table.getSelectedRow();
+        if(selectedRow != -1){
+            String ma_phi = tblModel.getValueAt(khoan_phi_table.getSelectedRow(), 0).toString();
+            String ten_phi = tblModel.getValueAt(khoan_phi_table.getSelectedRow(), 1).toString();
+            String loai_phi = tblModel.getValueAt(khoan_phi_table.getSelectedRow(), 2).toString();
+            if(loai_phi.equals("Tự nguyện") || loai_phi.equals("Sinh hoạt")){
+                parentContext.getSo_tien_field().setEditable(true);
+            }
+            else parentContext.getSo_tien_field().setEditable(false);
+                
+            parentContext.getMa_phi_field().setText(ma_phi);
+            parentContext.getTen_phi_field().setText(ten_phi);
+            this.dispose();
+        }
+        else JOptionPane.showMessageDialog(null, "Hãy chọn một dòng!");
+        
     }//GEN-LAST:event_confirm_buttonActionPerformed
+
+    private void searching_khoan_phi_fieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searching_khoan_phi_fieldMouseClicked
+        // TODO add your handling code here:
+        searching_khoan_phi_field.setText("");
+    }//GEN-LAST:event_searching_khoan_phi_fieldMouseClicked
+
+    private void searching_khoan_phi_fieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searching_khoan_phi_fieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            List<KhoanPhi> list =new ArrayList<KhoanPhi>();
+            if(searching_khoan_phi_type_box.getSelectedIndex()==0){
+                list = KhoanPhiDAO.find(searching_khoan_phi_field.getText(), KhoanPhiDAO.MA_PHI);
+            }else if(searching_khoan_phi_type_box.getSelectedIndex()==1){
+                list = KhoanPhiDAO.find(searching_khoan_phi_field.getText(), KhoanPhiDAO.TEN_PHI);
+            }else if(searching_khoan_phi_type_box.getSelectedIndex()==2){
+                list = KhoanPhiDAO.find(searching_khoan_phi_field.getText(), KhoanPhiDAO.LOAI_PHI);
+            }
+            findKhoanPhiTable(list);
+        }
+    }//GEN-LAST:event_searching_khoan_phi_fieldKeyPressed
+
+    private void searching_khoan_phi_buttonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searching_khoan_phi_buttonMousePressed
+        // TODO add your handling code here:
+        List<KhoanPhi> list =new ArrayList<KhoanPhi>();
+        if(searching_khoan_phi_type_box.getSelectedIndex()==0){
+            list = KhoanPhiDAO.find(searching_khoan_phi_field.getText(), KhoanPhiDAO.MA_PHI);
+        }else if(searching_khoan_phi_type_box.getSelectedIndex()==1){
+            list = KhoanPhiDAO.find(searching_khoan_phi_field.getText(), KhoanPhiDAO.TEN_PHI);
+        }else if(searching_khoan_phi_type_box.getSelectedIndex()==2){
+            list = KhoanPhiDAO.find(searching_khoan_phi_field.getText(), KhoanPhiDAO.LOAI_PHI);
+        }
+        findKhoanPhiTable(list);
+    }//GEN-LAST:event_searching_khoan_phi_buttonMousePressed
+
+    private void searching_khoan_phi_type_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searching_khoan_phi_type_boxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searching_khoan_phi_type_boxActionPerformed
 
     public NopPhiScreen getParentContext() {
         return parentContext;
@@ -175,10 +258,8 @@ public class AddFee_SelectMaPhiScreen extends javax.swing.JFrame {
         this.parentContext = parentContext;
     }
     
-    /**
-     * @param args the command line arguments
-     */
-    public void showScreen() {
+
+    public static void showScreen(NopPhiScreen pContext) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -202,23 +283,27 @@ public class AddFee_SelectMaPhiScreen extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        try {
+            UIManager.setLookAndFeel(new FlatIntelliJLaf());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddFee_SelectMaPhiScreen().setVisible(true);
+                new AddFee_SelectMaPhiScreen(pContext).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton confirm_button;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane phi_scroll_pane;
-    private javax.swing.JTable phi_table;
-    private javax.swing.JButton searching_phi_button;
-    private javax.swing.JTextField searching_phi_field;
-    private javax.swing.JLabel searching_phi_question_label;
-    private javax.swing.JComboBox<String> searching_phi_type_box;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable khoan_phi_table;
+    private javax.swing.JButton searching_khoan_phi_button;
+    private javax.swing.JTextField searching_khoan_phi_field;
+    private javax.swing.JLabel searching_khoan_phi_question_label;
+    private javax.swing.JComboBox<String> searching_khoan_phi_type_box;
     private javax.swing.JLabel tt_phi_label;
     private javax.swing.JPanel tt_phi_panel;
     // End of variables declaration//GEN-END:variables

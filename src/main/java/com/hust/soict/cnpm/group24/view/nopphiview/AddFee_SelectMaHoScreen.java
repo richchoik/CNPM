@@ -4,8 +4,17 @@
  */
 package com.hust.soict.cnpm.group24.view.nopphiview;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.hust.soict.cnpm.group24.model.dao.HoKhauDAO;
+import com.hust.soict.cnpm.group24.model.entity.HoKhau;
+import com.hust.soict.cnpm.group24.model.entity.KhoanPhi;
+import com.hust.soict.cnpm.group24.view.hokhauview.CapNhatHoKhau;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,10 +26,48 @@ public class AddFee_SelectMaHoScreen extends javax.swing.JFrame {
     /**
      * Creates new form AddFee_SelectMaHoScreen
      */
-    public AddFee_SelectMaHoScreen() {
+    public AddFee_SelectMaHoScreen(NopPhiScreen pContext) {
         initComponents();
-        
+        parentContext = pContext;
+        loadHoKhauTable();
+        parentContext.setEnabled(false);
+        setLocationRelativeTo(null);
     }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        parentContext.setEnabled(true);
+        parentContext.setVisible(true);
+    }
+
+    public void loadHoKhauTable(){
+        DefaultTableModel tableModel = (DefaultTableModel)ho_khau_table.getModel();
+        int rowCount = tableModel.getRowCount();
+        for (int i = rowCount; i > 0 ; i--){
+            tableModel.removeRow(i-1);
+        }
+        List<HoKhau> hoKhauList = HoKhauDAO.getListHoKhau();
+        for(HoKhau hoKhau : hoKhauList){
+            tableModel.addRow(new Object[]{hoKhau.getMaHo(),hoKhau.getTenChuHo(),hoKhau.getSoThanhVien(),
+                            hoKhau.getDienTich(),hoKhau.getSoXe(),hoKhau.getSoOto()});
+        }
+    }
+    
+    public void findHoKhauTable(List<HoKhau> hoKhauList){
+        DefaultTableModel tableModel = (DefaultTableModel)ho_khau_table.getModel();
+        int rowCount = tableModel.getRowCount();
+        for (int i = rowCount; i > 0 ; i--){
+            tableModel.removeRow(i-1);
+        }
+
+        for(HoKhau hoKhau : hoKhauList){
+            tableModel.addRow(new Object[]{hoKhau.getMaHo(),hoKhau.getTenChuHo(),hoKhau.getSoThanhVien(),
+                    hoKhau.getDienTich(),hoKhau.getSoXe(),hoKhau.getSoOto()});
+        }
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,52 +78,21 @@ public class AddFee_SelectMaHoScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        searching_ho_khau_type_box = new javax.swing.JComboBox<>();
-        searching_ho_khau_question_label = new javax.swing.JLabel();
-        searching_ho_khau_button = new javax.swing.JButton();
-        ho_khau_scroll_pane = new javax.swing.JScrollPane();
-        ho_khau_table = new javax.swing.JTable();
         tt_ho_khau_panel = new javax.swing.JPanel();
         tt_ho_khau_label = new javax.swing.JLabel();
-        searching_ho_khau_field = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
         confirm_button = new com.k33ptoo.components.KButton();
+        ho_khau_scroll_pane = new javax.swing.JScrollPane();
+        ho_khau_table = new javax.swing.JTable();
+        searching_ho_khau_field = new javax.swing.JTextField();
+        searching_ho_khau_button = new javax.swing.JButton();
+        searching_ho_khau_question_label = new javax.swing.JLabel();
+        searching_ho_khau_type_box = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(700, 620));
+        setPreferredSize(new java.awt.Dimension(700, 620));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        searching_ho_khau_type_box.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã hộ khẩu", "Số nhân khẩu", " " }));
-        searching_ho_khau_type_box.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searching_ho_khau_type_boxActionPerformed(evt);
-            }
-        });
-        getContentPane().add(searching_ho_khau_type_box, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, 150, 40));
-
-        searching_ho_khau_question_label.setText("Bạn muốn tìm kiếm theo:");
-        getContentPane().add(searching_ho_khau_question_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 134, 40));
-
-        searching_ho_khau_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search_Icon.png"))); // NOI18N
-        searching_ho_khau_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searching_ho_khau_buttonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(searching_ho_khau_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 40, 40));
-
-        ho_khau_table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"HQT", "dmm", " ", " "},
-                {"1212", "7", "333", " "}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        ho_khau_scroll_pane.setViewportView(ho_khau_table);
-
-        getContentPane().add(ho_khau_scroll_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 560, 300));
 
         tt_ho_khau_panel.setBackground(new java.awt.Color(67, 85, 133));
 
@@ -104,71 +120,123 @@ public class AddFee_SelectMaHoScreen extends javax.swing.JFrame {
 
         getContentPane().add(tt_ho_khau_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, -1));
 
-        searching_ho_khau_field.setText("Tìm kiếm theo mã hộ khẩu");
+        confirm_button.setText("Xác nhận");
+        confirm_button.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        confirm_button.setkBackGroundColor(new java.awt.Color(36, 193, 93));
+        confirm_button.setkEndColor(new java.awt.Color(36, 193, 93));
+        confirm_button.setkHoverEndColor(new java.awt.Color(36, 193, 93));
+        confirm_button.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        confirm_button.setkHoverStartColor(new java.awt.Color(0, 153, 153));
+        confirm_button.setkPressedColor(new java.awt.Color(0, 51, 51));
+        confirm_button.setkStartColor(new java.awt.Color(36, 193, 93));
+        confirm_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirm_buttonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(confirm_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 500, -1, -1));
+
+        ho_khau_scroll_pane.setAutoscrolls(true);
+
+        ho_khau_table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã hộ", "Tên chủ hộ ", "Số thành viên", "Diện tích", "Số xe máy", "Số ô tô"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        ho_khau_table.getTableHeader().setReorderingAllowed(false);
+        ho_khau_scroll_pane.setViewportView(ho_khau_table);
+
+        getContentPane().add(ho_khau_scroll_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 560, 300));
+
         searching_ho_khau_field.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         searching_ho_khau_field.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 searching_ho_khau_fieldMouseClicked(evt);
             }
         });
-        getContentPane().add(searching_ho_khau_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 213, 40));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 530, -1, 70));
-
-        confirm_button.setText("Xác nhận");
-        confirm_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirm_buttonActionPerformed(evt);
+        searching_ho_khau_field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searching_ho_khau_fieldKeyPressed(evt);
             }
         });
-        getContentPane().add(confirm_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, -1, -1));
+        getContentPane().add(searching_ho_khau_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 213, 40));
+
+        searching_ho_khau_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search_Icon.png"))); // NOI18N
+        searching_ho_khau_button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                searching_ho_khau_buttonMousePressed(evt);
+            }
+        });
+        getContentPane().add(searching_ho_khau_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 40, 40));
+
+        searching_ho_khau_question_label.setText("Bạn muốn tìm kiếm theo:");
+        getContentPane().add(searching_ho_khau_question_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 134, 40));
+
+        searching_ho_khau_type_box.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã hộ khẩu", "Tên chủ hộ" }));
+        getContentPane().add(searching_ho_khau_type_box, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, 150, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searching_ho_khau_type_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searching_ho_khau_type_boxActionPerformed
+    private void confirm_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirm_buttonActionPerformed
         // TODO add your handling code here:
-        String searching_type = String.valueOf(searching_ho_khau_type_box.getSelectedItem());
-        if(searching_type == "Mã hộ khẩu") {
-            searching_ho_khau_field.setText("Tìm kiếm theo mã hộ khẩu");
+        DefaultTableModel tblModel = (DefaultTableModel)ho_khau_table.getModel();
+        int selectedRow = ho_khau_table.getSelectedRow();
+        if(selectedRow != -1){
+            String ma_ho_khau = tblModel.getValueAt(ho_khau_table.getSelectedRow(), 0).toString();
+            parentContext.getMa_ho_field().setText(ma_ho_khau);
+            this.dispose();
         }
-        else if(searching_type == "Số nhân khẩu") {
-            searching_ho_khau_field.setText("Tìm kiếm theo số lượng nhân khẩu");
-        }
-    }//GEN-LAST:event_searching_ho_khau_type_boxActionPerformed
-
-    private void searching_ho_khau_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searching_ho_khau_buttonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searching_ho_khau_buttonActionPerformed
+        else JOptionPane.showMessageDialog(null, "Hãy chọn một dòng!");
+        
+    }//GEN-LAST:event_confirm_buttonActionPerformed
 
     private void searching_ho_khau_fieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searching_ho_khau_fieldMouseClicked
         // TODO add your handling code here:
         searching_ho_khau_field.setText("");
     }//GEN-LAST:event_searching_ho_khau_fieldMouseClicked
 
-    private void confirm_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirm_buttonActionPerformed
+    private void searching_ho_khau_fieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searching_ho_khau_fieldKeyPressed
         // TODO add your handling code here:
-        DefaultTableModel tblModel = (DefaultTableModel)ho_khau_table.getModel();
-        
-        String ten_chu_ho = tblModel.getValueAt(ho_khau_table.getSelectedRow(), 0).toString();
-        String ma_chu_ho = tblModel.getValueAt(ho_khau_table.getSelectedRow(), 1).toString();
-        String ma_ho_khau = tblModel.getValueAt(ho_khau_table.getSelectedRow(), 2).toString();
-        parentContext.getMa_ho_field().setText(ten_chu_ho);
-        this.dispose();
-    }//GEN-LAST:event_confirm_buttonActionPerformed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            if(searching_ho_khau_type_box.getSelectedIndex()==0){
+                List<HoKhau> list = HoKhauDAO.find(searching_ho_khau_field.getText(), HoKhauDAO.MA_HO);
+                findHoKhauTable(list);
+            }else if(searching_ho_khau_type_box.getSelectedIndex()==1){
+                List<HoKhau> list = HoKhauDAO.find(searching_ho_khau_field.getText(), HoKhauDAO.TEN_CHU_HO);
+                findHoKhauTable(list);
+            }
+        }
+    }//GEN-LAST:event_searching_ho_khau_fieldKeyPressed
+
+    private void searching_ho_khau_buttonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searching_ho_khau_buttonMousePressed
+        // TODO add your handling code here:
+        if(searching_ho_khau_type_box.getSelectedIndex()==0){
+            List<HoKhau> list = HoKhauDAO.find(searching_ho_khau_field.getText(), HoKhauDAO.MA_HO);
+            findHoKhauTable(list);
+        }else if(searching_ho_khau_type_box.getSelectedIndex()==1){
+            List<HoKhau> list = HoKhauDAO.find(searching_ho_khau_field.getText(), HoKhauDAO.TEN_CHU_HO);
+            findHoKhauTable(list);
+        }
+    }//GEN-LAST:event_searching_ho_khau_buttonMousePressed
 
     public NopPhiScreen getParentContext() {
         return parentContext;
@@ -178,10 +246,8 @@ public class AddFee_SelectMaHoScreen extends javax.swing.JFrame {
         this.parentContext = parentContext;
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public void showScreen() {
+
+    public static void showScreen(NopPhiScreen pContext) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -205,10 +271,15 @@ public class AddFee_SelectMaHoScreen extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        try {
+            UIManager.setLookAndFeel(new FlatIntelliJLaf());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddFee_SelectMaHoScreen().setVisible(true);
+                new AddFee_SelectMaHoScreen(pContext).setVisible(true);
             }
         });
     }
@@ -217,7 +288,6 @@ public class AddFee_SelectMaHoScreen extends javax.swing.JFrame {
     private com.k33ptoo.components.KButton confirm_button;
     private javax.swing.JScrollPane ho_khau_scroll_pane;
     private javax.swing.JTable ho_khau_table;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton searching_ho_khau_button;
     private javax.swing.JTextField searching_ho_khau_field;
     private javax.swing.JLabel searching_ho_khau_question_label;
