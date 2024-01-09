@@ -108,9 +108,9 @@ public class NopPhiDAO {
         List<NopPhi> list = new ArrayList<>();
         String sql;
         switch (type) {
-            case MA_HO -> sql = "SELECT * FROM NopPhi WHERE MaHo LIKE N'%" + s + "%'";
-            case MA_PHI -> sql = "SELECT * FROM NopPhi WHERE MaPhi LIKE N'%" + s + "%'";
-            case NGAY_DONG -> sql = "SELECT * FROM NopPhi WHERE NgayDong LIKE '%" + s + "%'";
+            case MA_HO -> sql = "SELECT * FROM NopPhi WHERE MaHo LIKE N'%" + s + "%' ORDER BY NgayDong DESC";
+            case MA_PHI -> sql = "SELECT * FROM NopPhi WHERE MaPhi LIKE N'%" + s + "%' ORDER BY NgayDong DESC";
+            case NGAY_DONG -> sql = "SELECT * FROM NopPhi WHERE NgayDong LIKE '%" + s + "%' ORDER BY NgayDong DESC";
             default -> {
                 return list;
             }

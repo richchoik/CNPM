@@ -142,7 +142,7 @@ public class AddFee_SelectMaPhiScreen extends javax.swing.JFrame {
         });
         getContentPane().add(searching_khoan_phi_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 213, 40));
 
-        searching_khoan_phi_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search_Icon.png"))); // NOI18N
+        searching_khoan_phi_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search.png"))); // NOI18N
         searching_khoan_phi_button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 searching_khoan_phi_buttonMousePressed(evt);
@@ -201,9 +201,15 @@ public class AddFee_SelectMaPhiScreen extends javax.swing.JFrame {
             String ten_phi = tblModel.getValueAt(khoan_phi_table.getSelectedRow(), 1).toString();
             String loai_phi = tblModel.getValueAt(khoan_phi_table.getSelectedRow(), 2).toString();
             if(loai_phi.equals("Tự nguyện") || loai_phi.equals("Sinh hoạt")){
+                parentContext.getSo_tien_field().setText("");
                 parentContext.getSo_tien_field().setEditable(true);
+                parentContext.getMoney_calc_button().setEnabled(false);
             }
-            else parentContext.getSo_tien_field().setEditable(false);
+            else {
+                parentContext.getSo_tien_field().setText("");
+                parentContext.getSo_tien_field().setEditable(false);
+                parentContext.getMoney_calc_button().setEnabled(true);
+            }
                 
             parentContext.getMa_phi_field().setText(ma_phi);
             parentContext.getTen_phi_field().setText(ten_phi);

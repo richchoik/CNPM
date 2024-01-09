@@ -9,13 +9,14 @@ public class ConnectionUtils {
     public static String user = "sa";
     public static String password = "123456789;";
 
-    private static String url = database + ";user=" + user + ";password=" + password + ";encrypt=true;trustServerCertificate=true;";
+    private static String url = database + ";user=" + user + ";password=" + password + ";encrypt=false;trustServerCertificate=false;";
 
     public static Connection getConnection() {
         Connection connection = null;
         try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url);
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
         return connection;

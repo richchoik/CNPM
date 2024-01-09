@@ -22,6 +22,7 @@ public class LoginController {
     }
 
     public static boolean xoaTaiKhoan(String userName){
+        if(LoginDAO.getListUser().size() < 2) return false;
         return LoginDAO.deleteUser(userName) > 0;
     }
 }

@@ -513,6 +513,14 @@ public class NopPhiScreen extends javax.swing.JFrame {
     public void setTieu_de_label(JLabel tieu_de_label) {
         this.tieu_de_label = tieu_de_label;
     }
+
+    public JButton getMoney_calc_button() {
+        return money_calc_button;
+    }
+
+    public void setMoney_calc_button(JButton money_calc_button) {
+        this.money_calc_button = money_calc_button;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton huyButton;

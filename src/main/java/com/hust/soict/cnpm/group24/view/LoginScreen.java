@@ -53,38 +53,38 @@ public class LoginScreen extends javax.swing.JFrame {
         login_panel.setBackground(new java.awt.Color(0, 0, 0,40));
         login_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        login_label.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        login_label.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         login_label.setForeground(new java.awt.Color(255, 255, 255));
         login_label.setText("ĐĂNG NHẬP");
         login_panel.add(login_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, 41));
 
-        account_label.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        account_label.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         account_label.setForeground(new java.awt.Color(255, 255, 255));
         account_label.setText("Tài khoản:");
-        login_panel.add(account_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 87, 40));
+        login_panel.add(account_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 100, 40));
 
-        password_label.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        password_label.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         password_label.setForeground(new java.awt.Color(255, 255, 255));
         password_label.setText("Mật khẩu:");
-        login_panel.add(password_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 90, 40));
+        login_panel.add(password_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 90, 40));
 
-        account_field.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        account_field.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         account_field.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         account_field.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 account_fieldKeyPressed(evt);
             }
         });
-        login_panel.add(account_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 190, 40));
+        login_panel.add(account_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 210, 40));
 
-        password_field.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        password_field.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         password_field.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         password_field.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 password_fieldKeyPressed(evt);
             }
         });
-        login_panel.add(password_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 190, 40));
+        login_panel.add(password_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 210, 40));
 
         login_bt_panel.setBackground(new java.awt.Color(204, 255, 255));
         login_bt_panel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -114,7 +114,7 @@ public class LoginScreen extends javax.swing.JFrame {
             .addComponent(login_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        login_panel.add(login_bt_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, -1, -1));
+        login_panel.add(login_bt_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, -1));
 
         login_message_panel.setBackground(new java.awt.Color(0, 0, 0,0));
 
@@ -134,7 +134,7 @@ public class LoginScreen extends javax.swing.JFrame {
 
         login_panel.add(login_message_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, 30));
 
-        getContentPane().add(login_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 370, 300));
+        getContentPane().add(login_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 400, 340));
 
         back_ground_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/blue_moon3.jpg"))); // NOI18N
         getContentPane().add(back_ground_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

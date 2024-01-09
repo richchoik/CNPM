@@ -129,7 +129,7 @@ public class CapNhatHoKhau extends javax.swing.JFrame {
             }
         });
 
-        themButton.setText("Thêm");
+        themButton.setText("Lưu");
         themButton.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         themButton.setkBackGroundColor(new java.awt.Color(36, 193, 93));
         themButton.setkEndColor(new java.awt.Color(36, 193, 93));

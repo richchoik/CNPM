@@ -129,7 +129,7 @@ public class ThemHoKhau extends javax.swing.JFrame {
             }
         });
 
-        themButton.setText("Lưu");
+        themButton.setText("Thêm");
         themButton.setFocusable(false);
         themButton.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         themButton.setkBackGroundColor(new java.awt.Color(36, 193, 93));

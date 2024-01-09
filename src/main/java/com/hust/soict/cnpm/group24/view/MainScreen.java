@@ -29,28 +29,39 @@ import java.awt.event.KeyEvent;
 import java.sql.Date;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author ADMIN
  */
 public class MainScreen extends javax.swing.JFrame {
-
     /**
      * Creates new form MainScreen
      */
-    //ImageIcon icon = new ImageIcon("Search_Icon.png");
+    private int state;
     
     public MainScreen() {
         initComponents();
+        state = 0;
+        khoan_phi_bt_panel.setBackground(new Color(54,48,98));
+        nhan_khau_bt_panel.setBackground(new Color(54,48,98));
+        ho_khau_bt_panel.setBackground(new Color(54,48,98));
+        ho_so_bt_panel.setBackground(new Color(54,48,98));
+        thu_phi_bt_panel.setBackground(new Color(54,48,98));
+        home_bt_panel.setBackground(new Color(129,143,180));
+        show_khoan_phi_panel.setVisible(false);
+        show_nhan_khau_panel.setVisible(false);
+        show_ho_khau_panel.setVisible(false);
+        show_ho_so_panel.setVisible(false);
+        show_thu_phi_panel.setVisible(false);
+        show_home_panel.setVisible(true);
         setLocationRelativeTo(null);
         show_ho_so_panel.setVisible(false);
         show_khoan_phi_panel.setVisible(false);
         show_ho_khau_panel.setVisible(false);
         show_nhan_khau_panel.setVisible(false);
         show_home_panel.setVisible(true);
+        
     }
     
     /**
@@ -62,6 +73,7 @@ public class MainScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         show_panel = new javax.swing.JPanel();
         show_home_panel = new javax.swing.JPanel();
         bm_name_label = new javax.swing.JLabel();
@@ -77,11 +89,11 @@ public class MainScreen extends javax.swing.JFrame {
         ho_khau_table = new javax.swing.JTable();
         sua_tt_ho_khau_panel = new javax.swing.JPanel();
         sua_tt_ho_khau_label = new javax.swing.JLabel();
-        them_tt_ho_khau_panel = new javax.swing.JPanel();
-        them_tt_ho_khau_label = new javax.swing.JLabel();
         xoa_tt_ho_khau_panel = new javax.swing.JPanel();
         xoa_tt_ho_khau_label = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        them_tt_ho_khau_panel = new javax.swing.JPanel();
+        them_tt_ho_khau_label = new javax.swing.JLabel();
         show_nhan_khau_panel = new javax.swing.JPanel();
         searching_nhan_khau_field = new javax.swing.JTextField();
         searching_nhan_khau_button = new javax.swing.JButton();
@@ -139,31 +151,39 @@ public class MainScreen extends javax.swing.JFrame {
         xoa_tai_khoan_label = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tai_khoan_table = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
         menu_panel = new javax.swing.JPanel();
         nhan_khau_bt_panel = new javax.swing.JPanel();
         nhan_khau_bt_label = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         ho_khau_bt_panel = new javax.swing.JPanel();
         ho_khau_bt_label = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         ho_so_bt_panel = new javax.swing.JPanel();
         ho_so_bt_label = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         home_bt_panel = new javax.swing.JPanel();
         home_bt_label = new javax.swing.JLabel();
         khoan_phi_bt_panel = new javax.swing.JPanel();
         khoan_phi_bt_label = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         dang_xuat_bt_panel = new javax.swing.JPanel();
         dang_xuat_bt_label = new javax.swing.JLabel();
         thu_phi_bt_panel = new javax.swing.JPanel();
         thu_phi_bt_label = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Blue Manager");
         setBounds(new java.awt.Rectangle(0, 0, 900, 560));
         setResizable(false);
 
+        show_panel.setMinimumSize(new java.awt.Dimension(1030, 800));
+        show_panel.setPreferredSize(new java.awt.Dimension(1030, 8000));
         show_panel.setVerifyInputWhenFocusTarget(false);
         show_panel.setLayout(new java.awt.CardLayout());
 
+        show_home_panel.setMinimumSize(new java.awt.Dimension(1030, 800));
+        show_home_panel.setPreferredSize(new java.awt.Dimension(1030, 800));
         show_home_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bm_name_label.setFont(new java.awt.Font("STLiti", 1, 30)); // NOI18N
@@ -172,7 +192,7 @@ public class MainScreen extends javax.swing.JFrame {
         bm_name_label.setText("BLUE MOON  - BLUE CITY - BLUE PEOPLE");
         show_home_panel.add(bm_name_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 690, 110));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/moon.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/PCTT-1---MOONLIGHT-CENTRE-POINT-small.jpg"))); // NOI18N
         show_home_panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 750));
 
         show_panel.add(show_home_panel, "card2");
@@ -180,6 +200,8 @@ public class MainScreen extends javax.swing.JFrame {
         show_ho_khau_panel.setBackground(new java.awt.Color(255, 255, 255));
         show_ho_khau_panel.setForeground(new java.awt.Color(255, 255, 255));
         show_ho_khau_panel.setAlignmentX(0.0F);
+        show_ho_khau_panel.setMinimumSize(new java.awt.Dimension(1030, 800));
+        show_ho_khau_panel.setPreferredSize(new java.awt.Dimension(1030, 800));
         show_ho_khau_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tt_ho_khau_panel.setBackground(new java.awt.Color(67, 85, 133));
@@ -217,10 +239,15 @@ public class MainScreen extends javax.swing.JFrame {
         });
         show_ho_khau_panel.add(searching_ho_khau_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 110, 250, 40));
 
-        searching_ho_khau_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search_Icon.png"))); // NOI18N
+        searching_ho_khau_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search.png"))); // NOI18N
         searching_ho_khau_button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 searching_ho_khau_buttonMousePressed(evt);
+            }
+        });
+        searching_ho_khau_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searching_ho_khau_buttonActionPerformed(evt);
             }
         });
         show_ho_khau_panel.add(searching_ho_khau_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 40, 40));
@@ -259,11 +286,22 @@ public class MainScreen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        ho_khau_table.setAutoResizeMode(0);
         ho_khau_table.getTableHeader().setReorderingAllowed(false);
         ho_khau_scroll_pane.setViewportView(ho_khau_table);
         if (ho_khau_table.getColumnModel().getColumnCount() > 0) {
-            ho_khau_table.getColumnModel().getColumn(0).setPreferredWidth(80);
+            ho_khau_table.getColumnModel().getColumn(0).setMinWidth(80);
+            ho_khau_table.getColumnModel().getColumn(0).setPreferredWidth(160);
+            ho_khau_table.getColumnModel().getColumn(1).setMinWidth(100);
             ho_khau_table.getColumnModel().getColumn(1).setPreferredWidth(200);
+            ho_khau_table.getColumnModel().getColumn(2).setMinWidth(90);
+            ho_khau_table.getColumnModel().getColumn(2).setPreferredWidth(120);
+            ho_khau_table.getColumnModel().getColumn(3).setMinWidth(100);
+            ho_khau_table.getColumnModel().getColumn(3).setPreferredWidth(150);
+            ho_khau_table.getColumnModel().getColumn(4).setMinWidth(65);
+            ho_khau_table.getColumnModel().getColumn(4).setPreferredWidth(127);
+            ho_khau_table.getColumnModel().getColumn(5).setMinWidth(65);
+            ho_khau_table.getColumnModel().getColumn(5).setPreferredWidth(127);
         }
 
         show_ho_khau_panel.add(ho_khau_scroll_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 890, 450));
@@ -283,50 +321,21 @@ public class MainScreen extends javax.swing.JFrame {
 
         sua_tt_ho_khau_label.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         sua_tt_ho_khau_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        sua_tt_ho_khau_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-edit-64.png"))); // NOI18N
         sua_tt_ho_khau_label.setText("Sửa");
 
         javax.swing.GroupLayout sua_tt_ho_khau_panelLayout = new javax.swing.GroupLayout(sua_tt_ho_khau_panel);
         sua_tt_ho_khau_panel.setLayout(sua_tt_ho_khau_panelLayout);
         sua_tt_ho_khau_panelLayout.setHorizontalGroup(
             sua_tt_ho_khau_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sua_tt_ho_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addComponent(sua_tt_ho_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         sua_tt_ho_khau_panelLayout.setVerticalGroup(
             sua_tt_ho_khau_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sua_tt_ho_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(sua_tt_ho_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        show_ho_khau_panel.add(sua_tt_ho_khau_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 660, -1, 40));
-
-        them_tt_ho_khau_panel.setBackground(new java.awt.Color(129, 143, 180));
-        them_tt_ho_khau_panel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                them_tt_ho_khau_panelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                them_tt_ho_khau_panelMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                them_tt_ho_khau_panelMousePressed(evt);
-            }
-        });
-
-        them_tt_ho_khau_label.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        them_tt_ho_khau_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        them_tt_ho_khau_label.setText("Thêm");
-
-        javax.swing.GroupLayout them_tt_ho_khau_panelLayout = new javax.swing.GroupLayout(them_tt_ho_khau_panel);
-        them_tt_ho_khau_panel.setLayout(them_tt_ho_khau_panelLayout);
-        them_tt_ho_khau_panelLayout.setHorizontalGroup(
-            them_tt_ho_khau_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(them_tt_ho_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-        );
-        them_tt_ho_khau_panelLayout.setVerticalGroup(
-            them_tt_ho_khau_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(them_tt_ho_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-        );
-
-        show_ho_khau_panel.add(them_tt_ho_khau_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 660, -1, 40));
+        show_ho_khau_panel.add(sua_tt_ho_khau_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 650, 140, 70));
 
         xoa_tt_ho_khau_panel.setBackground(new java.awt.Color(129, 143, 180));
         xoa_tt_ho_khau_panel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -343,29 +352,63 @@ public class MainScreen extends javax.swing.JFrame {
 
         xoa_tt_ho_khau_label.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         xoa_tt_ho_khau_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        xoa_tt_ho_khau_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-delete-64.png"))); // NOI18N
         xoa_tt_ho_khau_label.setText("Xóa");
 
         javax.swing.GroupLayout xoa_tt_ho_khau_panelLayout = new javax.swing.GroupLayout(xoa_tt_ho_khau_panel);
         xoa_tt_ho_khau_panel.setLayout(xoa_tt_ho_khau_panelLayout);
         xoa_tt_ho_khau_panelLayout.setHorizontalGroup(
             xoa_tt_ho_khau_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(xoa_tt_ho_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addComponent(xoa_tt_ho_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         xoa_tt_ho_khau_panelLayout.setVerticalGroup(
             xoa_tt_ho_khau_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(xoa_tt_ho_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(xoa_tt_ho_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        show_ho_khau_panel.add(xoa_tt_ho_khau_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 660, -1, -1));
+        show_ho_khau_panel.add(xoa_tt_ho_khau_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 650, 140, 70));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Tìm kiếm:");
         show_ho_khau_panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 70, 40));
 
+        them_tt_ho_khau_panel.setBackground(new java.awt.Color(129, 143, 180));
+        them_tt_ho_khau_panel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                them_tt_ho_khau_panelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                them_tt_ho_khau_panelMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                them_tt_ho_khau_panelMousePressed(evt);
+            }
+        });
+
+        them_tt_ho_khau_label.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        them_tt_ho_khau_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        them_tt_ho_khau_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-add-house-64.png"))); // NOI18N
+        them_tt_ho_khau_label.setText("Thêm");
+
+        javax.swing.GroupLayout them_tt_ho_khau_panelLayout = new javax.swing.GroupLayout(them_tt_ho_khau_panel);
+        them_tt_ho_khau_panel.setLayout(them_tt_ho_khau_panelLayout);
+        them_tt_ho_khau_panelLayout.setHorizontalGroup(
+            them_tt_ho_khau_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(them_tt_ho_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+        );
+        them_tt_ho_khau_panelLayout.setVerticalGroup(
+            them_tt_ho_khau_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(them_tt_ho_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+        );
+
+        show_ho_khau_panel.add(them_tt_ho_khau_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 650, 140, 70));
+
         show_panel.add(show_ho_khau_panel, "card3");
 
         show_nhan_khau_panel.setBackground(new java.awt.Color(255, 255, 255));
         show_nhan_khau_panel.setAlignmentX(0.0F);
+        show_nhan_khau_panel.setMinimumSize(new java.awt.Dimension(1030, 800));
+        show_nhan_khau_panel.setPreferredSize(new java.awt.Dimension(1030, 800));
         show_nhan_khau_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         searching_nhan_khau_field.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -378,7 +421,7 @@ public class MainScreen extends javax.swing.JFrame {
         });
         show_nhan_khau_panel.add(searching_nhan_khau_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 110, 250, 40));
 
-        searching_nhan_khau_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search_Icon.png"))); // NOI18N
+        searching_nhan_khau_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search.png"))); // NOI18N
         searching_nhan_khau_button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 searching_nhan_khau_buttonMousePressed(evt);
@@ -409,20 +452,21 @@ public class MainScreen extends javax.swing.JFrame {
 
         sua_tt_nhan_khau_label.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         sua_tt_nhan_khau_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        sua_tt_nhan_khau_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-edit-64.png"))); // NOI18N
         sua_tt_nhan_khau_label.setText("Sửa");
 
         javax.swing.GroupLayout sua_tt_nhan_khau_panelLayout = new javax.swing.GroupLayout(sua_tt_nhan_khau_panel);
         sua_tt_nhan_khau_panel.setLayout(sua_tt_nhan_khau_panelLayout);
         sua_tt_nhan_khau_panelLayout.setHorizontalGroup(
             sua_tt_nhan_khau_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sua_tt_nhan_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addComponent(sua_tt_nhan_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         sua_tt_nhan_khau_panelLayout.setVerticalGroup(
             sua_tt_nhan_khau_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sua_tt_nhan_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(sua_tt_nhan_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        show_nhan_khau_panel.add(sua_tt_nhan_khau_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 660, -1, 40));
+        show_nhan_khau_panel.add(sua_tt_nhan_khau_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 650, -1, -1));
 
         them_tt_nhan_khau_panel.setBackground(new java.awt.Color(129, 143, 180));
         them_tt_nhan_khau_panel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -439,20 +483,21 @@ public class MainScreen extends javax.swing.JFrame {
 
         them_tt_nhan_khau_label.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         them_tt_nhan_khau_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        them_tt_nhan_khau_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-add-user-group-woman-man-skin-type-7-64.png"))); // NOI18N
         them_tt_nhan_khau_label.setText("Thêm");
 
         javax.swing.GroupLayout them_tt_nhan_khau_panelLayout = new javax.swing.GroupLayout(them_tt_nhan_khau_panel);
         them_tt_nhan_khau_panel.setLayout(them_tt_nhan_khau_panelLayout);
         them_tt_nhan_khau_panelLayout.setHorizontalGroup(
             them_tt_nhan_khau_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(them_tt_nhan_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addComponent(them_tt_nhan_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         them_tt_nhan_khau_panelLayout.setVerticalGroup(
             them_tt_nhan_khau_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(them_tt_nhan_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(them_tt_nhan_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        show_nhan_khau_panel.add(them_tt_nhan_khau_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 660, -1, 40));
+        show_nhan_khau_panel.add(them_tt_nhan_khau_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 650, -1, -1));
 
         jScrollPane3.setAutoscrolls(true);
 
@@ -480,6 +525,7 @@ public class MainScreen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        nhan_khau_table.setAutoResizeMode(0);
         nhan_khau_table.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(nhan_khau_table);
         if (nhan_khau_table.getColumnModel().getColumnCount() > 0) {
@@ -510,20 +556,21 @@ public class MainScreen extends javax.swing.JFrame {
 
         xoa_tt_nhan_khau_label.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         xoa_tt_nhan_khau_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        xoa_tt_nhan_khau_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-delete-64.png"))); // NOI18N
         xoa_tt_nhan_khau_label.setText("Xóa");
 
         javax.swing.GroupLayout xoa_tt_nhan_khau_panelLayout = new javax.swing.GroupLayout(xoa_tt_nhan_khau_panel);
         xoa_tt_nhan_khau_panel.setLayout(xoa_tt_nhan_khau_panelLayout);
         xoa_tt_nhan_khau_panelLayout.setHorizontalGroup(
             xoa_tt_nhan_khau_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(xoa_tt_nhan_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addComponent(xoa_tt_nhan_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         xoa_tt_nhan_khau_panelLayout.setVerticalGroup(
             xoa_tt_nhan_khau_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(xoa_tt_nhan_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(xoa_tt_nhan_khau_label, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        show_nhan_khau_panel.add(xoa_tt_nhan_khau_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 660, -1, -1));
+        show_nhan_khau_panel.add(xoa_tt_nhan_khau_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 650, -1, -1));
 
         tt_nhan_khau_panel.setBackground(new java.awt.Color(67, 85, 133));
 
@@ -573,7 +620,8 @@ public class MainScreen extends javax.swing.JFrame {
         show_panel.add(show_nhan_khau_panel, "card4");
 
         show_khoan_phi_panel.setBackground(new java.awt.Color(255, 255, 255));
-        show_khoan_phi_panel.setMinimumSize(new java.awt.Dimension(700, 600));
+        show_khoan_phi_panel.setMinimumSize(new java.awt.Dimension(1030, 800));
+        show_khoan_phi_panel.setPreferredSize(new java.awt.Dimension(1030, 800));
         show_khoan_phi_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tt_khoan_phi_panel.setBackground(new java.awt.Color(67, 85, 133));
@@ -612,7 +660,7 @@ public class MainScreen extends javax.swing.JFrame {
         });
         show_khoan_phi_panel.add(searching_khoan_phi_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 110, 250, 40));
 
-        searching_khoan_phi_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search_Icon.png"))); // NOI18N
+        searching_khoan_phi_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search.png"))); // NOI18N
         searching_khoan_phi_button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 searching_khoan_phi_buttonMousePressed(evt);
@@ -639,7 +687,7 @@ public class MainScreen extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã phí ", "Tên phí", "Loại phí", "Đơn giá"
+                "Mã phí ", "Tên phí", "Loại phí", "Đơn giá (VND)"
             }
         ) {
             Class[] types = new Class [] {
@@ -657,6 +705,7 @@ public class MainScreen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        khoan_phi_table.setAutoResizeMode(0);
         khoan_phi_table.setShowGrid(false);
         khoan_phi_table.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(khoan_phi_table);
@@ -693,20 +742,21 @@ public class MainScreen extends javax.swing.JFrame {
 
         them_tt_khoan_phi_label.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         them_tt_khoan_phi_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        them_tt_khoan_phi_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-add-properties-64.png"))); // NOI18N
         them_tt_khoan_phi_label.setText("Thêm");
 
         javax.swing.GroupLayout them_tt_khoan_phi_panelLayout = new javax.swing.GroupLayout(them_tt_khoan_phi_panel);
         them_tt_khoan_phi_panel.setLayout(them_tt_khoan_phi_panelLayout);
         them_tt_khoan_phi_panelLayout.setHorizontalGroup(
             them_tt_khoan_phi_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(them_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addComponent(them_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         them_tt_khoan_phi_panelLayout.setVerticalGroup(
             them_tt_khoan_phi_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(them_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(them_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        show_khoan_phi_panel.add(them_tt_khoan_phi_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 660, -1, 40));
+        show_khoan_phi_panel.add(them_tt_khoan_phi_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 650, -1, -1));
 
         sua_tt_khoan_phi_panel.setBackground(new java.awt.Color(129, 143, 180));
         sua_tt_khoan_phi_panel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -723,20 +773,21 @@ public class MainScreen extends javax.swing.JFrame {
 
         sua_tt_khoan_phi_label.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         sua_tt_khoan_phi_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        sua_tt_khoan_phi_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-edit-64.png"))); // NOI18N
         sua_tt_khoan_phi_label.setText("Sửa");
 
         javax.swing.GroupLayout sua_tt_khoan_phi_panelLayout = new javax.swing.GroupLayout(sua_tt_khoan_phi_panel);
         sua_tt_khoan_phi_panel.setLayout(sua_tt_khoan_phi_panelLayout);
         sua_tt_khoan_phi_panelLayout.setHorizontalGroup(
             sua_tt_khoan_phi_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sua_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addComponent(sua_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         sua_tt_khoan_phi_panelLayout.setVerticalGroup(
             sua_tt_khoan_phi_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sua_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(sua_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        show_khoan_phi_panel.add(sua_tt_khoan_phi_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 660, -1, 40));
+        show_khoan_phi_panel.add(sua_tt_khoan_phi_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 650, -1, -1));
 
         xoa_tt_khoan_phi_panel.setBackground(new java.awt.Color(129, 143, 180));
         xoa_tt_khoan_phi_panel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -753,20 +804,21 @@ public class MainScreen extends javax.swing.JFrame {
 
         xoa_tt_khoan_phi_label.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         xoa_tt_khoan_phi_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        xoa_tt_khoan_phi_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-delete-64.png"))); // NOI18N
         xoa_tt_khoan_phi_label.setText("Xóa");
 
         javax.swing.GroupLayout xoa_tt_khoan_phi_panelLayout = new javax.swing.GroupLayout(xoa_tt_khoan_phi_panel);
         xoa_tt_khoan_phi_panel.setLayout(xoa_tt_khoan_phi_panelLayout);
         xoa_tt_khoan_phi_panelLayout.setHorizontalGroup(
             xoa_tt_khoan_phi_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(xoa_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addComponent(xoa_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         xoa_tt_khoan_phi_panelLayout.setVerticalGroup(
             xoa_tt_khoan_phi_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(xoa_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(xoa_tt_khoan_phi_label, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        show_khoan_phi_panel.add(xoa_tt_khoan_phi_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 660, -1, -1));
+        show_khoan_phi_panel.add(xoa_tt_khoan_phi_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 650, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Tìm kiếm:");
@@ -775,6 +827,8 @@ public class MainScreen extends javax.swing.JFrame {
         show_panel.add(show_khoan_phi_panel, "card6");
 
         show_thu_phi_panel.setBackground(new java.awt.Color(255, 255, 255));
+        show_thu_phi_panel.setMinimumSize(new java.awt.Dimension(1030, 800));
+        show_thu_phi_panel.setPreferredSize(new java.awt.Dimension(1030, 800));
         show_thu_phi_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tt_giao_dich_panel.setBackground(new java.awt.Color(67, 85, 133));
@@ -820,7 +874,7 @@ public class MainScreen extends javax.swing.JFrame {
         });
         show_thu_phi_panel.add(searching_thu_phi_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 110, 250, 40));
 
-        searching_thu_phi_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search_Icon.png"))); // NOI18N
+        searching_thu_phi_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search.png"))); // NOI18N
         searching_thu_phi_button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 searching_thu_phi_buttonMousePressed(evt);
@@ -834,7 +888,7 @@ public class MainScreen extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Mã hộ", "Mã phí", "Tên người đóng", "Tên phí", "Số tiền", "Ngày đóng"
+                "Mã hộ", "Mã phí", "Tên người đóng", "Tên phí", "Số tiền (VND)", "Ngày đóng"
             }
         ) {
             Class[] types = new Class [] {
@@ -852,6 +906,7 @@ public class MainScreen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        thu_phi_table.setAutoResizeMode(0);
         thu_phi_table.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(thu_phi_table);
 
@@ -872,20 +927,21 @@ public class MainScreen extends javax.swing.JFrame {
 
         them_tt_thu_phi_label1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         them_tt_thu_phi_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        them_tt_thu_phi_label1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-bill-64.png"))); // NOI18N
         them_tt_thu_phi_label1.setText("Thêm");
 
         javax.swing.GroupLayout them_tt_thu_phi_panel1Layout = new javax.swing.GroupLayout(them_tt_thu_phi_panel1);
         them_tt_thu_phi_panel1.setLayout(them_tt_thu_phi_panel1Layout);
         them_tt_thu_phi_panel1Layout.setHorizontalGroup(
             them_tt_thu_phi_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(them_tt_thu_phi_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addComponent(them_tt_thu_phi_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         them_tt_thu_phi_panel1Layout.setVerticalGroup(
             them_tt_thu_phi_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(them_tt_thu_phi_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(them_tt_thu_phi_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        show_thu_phi_panel.add(them_tt_thu_phi_panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 660, -1, 40));
+        show_thu_phi_panel.add(them_tt_thu_phi_panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 650, -1, -1));
 
         xoa_tt_thu_phi_panel1.setBackground(new java.awt.Color(129, 143, 180));
         xoa_tt_thu_phi_panel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -902,20 +958,21 @@ public class MainScreen extends javax.swing.JFrame {
 
         xoa_tt_thu_phi_label1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         xoa_tt_thu_phi_label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        xoa_tt_thu_phi_label1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-delete-64.png"))); // NOI18N
         xoa_tt_thu_phi_label1.setText("Xóa");
 
         javax.swing.GroupLayout xoa_tt_thu_phi_panel1Layout = new javax.swing.GroupLayout(xoa_tt_thu_phi_panel1);
         xoa_tt_thu_phi_panel1.setLayout(xoa_tt_thu_phi_panel1Layout);
         xoa_tt_thu_phi_panel1Layout.setHorizontalGroup(
             xoa_tt_thu_phi_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(xoa_tt_thu_phi_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addComponent(xoa_tt_thu_phi_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         xoa_tt_thu_phi_panel1Layout.setVerticalGroup(
             xoa_tt_thu_phi_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(xoa_tt_thu_phi_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(xoa_tt_thu_phi_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        show_thu_phi_panel.add(xoa_tt_thu_phi_panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 660, -1, -1));
+        show_thu_phi_panel.add(xoa_tt_thu_phi_panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 650, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Tìm kiếm:");
@@ -924,7 +981,8 @@ public class MainScreen extends javax.swing.JFrame {
         show_panel.add(show_thu_phi_panel, "card7");
 
         show_ho_so_panel.setBackground(new java.awt.Color(255, 255, 255));
-        show_ho_so_panel.setMinimumSize(new java.awt.Dimension(730, 600));
+        show_ho_so_panel.setMinimumSize(new java.awt.Dimension(1030, 800));
+        show_ho_so_panel.setPreferredSize(new java.awt.Dimension(1030, 800));
         show_ho_so_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ql_tk_panel.setBackground(new java.awt.Color(67, 85, 133));
@@ -966,22 +1024,23 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
 
-        them_tai_khoan_label.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        them_tai_khoan_label.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         them_tai_khoan_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        them_tai_khoan_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-add-user-64.png"))); // NOI18N
         them_tai_khoan_label.setText("Thêm");
 
         javax.swing.GroupLayout them_tai_khoan_panelLayout = new javax.swing.GroupLayout(them_tai_khoan_panel);
         them_tai_khoan_panel.setLayout(them_tai_khoan_panelLayout);
         them_tai_khoan_panelLayout.setHorizontalGroup(
             them_tai_khoan_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(them_tai_khoan_label, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addComponent(them_tai_khoan_label, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         them_tai_khoan_panelLayout.setVerticalGroup(
             them_tai_khoan_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(them_tai_khoan_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(them_tai_khoan_label, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        show_ho_so_panel.add(them_tai_khoan_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 560, -1, 40));
+        show_ho_so_panel.add(them_tai_khoan_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 610, -1, -1));
 
         xoa_tai_khoan_panel.setBackground(new java.awt.Color(129, 143, 180));
         xoa_tai_khoan_panel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -996,22 +1055,23 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
 
-        xoa_tai_khoan_label.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        xoa_tai_khoan_label.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         xoa_tai_khoan_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        xoa_tai_khoan_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-delete-64.png"))); // NOI18N
         xoa_tai_khoan_label.setText("Xóa");
 
         javax.swing.GroupLayout xoa_tai_khoan_panelLayout = new javax.swing.GroupLayout(xoa_tai_khoan_panel);
         xoa_tai_khoan_panel.setLayout(xoa_tai_khoan_panelLayout);
         xoa_tai_khoan_panelLayout.setHorizontalGroup(
             xoa_tai_khoan_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(xoa_tai_khoan_label, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addComponent(xoa_tai_khoan_label, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         xoa_tai_khoan_panelLayout.setVerticalGroup(
             xoa_tai_khoan_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(xoa_tai_khoan_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(xoa_tai_khoan_label, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
         );
 
-        show_ho_so_panel.add(xoa_tai_khoan_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 560, -1, -1));
+        show_ho_so_panel.add(xoa_tai_khoan_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 610, -1, -1));
 
         tai_khoan_table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tai_khoan_table.setModel(new javax.swing.table.DefaultTableModel(
@@ -1037,25 +1097,11 @@ public class MainScreen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tai_khoan_table.setAutoResizeMode(0);
         tai_khoan_table.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(tai_khoan_table);
 
-        show_ho_so_panel.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 560, 300));
-
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 70, Short.MAX_VALUE)
-        );
-
-        show_ho_so_panel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 530, -1, 70));
+        show_ho_so_panel.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 610, 340));
 
         show_panel.add(show_ho_so_panel, "card5");
 
@@ -1076,18 +1122,25 @@ public class MainScreen extends javax.swing.JFrame {
 
         nhan_khau_bt_label.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         nhan_khau_bt_label.setForeground(new java.awt.Color(255, 255, 255));
-        nhan_khau_bt_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nhan_khau_bt_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         nhan_khau_bt_label.setText("Nhân khẩu");
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-team-30.png"))); // NOI18N
 
         javax.swing.GroupLayout nhan_khau_bt_panelLayout = new javax.swing.GroupLayout(nhan_khau_bt_panel);
         nhan_khau_bt_panel.setLayout(nhan_khau_bt_panelLayout);
         nhan_khau_bt_panelLayout.setHorizontalGroup(
             nhan_khau_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(nhan_khau_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nhan_khau_bt_panelLayout.createSequentialGroup()
+                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nhan_khau_bt_label, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         nhan_khau_bt_panelLayout.setVerticalGroup(
             nhan_khau_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(nhan_khau_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(nhan_khau_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         ho_khau_bt_panel.setBackground(new java.awt.Color(54, 48, 98));
@@ -1105,18 +1158,28 @@ public class MainScreen extends javax.swing.JFrame {
 
         ho_khau_bt_label.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         ho_khau_bt_label.setForeground(new java.awt.Color(255, 255, 255));
-        ho_khau_bt_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ho_khau_bt_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ho_khau_bt_label.setText("Hộ khẩu");
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-apartment-30.png"))); // NOI18N
 
         javax.swing.GroupLayout ho_khau_bt_panelLayout = new javax.swing.GroupLayout(ho_khau_bt_panel);
         ho_khau_bt_panel.setLayout(ho_khau_bt_panelLayout);
         ho_khau_bt_panelLayout.setHorizontalGroup(
             ho_khau_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ho_khau_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ho_khau_bt_panelLayout.createSequentialGroup()
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ho_khau_bt_label, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         ho_khau_bt_panelLayout.setVerticalGroup(
             ho_khau_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ho_khau_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addGroup(ho_khau_bt_panelLayout.createSequentialGroup()
+                .addGroup(ho_khau_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ho_khau_bt_label, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         ho_so_bt_panel.setBackground(new java.awt.Color(54, 48, 98));
@@ -1135,18 +1198,25 @@ public class MainScreen extends javax.swing.JFrame {
         ho_so_bt_label.setBackground(new java.awt.Color(0, 255, 255));
         ho_so_bt_label.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         ho_so_bt_label.setForeground(new java.awt.Color(255, 255, 255));
-        ho_so_bt_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ho_so_bt_label.setText("Hồ sơ");
+        ho_so_bt_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ho_so_bt_label.setText("Tài khoản");
+
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-account-30.png"))); // NOI18N
 
         javax.swing.GroupLayout ho_so_bt_panelLayout = new javax.swing.GroupLayout(ho_so_bt_panel);
         ho_so_bt_panel.setLayout(ho_so_bt_panelLayout);
         ho_so_bt_panelLayout.setHorizontalGroup(
             ho_so_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ho_so_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ho_so_bt_panelLayout.createSequentialGroup()
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ho_so_bt_label, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         ho_so_bt_panelLayout.setVerticalGroup(
             ho_so_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ho_so_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(ho_so_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         home_bt_panel.setBackground(new java.awt.Color(54, 48, 98));
@@ -1166,6 +1236,7 @@ public class MainScreen extends javax.swing.JFrame {
         home_bt_label.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         home_bt_label.setForeground(new java.awt.Color(255, 255, 255));
         home_bt_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        home_bt_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-home-38.png"))); // NOI18N
         home_bt_label.setText("Trang chủ");
 
         javax.swing.GroupLayout home_bt_panelLayout = new javax.swing.GroupLayout(home_bt_panel);
@@ -1178,7 +1249,7 @@ public class MainScreen extends javax.swing.JFrame {
             home_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, home_bt_panelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(home_bt_label, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(home_bt_label, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         khoan_phi_bt_panel.setBackground(new java.awt.Color(54, 48, 98));
@@ -1196,18 +1267,26 @@ public class MainScreen extends javax.swing.JFrame {
 
         khoan_phi_bt_label.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         khoan_phi_bt_label.setForeground(new java.awt.Color(255, 255, 255));
-        khoan_phi_bt_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        khoan_phi_bt_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         khoan_phi_bt_label.setText("Khoản phí");
+
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-fee-30.png"))); // NOI18N
 
         javax.swing.GroupLayout khoan_phi_bt_panelLayout = new javax.swing.GroupLayout(khoan_phi_bt_panel);
         khoan_phi_bt_panel.setLayout(khoan_phi_bt_panelLayout);
         khoan_phi_bt_panelLayout.setHorizontalGroup(
             khoan_phi_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(khoan_phi_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, khoan_phi_bt_panelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(khoan_phi_bt_label, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         khoan_phi_bt_panelLayout.setVerticalGroup(
             khoan_phi_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(khoan_phi_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(khoan_phi_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         dang_xuat_bt_panel.setBackground(new java.awt.Color(54, 48, 98));
@@ -1226,18 +1305,19 @@ public class MainScreen extends javax.swing.JFrame {
         dang_xuat_bt_label.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         dang_xuat_bt_label.setForeground(new java.awt.Color(255, 255, 255));
         dang_xuat_bt_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dang_xuat_bt_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-logout-38.png"))); // NOI18N
         dang_xuat_bt_label.setText("Đăng xuất");
 
         javax.swing.GroupLayout dang_xuat_bt_panelLayout = new javax.swing.GroupLayout(dang_xuat_bt_panel);
         dang_xuat_bt_panel.setLayout(dang_xuat_bt_panelLayout);
         dang_xuat_bt_panelLayout.setHorizontalGroup(
             dang_xuat_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dang_xuat_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+            .addComponent(dang_xuat_bt_label, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         dang_xuat_bt_panelLayout.setVerticalGroup(
             dang_xuat_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dang_xuat_bt_panelLayout.createSequentialGroup()
-                .addComponent(dang_xuat_bt_label, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dang_xuat_bt_label, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -1256,18 +1336,29 @@ public class MainScreen extends javax.swing.JFrame {
 
         thu_phi_bt_label.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         thu_phi_bt_label.setForeground(new java.awt.Color(255, 255, 255));
-        thu_phi_bt_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        thu_phi_bt_label.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         thu_phi_bt_label.setText("Thu phí");
+
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-bill-30.png"))); // NOI18N
 
         javax.swing.GroupLayout thu_phi_bt_panelLayout = new javax.swing.GroupLayout(thu_phi_bt_panel);
         thu_phi_bt_panel.setLayout(thu_phi_bt_panelLayout);
         thu_phi_bt_panelLayout.setHorizontalGroup(
             thu_phi_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(thu_phi_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, thu_phi_bt_panelLayout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(thu_phi_bt_label, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(thu_phi_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(thu_phi_bt_panelLayout.createSequentialGroup()
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 125, Short.MAX_VALUE)))
         );
         thu_phi_bt_panelLayout.setVerticalGroup(
             thu_phi_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(thu_phi_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(thu_phi_bt_label, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+            .addGroup(thu_phi_bt_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout menu_panelLayout = new javax.swing.GroupLayout(menu_panel);
@@ -1287,19 +1378,19 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(menu_panelLayout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addComponent(home_bt_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(0, 0, 0)
                 .addComponent(ho_khau_bt_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(nhan_khau_bt_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(khoan_phi_bt_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(thu_phi_bt_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(ho_so_bt_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(dang_xuat_bt_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(125, 125, 125))
+                .addGap(50, 50, 50))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1315,7 +1406,7 @@ public class MainScreen extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(menu_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(show_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(show_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -1449,6 +1540,7 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void nhan_khau_bt_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nhan_khau_bt_panelMousePressed
         // TODO add your handling code here:
+        state = 2;
         khoan_phi_bt_panel.setBackground(new Color(54,48,98));
         home_bt_panel.setBackground(new Color(54,48,98));
         ho_so_bt_panel.setBackground(new Color(54,48,98));
@@ -1467,6 +1559,7 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void ho_khau_bt_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ho_khau_bt_panelMousePressed
         // TODO add your handling code here:
+        state = 1;
         khoan_phi_bt_panel.setBackground(new Color(54,48,98));
         home_bt_panel.setBackground(new Color(54,48,98));
         ho_so_bt_panel.setBackground(new Color(54,48,98));
@@ -1484,6 +1577,7 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void ho_so_bt_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ho_so_bt_panelMousePressed
         // TODO add your handling code here:
+        state = 5;
         khoan_phi_bt_panel.setBackground(new Color(54,48,98));
         home_bt_panel.setBackground(new Color(54,48,98));
         nhan_khau_bt_panel.setBackground(new Color(54,48,98));
@@ -1501,6 +1595,7 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void home_bt_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_home_bt_panelMousePressed
         // TODO add your handling code here:
+        state = 0;
         khoan_phi_bt_panel.setBackground(new Color(54,48,98));
         nhan_khau_bt_panel.setBackground(new Color(54,48,98));
         ho_khau_bt_panel.setBackground(new Color(54,48,98));
@@ -1514,16 +1609,6 @@ public class MainScreen extends javax.swing.JFrame {
         show_thu_phi_panel.setVisible(false);
         show_home_panel.setVisible(true);
     }//GEN-LAST:event_home_bt_panelMousePressed
-
-    private void them_tt_ho_khau_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_them_tt_ho_khau_panelMouseEntered
-        // TODO add your handling code here:
-        them_tt_ho_khau_panel.setBackground(new Color(245,232,199));
-    }//GEN-LAST:event_them_tt_ho_khau_panelMouseEntered
-
-    private void them_tt_ho_khau_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_them_tt_ho_khau_panelMouseExited
-        // TODO add your handling code here:
-        them_tt_ho_khau_panel.setBackground(new Color(129,143,180));
-    }//GEN-LAST:event_them_tt_ho_khau_panelMouseExited
 
     private void sua_tt_ho_khau_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sua_tt_ho_khau_panelMouseEntered
         // TODO add your handling code here:
@@ -1577,6 +1662,7 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void khoan_phi_bt_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_khoan_phi_bt_panelMousePressed
         // TODO add your handling code here:
+        state = 3;
         home_bt_panel.setBackground(new Color(54,48,98));
         nhan_khau_bt_panel.setBackground(new Color(54,48,98));
         ho_khau_bt_panel.setBackground(new Color(54,48,98));
@@ -1614,6 +1700,7 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void thu_phi_bt_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thu_phi_bt_panelMousePressed
         // TODO add your handling code here:
+        state = 4;
         khoan_phi_bt_panel.setBackground(new Color(54,48,98));
         home_bt_panel.setBackground(new Color(54,48,98));
         ho_so_bt_panel.setBackground(new Color(54,48,98));
@@ -1631,62 +1718,52 @@ public class MainScreen extends javax.swing.JFrame {
 
     private void home_bt_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_home_bt_panelMouseEntered
         // TODO add your handling code here:
-        home_bt_panel.setBackground(new Color(129,143,180));
+        if(state != 0) home_bt_panel.setBackground(new Color(129,143,180));
     }//GEN-LAST:event_home_bt_panelMouseEntered
 
     private void home_bt_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_home_bt_panelMouseExited
         // TODO add your handling code here:
-        home_bt_panel.setBackground(new Color(54,48,98));
+        if(state != 0) home_bt_panel.setBackground(new Color(54,48,98));
     }//GEN-LAST:event_home_bt_panelMouseExited
-
-    private void nhan_khau_bt_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nhan_khau_bt_panelMouseEntered
-        // TODO add your handling code here:
-        nhan_khau_bt_panel.setBackground(new Color(129,143,180));
-    }//GEN-LAST:event_nhan_khau_bt_panelMouseEntered
-
-    private void nhan_khau_bt_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nhan_khau_bt_panelMouseExited
-        // TODO add your handling code here:
-        nhan_khau_bt_panel.setBackground(new Color(54,48,98));
-    }//GEN-LAST:event_nhan_khau_bt_panelMouseExited
 
     private void ho_khau_bt_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ho_khau_bt_panelMouseEntered
         // TODO add your handling code here:
-        ho_khau_bt_panel.setBackground(new Color(129,143,180));
+        if(state != 1) ho_khau_bt_panel.setBackground(new Color(129,143,180));
     }//GEN-LAST:event_ho_khau_bt_panelMouseEntered
 
     private void ho_khau_bt_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ho_khau_bt_panelMouseExited
         // TODO add your handling code here:
-        ho_khau_bt_panel.setBackground(new Color(54,48,98));
+        if(state != 1) ho_khau_bt_panel.setBackground(new Color(54,48,98));
     }//GEN-LAST:event_ho_khau_bt_panelMouseExited
 
     private void ho_so_bt_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ho_so_bt_panelMouseEntered
         // TODO add your handling code here:
-        ho_so_bt_panel.setBackground(new Color(129,143,180));
+        if(state != 5) ho_so_bt_panel.setBackground(new Color(129,143,180));
     }//GEN-LAST:event_ho_so_bt_panelMouseEntered
 
     private void ho_so_bt_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ho_so_bt_panelMouseExited
         // TODO add your handling code here:
-        ho_so_bt_panel.setBackground(new Color(54,48,98));
+        if(state != 5) ho_so_bt_panel.setBackground(new Color(54,48,98));
     }//GEN-LAST:event_ho_so_bt_panelMouseExited
 
     private void khoan_phi_bt_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_khoan_phi_bt_panelMouseEntered
         // TODO add your handling code here:
-        khoan_phi_bt_panel.setBackground(new Color(129,143,180));
+        if(state != 3) khoan_phi_bt_panel.setBackground(new Color(129,143,180));
     }//GEN-LAST:event_khoan_phi_bt_panelMouseEntered
 
     private void khoan_phi_bt_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_khoan_phi_bt_panelMouseExited
         // TODO add your handling code here:
-        khoan_phi_bt_panel.setBackground(new Color(54,48,98));
+        if(state != 3) khoan_phi_bt_panel.setBackground(new Color(54,48,98));
     }//GEN-LAST:event_khoan_phi_bt_panelMouseExited
 
     private void thu_phi_bt_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thu_phi_bt_panelMouseEntered
         // TODO add your handling code here:
-        thu_phi_bt_panel.setBackground(new Color(129,143,180));
+        if(state != 4) thu_phi_bt_panel.setBackground(new Color(129,143,180));
     }//GEN-LAST:event_thu_phi_bt_panelMouseEntered
 
     private void thu_phi_bt_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thu_phi_bt_panelMouseExited
         // TODO add your handling code here:
-        thu_phi_bt_panel.setBackground(new Color(54,48,98));
+        if(state != 4) thu_phi_bt_panel.setBackground(new Color(54,48,98));
     }//GEN-LAST:event_thu_phi_bt_panelMouseExited
 
     private void sua_tt_ho_khau_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sua_tt_ho_khau_panelMousePressed
@@ -1784,11 +1861,6 @@ public class MainScreen extends javax.swing.JFrame {
         }
         else JOptionPane.showMessageDialog(null, "Chọn một dòng để xóa");
     }//GEN-LAST:event_xoa_tai_khoan_panelMousePressed
-
-    private void them_tt_ho_khau_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_them_tt_ho_khau_panelMousePressed
-        // TODO add your handling code here:
-        ThemHoKhau.showThemHoKhau(this);
-    }//GEN-LAST:event_them_tt_ho_khau_panelMousePressed
 
     private void them_tt_nhan_khau_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_them_tt_nhan_khau_panelMousePressed
         // TODO add your handling code here:
@@ -2060,6 +2132,35 @@ public class MainScreen extends javax.swing.JFrame {
         ThemTaiKhoan.showThemTaiKhoan(this);
     }//GEN-LAST:event_them_tai_khoan_panelMousePressed
 
+    private void searching_ho_khau_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searching_ho_khau_buttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searching_ho_khau_buttonActionPerformed
+
+    private void nhan_khau_bt_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nhan_khau_bt_panelMouseExited
+        // TODO add your handling code here:
+        if(state != 2) nhan_khau_bt_panel.setBackground(new Color(54,48,98));
+    }//GEN-LAST:event_nhan_khau_bt_panelMouseExited
+
+    private void nhan_khau_bt_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nhan_khau_bt_panelMouseEntered
+        // TODO add your handling code here:
+        if(state != 2) nhan_khau_bt_panel.setBackground(new Color(129,143,180));
+    }//GEN-LAST:event_nhan_khau_bt_panelMouseEntered
+
+    private void them_tt_ho_khau_panelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_them_tt_ho_khau_panelMouseEntered
+        // TODO add your handling code here:
+        them_tt_ho_khau_panel.setBackground(new Color(245,232,199));
+    }//GEN-LAST:event_them_tt_ho_khau_panelMouseEntered
+
+    private void them_tt_ho_khau_panelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_them_tt_ho_khau_panelMouseExited
+        // TODO add your handling code here:
+        them_tt_ho_khau_panel.setBackground(new Color(129,143,180));
+    }//GEN-LAST:event_them_tt_ho_khau_panelMouseExited
+
+    private void them_tt_ho_khau_panelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_them_tt_ho_khau_panelMousePressed
+        // TODO add your handling code here:
+        ThemHoKhau.showThemHoKhau(this);
+    }//GEN-LAST:event_them_tt_ho_khau_panelMousePressed
+
     public JTable getHo_khau_table() {
         return ho_khau_table;
     }
@@ -2150,13 +2251,18 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel home_bt_label;
     private javax.swing.JPanel home_bt_panel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

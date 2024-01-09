@@ -179,7 +179,7 @@ public class AddFee_SelectMaHoScreen extends javax.swing.JFrame {
         });
         getContentPane().add(searching_ho_khau_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 213, 40));
 
-        searching_ho_khau_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Search_Icon.png"))); // NOI18N
+        searching_ho_khau_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/search.png"))); // NOI18N
         searching_ho_khau_button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 searching_ho_khau_buttonMousePressed(evt);
