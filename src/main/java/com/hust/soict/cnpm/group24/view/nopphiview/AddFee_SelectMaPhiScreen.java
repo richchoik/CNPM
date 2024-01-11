@@ -27,16 +27,9 @@ public class AddFee_SelectMaPhiScreen extends javax.swing.JFrame {
         initComponents();
         parentContext = pContext;
         loadKhoanPhiTable();
-        parentContext.setEnabled(false);
         setLocationRelativeTo(null);
     }
     
-    @Override
-    public void dispose() {
-        super.dispose();
-        parentContext.setEnabled(true);
-        parentContext.setVisible(true);
-    }
     
     public void findKhoanPhiTable(List<KhoanPhi> khoanPhiList){
         DefaultTableModel tableModel = (DefaultTableModel)khoan_phi_table.getModel();
@@ -161,6 +154,7 @@ public class AddFee_SelectMaPhiScreen extends javax.swing.JFrame {
         });
         getContentPane().add(searching_khoan_phi_type_box, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, 150, 40));
 
+        khoan_phi_table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         khoan_phi_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -184,6 +178,8 @@ public class AddFee_SelectMaPhiScreen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        khoan_phi_table.setRowHeight(25);
+        khoan_phi_table.setShowHorizontalLines(true);
         khoan_phi_table.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(khoan_phi_table);
 
@@ -255,15 +251,6 @@ public class AddFee_SelectMaPhiScreen extends javax.swing.JFrame {
     private void searching_khoan_phi_type_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searching_khoan_phi_type_boxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searching_khoan_phi_type_boxActionPerformed
-
-    public NopPhiScreen getParentContext() {
-        return parentContext;
-    }
-
-    public void setParentContext(NopPhiScreen parentContext) {
-        this.parentContext = parentContext;
-    }
-    
 
     public static void showScreen(NopPhiScreen pContext) {
         /* Set the Nimbus look and feel */

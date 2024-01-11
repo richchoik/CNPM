@@ -30,15 +30,7 @@ public class AddFee_SelectMaHoScreen extends javax.swing.JFrame {
         initComponents();
         parentContext = pContext;
         loadHoKhauTable();
-        parentContext.setEnabled(false);
         setLocationRelativeTo(null);
-    }
-
-    @Override
-    public void dispose() {
-        super.dispose();
-        parentContext.setEnabled(true);
-        parentContext.setVisible(true);
     }
 
     public void loadHoKhauTable(){
@@ -138,6 +130,7 @@ public class AddFee_SelectMaHoScreen extends javax.swing.JFrame {
 
         ho_khau_scroll_pane.setAutoscrolls(true);
 
+        ho_khau_table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ho_khau_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -161,6 +154,8 @@ public class AddFee_SelectMaHoScreen extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        ho_khau_table.setRowHeight(25);
+        ho_khau_table.setShowHorizontalLines(true);
         ho_khau_table.getTableHeader().setReorderingAllowed(false);
         ho_khau_scroll_pane.setViewportView(ho_khau_table);
 
@@ -237,15 +232,6 @@ public class AddFee_SelectMaHoScreen extends javax.swing.JFrame {
             findHoKhauTable(list);
         }
     }//GEN-LAST:event_searching_ho_khau_buttonMousePressed
-
-    public NopPhiScreen getParentContext() {
-        return parentContext;
-    }
-
-    public void setParentContext(NopPhiScreen parentContext) {
-        this.parentContext = parentContext;
-    }
-
 
     public static void showScreen(NopPhiScreen pContext) {
         /* Set the Nimbus look and feel */

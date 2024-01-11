@@ -14,7 +14,6 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
     public CapNhatKhoanThu(MainScreen pContext,int row) {
         initComponents();
         parentContext = pContext;
-        parentContext.setEnabled(false);
         this.selectedRow = row;
         this.setLocationRelativeTo(null);
         String maPhi = parentContext.getKhoan_phi_table().getValueAt(selectedRow, 0).toString();
@@ -28,12 +27,6 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
         dongiaTextField.setText(donGia);
     }
 
-    @Override
-    public void dispose() {
-        super.dispose();
-        parentContext.setEnabled(true);
-        parentContext.setVisible(true);
-    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

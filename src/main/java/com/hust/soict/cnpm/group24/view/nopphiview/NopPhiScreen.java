@@ -27,16 +27,9 @@ public class NopPhiScreen extends javax.swing.JFrame {
     public NopPhiScreen(MainScreen pContext) {
         initComponents();
         parentContext = pContext;
-        parentContext.setEnabled(false);
         setLocationRelativeTo(null);
     }
 
-    @Override
-    public void dispose() {
-        super.dispose();
-        parentContext.setEnabled(true);
-        parentContext.setVisible(true);
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

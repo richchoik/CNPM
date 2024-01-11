@@ -262,7 +262,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         ho_khau_scroll_pane.setAutoscrolls(true);
 
-        ho_khau_table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ho_khau_table.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         ho_khau_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -287,6 +287,9 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
         ho_khau_table.setAutoResizeMode(0);
+        ho_khau_table.setRowHeight(25);
+        ho_khau_table.setShowHorizontalLines(true);
+        ho_khau_table.setShowVerticalLines(true);
         ho_khau_table.getTableHeader().setReorderingAllowed(false);
         ho_khau_scroll_pane.setViewportView(ho_khau_table);
         if (ho_khau_table.getColumnModel().getColumnCount() > 0) {
@@ -501,7 +504,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         jScrollPane3.setAutoscrolls(true);
 
-        nhan_khau_table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nhan_khau_table.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         nhan_khau_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -526,17 +529,30 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
         nhan_khau_table.setAutoResizeMode(0);
+        nhan_khau_table.setRowHeight(25);
+        nhan_khau_table.setShowHorizontalLines(true);
+        nhan_khau_table.setShowVerticalLines(true);
         nhan_khau_table.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(nhan_khau_table);
         if (nhan_khau_table.getColumnModel().getColumnCount() > 0) {
-            nhan_khau_table.getColumnModel().getColumn(0).setPreferredWidth(50);
-            nhan_khau_table.getColumnModel().getColumn(1).setPreferredWidth(120);
-            nhan_khau_table.getColumnModel().getColumn(2).setPreferredWidth(40);
-            nhan_khau_table.getColumnModel().getColumn(3).setPreferredWidth(70);
-            nhan_khau_table.getColumnModel().getColumn(4).setPreferredWidth(80);
-            nhan_khau_table.getColumnModel().getColumn(5).setPreferredWidth(80);
-            nhan_khau_table.getColumnModel().getColumn(6).setPreferredWidth(80);
-            nhan_khau_table.getColumnModel().getColumn(7).setPreferredWidth(50);
+            nhan_khau_table.getColumnModel().getColumn(0).setMinWidth(30);
+            nhan_khau_table.getColumnModel().getColumn(0).setPreferredWidth(72);
+            nhan_khau_table.getColumnModel().getColumn(1).setMinWidth(100);
+            nhan_khau_table.getColumnModel().getColumn(1).setPreferredWidth(160);
+            nhan_khau_table.getColumnModel().getColumn(2).setMinWidth(30);
+            nhan_khau_table.getColumnModel().getColumn(2).setPreferredWidth(55);
+            nhan_khau_table.getColumnModel().getColumn(3).setMinWidth(60);
+            nhan_khau_table.getColumnModel().getColumn(3).setPreferredWidth(105);
+            nhan_khau_table.getColumnModel().getColumn(4).setMinWidth(60);
+            nhan_khau_table.getColumnModel().getColumn(4).setPreferredWidth(105);
+            nhan_khau_table.getColumnModel().getColumn(5).setMinWidth(60);
+            nhan_khau_table.getColumnModel().getColumn(5).setPreferredWidth(105);
+            nhan_khau_table.getColumnModel().getColumn(6).setMinWidth(60);
+            nhan_khau_table.getColumnModel().getColumn(6).setPreferredWidth(105);
+            nhan_khau_table.getColumnModel().getColumn(7).setMinWidth(40);
+            nhan_khau_table.getColumnModel().getColumn(7).setPreferredWidth(72);
+            nhan_khau_table.getColumnModel().getColumn(8).setMinWidth(60);
+            nhan_khau_table.getColumnModel().getColumn(8).setPreferredWidth(105);
         }
 
         show_nhan_khau_panel.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 890, 450));
@@ -681,7 +697,7 @@ public class MainScreen extends javax.swing.JFrame {
         });
         show_khoan_phi_panel.add(searching_khoan_phi_type_box, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 160, 40));
 
-        khoan_phi_table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        khoan_phi_table.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         khoan_phi_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -706,9 +722,22 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
         khoan_phi_table.setAutoResizeMode(0);
+        khoan_phi_table.setRowHeight(25);
         khoan_phi_table.setShowGrid(false);
+        khoan_phi_table.setShowHorizontalLines(true);
+        khoan_phi_table.setShowVerticalLines(true);
         khoan_phi_table.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(khoan_phi_table);
+        if (khoan_phi_table.getColumnModel().getColumnCount() > 0) {
+            khoan_phi_table.getColumnModel().getColumn(0).setMinWidth(80);
+            khoan_phi_table.getColumnModel().getColumn(0).setPreferredWidth(200);
+            khoan_phi_table.getColumnModel().getColumn(1).setMinWidth(120);
+            khoan_phi_table.getColumnModel().getColumn(1).setPreferredWidth(284);
+            khoan_phi_table.getColumnModel().getColumn(2).setMinWidth(80);
+            khoan_phi_table.getColumnModel().getColumn(2).setPreferredWidth(200);
+            khoan_phi_table.getColumnModel().getColumn(3).setMinWidth(80);
+            khoan_phi_table.getColumnModel().getColumn(3).setPreferredWidth(200);
+        }
 
         show_khoan_phi_panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 890, 450));
 
@@ -882,7 +911,7 @@ public class MainScreen extends javax.swing.JFrame {
         });
         show_thu_phi_panel.add(searching_thu_phi_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 40, 40));
 
-        thu_phi_table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        thu_phi_table.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         thu_phi_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -907,8 +936,25 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
         thu_phi_table.setAutoResizeMode(0);
+        thu_phi_table.setRowHeight(25);
+        thu_phi_table.setShowHorizontalLines(true);
+        thu_phi_table.setShowVerticalLines(true);
         thu_phi_table.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(thu_phi_table);
+        if (thu_phi_table.getColumnModel().getColumnCount() > 0) {
+            thu_phi_table.getColumnModel().getColumn(0).setMinWidth(60);
+            thu_phi_table.getColumnModel().getColumn(0).setPreferredWidth(127);
+            thu_phi_table.getColumnModel().getColumn(1).setMinWidth(60);
+            thu_phi_table.getColumnModel().getColumn(1).setPreferredWidth(127);
+            thu_phi_table.getColumnModel().getColumn(2).setMinWidth(100);
+            thu_phi_table.getColumnModel().getColumn(2).setPreferredWidth(180);
+            thu_phi_table.getColumnModel().getColumn(3).setMinWidth(100);
+            thu_phi_table.getColumnModel().getColumn(3).setPreferredWidth(180);
+            thu_phi_table.getColumnModel().getColumn(4).setMinWidth(100);
+            thu_phi_table.getColumnModel().getColumn(4).setPreferredWidth(150);
+            thu_phi_table.getColumnModel().getColumn(5).setMinWidth(80);
+            thu_phi_table.getColumnModel().getColumn(5).setPreferredWidth(120);
+        }
 
         show_thu_phi_panel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 890, 450));
 
@@ -1073,7 +1119,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         show_ho_so_panel.add(xoa_tai_khoan_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 610, -1, -1));
 
-        tai_khoan_table.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tai_khoan_table.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tai_khoan_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -1098,8 +1144,17 @@ public class MainScreen extends javax.swing.JFrame {
             }
         });
         tai_khoan_table.setAutoResizeMode(0);
-        tai_khoan_table.getTableHeader().setReorderingAllowed(false);
+        tai_khoan_table.setRowHeight(25);
+        tai_khoan_table.setShowGrid(false);
+        tai_khoan_table.setShowHorizontalLines(true);
+        tai_khoan_table.setShowVerticalLines(true);
         jScrollPane4.setViewportView(tai_khoan_table);
+        if (tai_khoan_table.getColumnModel().getColumnCount() > 0) {
+            tai_khoan_table.getColumnModel().getColumn(0).setMinWidth(150);
+            tai_khoan_table.getColumnModel().getColumn(0).setPreferredWidth(297);
+            tai_khoan_table.getColumnModel().getColumn(1).setMinWidth(150);
+            tai_khoan_table.getColumnModel().getColumn(1).setPreferredWidth(297);
+        }
 
         show_ho_so_panel.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 610, 340));
 
@@ -1790,7 +1845,7 @@ public class MainScreen extends javax.swing.JFrame {
         DefaultTableModel tblModel = (DefaultTableModel) ho_khau_table.getModel();
         int selectedRow = ho_khau_table.getSelectedRow();
         if(selectedRow != -1) {
-            int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa hộ khẩu này cùng với tất cả nhân khẩu trong đó không?");
+            int x = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa hộ khẩu này cùng với tất cả nhân khẩu và giao dịch tương ứng không?");
             if (x == JOptionPane.YES_OPTION) {
                 if(HoKhauController.xoaHoKhau(tblModel.getValueAt(selectedRow, 0).toString())){
                     JOptionPane.showMessageDialog(this, "Xóa thành công!", "Xóa hộ khẩu", JOptionPane.INFORMATION_MESSAGE);

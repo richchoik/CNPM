@@ -19,7 +19,6 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
     public CapNhatNhanKhau(MainScreen pContext,int row) {
         initComponents();
         parentContext = pContext;
-        parentContext.setEnabled(false);
         this.selectedRow = row;
         this.setLocationRelativeTo(null);
         String id = parentContext.getNhan_khau_table().getValueAt(parentContext.getNhan_khau_table().getSelectedRow(), 0).toString();
@@ -51,12 +50,6 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
         quanhevoichuhoTextField.setText(quanHeVoiChuHo);
     }
 
-    @Override
-    public void dispose() {
-        super.dispose();
-        parentContext.setEnabled(true);
-        parentContext.setVisible(true);
-    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -125,7 +118,7 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel18.setText("Mã nhân khẩu");
 
-        tennhankhauTextField.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        tennhankhauTextField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         tennhankhauTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         tennhankhauTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {

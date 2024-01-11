@@ -12,15 +12,7 @@ public class ThemHoKhau extends javax.swing.JFrame {
     public ThemHoKhau(MainScreen pContext) {
         initComponents();
         parentContext = pContext;
-        parentContext.setEnabled(false);
         this.setLocationRelativeTo(null);
-    }
-
-    @Override
-    public void dispose() {
-        super.dispose();
-        parentContext.setEnabled(true);
-        parentContext.setVisible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -59,7 +51,7 @@ public class ThemHoKhau extends javax.swing.JFrame {
         jLabel1.setText("Thêm mới hộ khẩu");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel2.setText("Diện tích");
+        jLabel2.setText("Diện tích(m²)");
 
         mahoTextField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         mahoTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -181,17 +173,20 @@ public class ThemHoKhau extends javax.swing.JFrame {
                         .addComponent(mahoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                                        .addGap(95, 95, 95)
+                                        .addComponent(jLabel4)))
+                                .addGap(34, 34, 34))
                             .addGroup(kGradientPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                                .addGap(95, 95, 95)
-                                .addComponent(jLabel4)))
-                        .addGap(29, 29, 29)
+                                .addGap(5, 5, 5)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(kGradientPanel2Layout.createSequentialGroup()
                                 .addComponent(themButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)

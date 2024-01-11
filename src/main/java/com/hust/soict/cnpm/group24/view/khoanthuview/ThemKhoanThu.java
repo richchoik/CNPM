@@ -14,16 +14,10 @@ public class ThemKhoanThu extends javax.swing.JFrame {
     public ThemKhoanThu(MainScreen pContext) {
         initComponents();
         parentContext = pContext;
-        parentContext.setEnabled(false);
         this.setLocationRelativeTo(null);
     }
 
-    @Override
-    public void dispose() {
-        super.dispose();
-        parentContext.setEnabled(true);
-        parentContext.setVisible(true);
-    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

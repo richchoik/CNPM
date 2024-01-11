@@ -13,7 +13,6 @@ public class CapNhatHoKhau extends javax.swing.JFrame {
     public CapNhatHoKhau(MainScreen pContext,int row) {
         initComponents();
         parentContext = pContext;
-        parentContext.setEnabled(false);
         this.selectedRow = row;
         this.setLocationRelativeTo(null);
         String maHoKhau = parentContext.getHo_khau_table().getValueAt(selectedRow, 0).toString();
@@ -64,7 +63,7 @@ public class CapNhatHoKhau extends javax.swing.JFrame {
         jLabel1.setText("Cập nhật hộ khẩu");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel2.setText("Diện tích");
+        jLabel2.setText("Diện tích(m²)");
 
         mahoTextField.setEditable(false);
         mahoTextField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
@@ -180,17 +179,21 @@ public class CapNhatHoKhau extends javax.swing.JFrame {
                         .addComponent(mahoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(kGradientPanel2Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(kGradientPanel2Layout.createSequentialGroup()
+                                        .addGap(95, 95, 95)
+                                        .addComponent(jLabel4)))
+                                .addGap(34, 34, 34))
                             .addGroup(kGradientPanel2Layout.createSequentialGroup()
-                                .addGap(95, 95, 95)
-                                .addComponent(jLabel4)))
-                        .addGap(29, 29, 29)
+                                .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(5, 5, 5)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(kGradientPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(kGradientPanel2Layout.createSequentialGroup()
                                 .addComponent(themButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -440,16 +443,4 @@ public class CapNhatHoKhau extends javax.swing.JFrame {
     private javax.swing.JTextField tenchuhoTextField;
     private com.k33ptoo.components.KButton themButton;
     // End of variables declaration//GEN-END:variables
-
-    public void updateHoKhau(HoKhau hk) {
-        // hokhau.remove();
-        // this.addHoKhau(hk);
-    }
-
-    @Override
-    public void dispose() {
-        super.dispose();
-        parentContext.setEnabled(true);
-        parentContext.setVisible(true);
-    }
 }
