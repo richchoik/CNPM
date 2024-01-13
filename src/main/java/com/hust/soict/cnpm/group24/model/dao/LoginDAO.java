@@ -82,4 +82,24 @@ public class LoginDAO {
             ConnectionUtils.closeConnection(connection);
         }
     }
+    
+    public static boolean checkUser(String userName) {
+        Connection connection = ConnectionUtils.getConnection();
+        String sql = "Select COUNT(*) FROM TaiKhoan WHERE UserName = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, userName);
+            ResultSet resultSet = preparedStatement.executeQuery(sql);
+            int num = 1;
+            while (resultSet.next()) {
+                num = resultSet.getInt(1);
+            }
+            return num > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return true;
+        } finally {
+            ConnectionUtils.closeConnection(connection);
+        }
+    }
 }

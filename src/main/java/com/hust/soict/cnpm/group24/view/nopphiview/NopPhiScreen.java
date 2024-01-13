@@ -178,9 +178,9 @@ public class NopPhiScreen extends javax.swing.JFrame {
         ten_nguoi_dong_field.setBackground(new java.awt.Color(255, 255, 255));
         ten_nguoi_dong_field.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         ten_nguoi_dong_field.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        ten_nguoi_dong_field.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ten_nguoi_dong_fieldActionPerformed(evt);
+        ten_nguoi_dong_field.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                ten_nguoi_dong_fieldFocusLost(evt);
             }
         });
 
@@ -312,10 +312,6 @@ public class NopPhiScreen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ten_nguoi_dong_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ten_nguoi_dong_fieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ten_nguoi_dong_fieldActionPerformed
-
     private void huyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_huyButtonActionPerformed
         // TODO add your handling code here:
         this.dispose();
@@ -371,6 +367,18 @@ public class NopPhiScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
         AddFee_SelectMaPhiScreen.showScreen(this);
     }//GEN-LAST:event_ma_phi_select_buttonActionPerformed
+
+    private void ten_nguoi_dong_fieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ten_nguoi_dong_fieldFocusLost
+        // TODO add your handling code here:
+        if (this.isVisible()) {
+            String tenNguoiDong = ten_nguoi_dong_field.getText();
+            if (tenNguoiDong.length() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Tên người đóng phí không được để trống");
+            } else if(tenNguoiDong.length() > 100){
+                JOptionPane.showMessageDialog(rootPane, "Tên người đóng phí không được quá 100 ký tự");
+            }
+        }
+    }//GEN-LAST:event_ten_nguoi_dong_fieldFocusLost
 
 
     public static void showAddFee(MainScreen pContext) {

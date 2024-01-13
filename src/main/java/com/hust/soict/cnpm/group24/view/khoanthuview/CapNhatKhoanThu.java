@@ -284,7 +284,12 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
             maKhoanThu = makhoanthuTextField.getText();
             tenKhoanThu = tenkhoanthuTextField.getText();
             loaiKhoanThu = loaikhoanthuComboBox.getSelectedItem().toString();
-            donGia = Double.parseDouble(dongiaTextField.getText());
+            try {
+                donGia = Double.parseDouble(this.dongiaTextField.getText());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Thêm thất bại!", "Thêm khoản phí", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
             KhoanPhi khoanPhi = new KhoanPhi(maKhoanThu, tenKhoanThu, loaiKhoanThu, donGia);
             if (KhoanPhiController.suaKhoanPhi(khoanPhi)) {
@@ -305,10 +310,11 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
     private void tenkhoanthuTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tenkhoanthuTextFieldFocusLost
         // TODO add your handling code here:
         if (this.isVisible()) {
-            String tenkhoanthu = tenkhoanthuTextField.getText();
-            if (tenkhoanthu.length() > 0) {
+            String tenkhoanthu = this.tenkhoanthuTextField.getText();
+            if (tenkhoanthu.length() > 100) {
+                JOptionPane.showMessageDialog(this.rootPane, "Tên khoản thu không được dài hơn 100 ký tự");
             } else if (tenkhoanthu.length() == 0) {
-                JOptionPane.showMessageDialog(rootPane, "Tên khoản thu không được để trống");
+                JOptionPane.showMessageDialog(this.rootPane, "Tên khoản thu không được để trống");
             }
         }
     }//GEN-LAST:event_tenkhoanthuTextFieldFocusLost

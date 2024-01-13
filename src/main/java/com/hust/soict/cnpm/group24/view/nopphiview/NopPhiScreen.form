@@ -451,7 +451,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ten_nguoi_dong_fieldActionPerformed"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="ten_nguoi_dong_fieldFocusLost"/>
               </Events>
             </Component>
           </SubComponents>

@@ -1156,7 +1156,7 @@ public class MainScreen extends javax.swing.JFrame {
             tai_khoan_table.getColumnModel().getColumn(1).setPreferredWidth(297);
         }
 
-        show_ho_so_panel.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 610, 340));
+        show_ho_so_panel.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 600, 340));
 
         show_panel.add(show_ho_so_panel, "card5");
 

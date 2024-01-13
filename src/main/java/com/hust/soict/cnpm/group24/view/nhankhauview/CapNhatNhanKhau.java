@@ -2,6 +2,7 @@ package com.hust.soict.cnpm.group24.view.nhankhauview;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import com.hust.soict.cnpm.group24.controller.NhanKhauController;
+import com.hust.soict.cnpm.group24.model.dao.HoKhauDAO;
 import com.hust.soict.cnpm.group24.model.entity.NhanKhau;
 import com.hust.soict.cnpm.group24.view.MainScreen;
 
@@ -433,18 +434,35 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public boolean kiemTraToanChuSo(String str) {
+        for (char kyTu : str.toCharArray()) {
+            if (!Character.isDigit(kyTu)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public boolean kiemTraChuaChuSo(String str) {
+        for (char kyTu : str.toCharArray()) {
+            if (Character.isDigit(kyTu)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     private void tennhankhauTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tennhankhauTextFieldFocusLost
         // TODO add your handling code here:
         if (this.isVisible()) {
-            String tenNhanKhau = tennhankhauTextField.getText().trim();
-            // Kiểm tra xem văn bản có rỗng không
+            String tenNhanKhau = this.tennhankhauTextField.getText().trim();
             if (tenNhanKhau.isEmpty()) {
-                // Hiển thị thông báo nếu rỗng
                 JOptionPane.showMessageDialog(this, "Vui lòng nhập tên nhân khẩu.", "Lỗi", JOptionPane.ERROR_MESSAGE);
-            } else {
-                // Thực hiện xử lý khi có dữ liệu
-                // TODO: Thêm mã xử lý khi có dữ liệu nhập vào đây
+            } else if (this.kiemTraChuaChuSo(tenNhanKhau)) {
+                JOptionPane.showMessageDialog(this, "Tên nhân khẩu không được chứa chữ số", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            } else if (tenNhanKhau.length() > 100) {
+                JOptionPane.showMessageDialog(this.rootPane, "Tên nhân khẩu không được dài hơn 100 ký tự");
             }
         }
     }//GEN-LAST:event_tennhankhauTextFieldFocusLost
@@ -452,12 +470,13 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
     private void socccdTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_socccdTextFieldFocusLost
         // TODO add your handling code here:
         if (this.isVisible()) {
-            String socccd = socccdTextField.getText();
-            if (socccd.length() > 0) {
-            } else if (socccd.length() == 0) {
-                JOptionPane.showMessageDialog(rootPane, "Quan hệ với chủ hộ không được để trống");
-            } else if (socccd.length() > 12) {
-                JOptionPane.showMessageDialog(rootPane, "Căn cước công dân nhỏ hơn 12 số");
+            String socccd = this.socccdTextField.getText();
+            if (socccd.length() == 0) {
+                JOptionPane.showMessageDialog(this.rootPane, "Căn cước công dân không được để trống");
+            } else if (socccd.length() > 30) {
+                JOptionPane.showMessageDialog(this.rootPane, "Căn cước công dân không được dài hơn 30 chữ số");
+            } else if (!this.kiemTraToanChuSo(socccd)) {
+                JOptionPane.showMessageDialog(this.rootPane, "Căn cước công dân không được chứa ký tự");
             }
         }
     }//GEN-LAST:event_socccdTextFieldFocusLost
@@ -465,10 +484,13 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
     private void quanhevoichuhoTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_quanhevoichuhoTextFieldFocusLost
         // TODO add your handling code here:
         if (this.isVisible()) {
-            String quanhevoichuho = quanhevoichuhoTextField.getText();
-            if (quanhevoichuho.length() > 0) {
-            } else if (quanhevoichuho.length() == 0) {
-                JOptionPane.showMessageDialog(rootPane, "Quan hệ với chủ hộ không được để trống");
+            String quanhevoichuho = this.quanhevoichuhoTextField.getText();
+            if (quanhevoichuho.length() == 0) {
+                JOptionPane.showMessageDialog(this.rootPane, "Quan hệ với chủ hộ không được để trống");
+            } else if (this.kiemTraChuaChuSo(quanhevoichuho)) {
+                JOptionPane.showMessageDialog(this, "Quan hệ với chủ hộ không được chứa chữ số", "Lỗi", 0);
+            } else if (quanhevoichuho.length() > 50) {
+                JOptionPane.showMessageDialog(this.rootPane, "Quan hệ với chủ hộ không được dài hơn 50 ký tự");
             }
         }
     }//GEN-LAST:event_quanhevoichuhoTextFieldFocusLost
@@ -476,10 +498,11 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
     private void mahokhauTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_mahokhauTextFieldFocusLost
         // TODO add your handling code here:
         if (this.isVisible()) {
-            String mahokhau = mahokhauTextField.getText();
-            if (mahokhau.length() > 0) {
-            } else if (mahokhau.length() == 0) {
-                JOptionPane.showMessageDialog(rootPane, "Mã hộ khẩu không được để trống");
+            String mahokhau = this.mahokhauTextField.getText();
+            if (mahokhau.length() == 0) {
+                JOptionPane.showMessageDialog(this.rootPane, "Mã hộ khẩu không được để trống");
+            } else if (!HoKhauDAO.checkHoKhau(mahokhau)) {
+                JOptionPane.showMessageDialog(this.rootPane, "Mã hộ khẩu không tồn tại");
             }
         }
     }//GEN-LAST:event_mahokhauTextFieldFocusLost
@@ -487,12 +510,13 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
     private void sodienthoaiTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_sodienthoaiTextFieldFocusLost
         // TODO add your handling code here:
         if (this.isVisible()) {
-            String sodienthoai = sodienthoaiTextField.getText();
-            if (sodienthoai.length() > 0) {
-            } else if (sodienthoai.length() == 0) {
-                JOptionPane.showMessageDialog(rootPane, "Số điện thoại không được để trống");
-            } else if (sodienthoai.length() > 10) {
-                JOptionPane.showMessageDialog(rootPane, "Số điện thoại nhỏ hơn 10 số");
+            String sodienthoai = this.sodienthoaiTextField.getText();
+            if (sodienthoai.length() == 0) {
+                JOptionPane.showMessageDialog(this.rootPane, "Số điện thoại không được để trống");
+            } else if (sodienthoai.length() > 20) {
+                JOptionPane.showMessageDialog(this.rootPane, "Số điện thoại không được dài hơn 20 chữ số");
+            } else if (!this.kiemTraToanChuSo(sodienthoai)) {
+                JOptionPane.showMessageDialog(this.rootPane, "Số điện thoại không được chứa ký tự");
             }
         }
     }//GEN-LAST:event_sodienthoaiTextFieldFocusLost
@@ -517,6 +541,11 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
             String maHo = mahokhauTextField.getText();
             String quanHeChuHo = quanhevoichuhoTextField.getText();
 
+            if (this.kiemTraChuaChuSo(hoTen) || !this.kiemTraToanChuSo(cccd) || this.kiemTraChuaChuSo(quocTich) || 
+                    !this.kiemTraToanChuSo(soDienThoai) || !HoKhauDAO.checkHoKhau(maHo) || this.kiemTraChuaChuSo(quanHeChuHo)) {
+                JOptionPane.showMessageDialog(this, "Thêm thất bại!", "Thêm nhân khẩu", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             NhanKhau nhanKhau = new NhanKhau(id, hoTen, gioiTinh, cccd, quocTich, ngaySinh, soDienThoai, maHo, quanHeChuHo);
             if (NhanKhauController.suaNhanKhau(nhanKhau)) {
                 JOptionPane.showMessageDialog(this, "Sửa thành công!", "Cập nhật nhân khẩu", JOptionPane.INFORMATION_MESSAGE);
@@ -547,6 +576,16 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
 
     private void quocTichTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_quocTichTextFieldFocusLost
         // TODO add your handling code here:
+        if (this.isVisible()) {
+            String quocTich = this.quocTichTextField.getText();
+            if (quocTich.length() == 0) {
+                JOptionPane.showMessageDialog(this.rootPane, "Quốc tịch không được để trống");
+            } else if (this.kiemTraChuaChuSo(quocTich)) {
+                JOptionPane.showMessageDialog(this, "Quốc tịch không được chứa chữ số");
+            } else if (quocTich.length() > 100) {
+                JOptionPane.showMessageDialog(this.rootPane, "Quốc tịch không được dài hơn 100 ký tự");
+            }
+        }
     }//GEN-LAST:event_quocTichTextFieldFocusLost
 
     public static void showUpdateNhanKhau(MainScreen pContext,int row) {

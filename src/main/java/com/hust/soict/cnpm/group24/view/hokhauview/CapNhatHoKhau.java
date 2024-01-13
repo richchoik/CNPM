@@ -281,6 +281,8 @@ public class CapNhatHoKhau extends javax.swing.JFrame {
             String tenChuHo = tenchuhoTextField.getText();
             if (tenChuHo.length() == 0) {
                 JOptionPane.showMessageDialog(rootPane, "Tên chủ hộ không được để trống");
+            } else if(tenChuHo.length() > 100){
+                JOptionPane.showMessageDialog(rootPane, "Tên chủ hộ không được quá 100 ký tự");
             }
         }
     }//GEN-LAST:event_tenchuhoTextFieldFocusLost

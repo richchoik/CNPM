@@ -6,6 +6,7 @@ package com.hust.soict.cnpm.group24.view.hoso;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import com.hust.soict.cnpm.group24.controller.LoginController;
+import com.hust.soict.cnpm.group24.model.dao.LoginDAO;
 import com.hust.soict.cnpm.group24.model.entity.User;
 import com.hust.soict.cnpm.group24.view.MainScreen;
 import javax.swing.JOptionPane;
@@ -73,6 +74,11 @@ public class ThemTaiKhoan extends javax.swing.JFrame {
 
         ten_dang_nhapTextField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         ten_dang_nhapTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        ten_dang_nhapTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                ten_dang_nhapTextFieldFocusLost(evt);
+            }
+        });
 
         themButton.setText("Thêm");
         themButton.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
@@ -112,6 +118,12 @@ public class ThemTaiKhoan extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 0, 0));
         jLabel10.setText("(*)");
 
+        jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jPasswordField1FocusLost(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel4.setText("Chủ tài khoản");
 
@@ -121,6 +133,11 @@ public class ThemTaiKhoan extends javax.swing.JFrame {
 
         chu_tai_khoanTextField.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         chu_tai_khoanTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        chu_tai_khoanTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                chu_tai_khoanTextFieldFocusLost(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 0, 0));
@@ -246,6 +263,35 @@ public class ThemTaiKhoan extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_huyButtonActionPerformed
+
+    private void ten_dang_nhapTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ten_dang_nhapTextFieldFocusLost
+        // TODO add your handling code here:
+        if (this.ten_dang_nhapTextField.getText().length() > 100) {
+            JOptionPane.showMessageDialog(this.rootPane, "Tên đăng nhập không được dài hơn 100 ký tự");
+        } else if (this.ten_dang_nhapTextField.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this.rootPane, "Tên đăng nhập không được để trống");
+        } else if (LoginDAO.checkUser(this.ten_dang_nhapTextField.getText())) {
+            JOptionPane.showMessageDialog(this.rootPane, "Tên đăng nhập đã tồn tại");
+        }
+    }//GEN-LAST:event_ten_dang_nhapTextFieldFocusLost
+
+    private void jPasswordField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusLost
+        // TODO add your handling code here:
+        if (this.jPasswordField1.getPassword().toString().length() > 100) {
+            JOptionPane.showMessageDialog(this.rootPane, "Mật khẩu không được dài hơn 100 ký tự");
+        } else if (this.ten_dang_nhapTextField.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this.rootPane, "Mật khẩu không được để trống");
+        }
+    }//GEN-LAST:event_jPasswordField1FocusLost
+
+    private void chu_tai_khoanTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_chu_tai_khoanTextFieldFocusLost
+        // TODO add your handling code here:
+        if (this.chu_tai_khoanTextField.getText().length() > 100) {
+            JOptionPane.showMessageDialog(this.rootPane, "Tên chủ tài khoản không được dài hơn 100 ký tự");
+        } else if (this.chu_tai_khoanTextField.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this.rootPane, "Tên chủ tài khoản không được để trống");
+        }
+    }//GEN-LAST:event_chu_tai_khoanTextFieldFocusLost
 
 
     public static void showThemTaiKhoan(MainScreen pContext) {

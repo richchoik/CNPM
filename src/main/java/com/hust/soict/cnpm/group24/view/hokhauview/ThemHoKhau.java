@@ -2,6 +2,7 @@ package com.hust.soict.cnpm.group24.view.hokhauview;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import com.hust.soict.cnpm.group24.controller.HoKhauController;
+import com.hust.soict.cnpm.group24.model.dao.HoKhauDAO;
 import com.hust.soict.cnpm.group24.model.entity.HoKhau;
 import com.hust.soict.cnpm.group24.view.MainScreen;
 import javax.swing.JOptionPane;
@@ -306,6 +307,8 @@ public class ThemHoKhau extends javax.swing.JFrame {
             String tenChuHo = tenchuhoTextField.getText();
             if (tenChuHo.length() == 0) {
                 JOptionPane.showMessageDialog(rootPane, "Tên chủ hộ không được để trống");
+            } else if(tenChuHo.length() > 100){
+                JOptionPane.showMessageDialog(rootPane, "Tên chủ hộ không được quá 100 ký tự");
             }
         }
     }//GEN-LAST:event_tenchuhoTextFieldFocusLost
@@ -382,12 +385,13 @@ public class ThemHoKhau extends javax.swing.JFrame {
     private void mahoTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_mahoTextFieldFocusLost
         // TODO add your handling code here:
         if (this.isVisible()) {
-            String maho = mahoTextField.getText();
-            if (maho.length() > 0 && maho.length() < 10) {
-            } else if (maho.length() == 0) {
-                JOptionPane.showMessageDialog(rootPane, "Mã hộ không được để trống");
+            String maho = this.mahoTextField.getText();
+            if (maho.length() == 0) {
+                JOptionPane.showMessageDialog(this.rootPane, "Mã hộ không được để trống");
             } else if (maho.length() > 10) {
-                JOptionPane.showMessageDialog(rootPane, "Sai định dạng, Mã hộ nhỏ hơn 10 ký tự");
+                JOptionPane.showMessageDialog(this.rootPane, "Sai định dạng, Mã hộ nhỏ hơn 10 ký tự");
+            } else if (HoKhauDAO.checkHoKhau(maho)) {
+                JOptionPane.showMessageDialog(this.rootPane, "Mã hộ khẩu đã tồn tại");
             }
         }
     }//GEN-LAST:event_mahoTextFieldFocusLost
