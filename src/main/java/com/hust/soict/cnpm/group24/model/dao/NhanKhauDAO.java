@@ -1,6 +1,6 @@
 package com.hust.soict.cnpm.group24.model.dao;
 
-import com.hust.soict.cnpm.group24.connection.ConnectionUtils;
+import com.hust.soict.cnpm.group24.model.connection.ConnectionUtils;
 import com.hust.soict.cnpm.group24.model.entity.NhanKhau;
 
 import java.sql.*;

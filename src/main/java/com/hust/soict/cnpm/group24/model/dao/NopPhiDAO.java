@@ -1,14 +1,12 @@
 package com.hust.soict.cnpm.group24.model.dao;
 
-import com.hust.soict.cnpm.group24.connection.ConnectionUtils;
+import com.hust.soict.cnpm.group24.model.connection.ConnectionUtils;
 import com.hust.soict.cnpm.group24.model.entity.HoKhau;
 import com.hust.soict.cnpm.group24.model.entity.KhoanPhi;
-import com.hust.soict.cnpm.group24.model.entity.NhanKhau;
 import com.hust.soict.cnpm.group24.model.entity.NopPhi;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class NopPhiDAO {

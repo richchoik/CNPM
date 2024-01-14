@@ -1,4 +1,4 @@
-package com.hust.soict.cnpm.group24.connection;
+package com.hust.soict.cnpm.group24.model.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

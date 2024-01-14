@@ -7,8 +7,8 @@ public class HoKhau {
     private String tenChuHo;
     private int soThanhVien;
     private double dienTich;
-    private int soXe = 5;
-    private int soOto = 3;
+    private int soXe;
+    private int soOto;
 
     public String getMaHo() {
         return maHo;
