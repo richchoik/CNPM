@@ -254,7 +254,7 @@ public class ThemTaiKhoan extends javax.swing.JFrame {
                 parentContext.loadHoso();
                 this.dispose();
             } else {
-                JOptionPane.showMessageDialog(this, "Thêm thất bại, tên đăng nhập đã tồn tại!", "Thêm tài khoản", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Thêm thất bại!", "Thêm tài khoản", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_themButtonActionPerformed

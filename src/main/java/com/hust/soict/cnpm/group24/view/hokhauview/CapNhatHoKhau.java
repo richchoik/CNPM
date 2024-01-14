@@ -376,6 +376,16 @@ public class CapNhatHoKhau extends javax.swing.JFrame {
             soXeMay = Integer.parseInt(soxemayTextField.getText());
             soOTo = Integer.parseInt(sootoTextField.getText());
 
+            try {
+                dienTich = Double.parseDouble(dientichTextField.getText());
+                soXeMay = Integer.parseInt(soxemayTextField.getText());
+                soOTo = Integer.parseInt(sootoTextField.getText());
+                if(dienTich <= 0 || soXeMay < 0 || soOTo < 0) throw new NumberFormatException("Tồn tại số âm");
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(this, "Thêm thất bại", "Thêm hộ khẩu", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             HoKhau hoKhau = new HoKhau(maHo, chuHo, dienTich, soOTo, soXeMay);
             if (HoKhauController.suaHoKhau(hoKhau)) {
                 JOptionPane.showMessageDialog(this, "Sửa thành công!", "Cập nhật hộ khẩu", JOptionPane.INFORMATION_MESSAGE);

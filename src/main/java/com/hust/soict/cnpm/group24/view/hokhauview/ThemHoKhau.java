@@ -275,15 +275,22 @@ public class ThemHoKhau extends javax.swing.JFrame {
         if (x == JOptionPane.YES_OPTION) {
 
             String maHo, chuHo;
-            double dienTich;
+            double dienTich = -1;
             int soXeMay = 0;
             int soOTo = 0;
 
             maHo = mahoTextField.getText();
             chuHo = tenchuhoTextField.getText();
-            dienTich = Double.parseDouble(dientichTextField.getText());
-            soXeMay = Integer.parseInt(soxemayTextField.getText());
-            soOTo = Integer.parseInt(sootoTextField.getText());
+            try {
+                dienTich = Double.parseDouble(dientichTextField.getText());
+                soXeMay = Integer.parseInt(soxemayTextField.getText());
+                soOTo = Integer.parseInt(sootoTextField.getText());
+                if(dienTich <= 0 || soXeMay < 0 || soOTo < 0) throw new NumberFormatException("Tồn tại số âm");
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(this, "Thêm thất bại", "Thêm hộ khẩu", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
 
             HoKhau hoKhau = new HoKhau(maHo, chuHo, dienTich, soXeMay, soOTo);
             if (HoKhauController.themHoKhau(hoKhau)) {
@@ -291,7 +298,7 @@ public class ThemHoKhau extends javax.swing.JFrame {
                 parentContext.loadHoKhauTable();
                 this.dispose();
             } else {
-                JOptionPane.showMessageDialog(this, "Thêm thất bại, mã hộ đã tồn tại!", "Thêm hộ khẩu", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Thêm thất bại", "Thêm hộ khẩu", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_themButtonActionPerformed
@@ -327,14 +334,12 @@ public class ThemHoKhau extends javax.swing.JFrame {
 
                 if (dienTich <= 0) {
                     JOptionPane.showMessageDialog(rootPane, "Diện tích lớn hơn không");
-                    dientichTextField.setText("");
                     // dientichTextField.requestFocus();
                     return;
                 }
 
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(rootPane, "Nhập sai định dạng số");
-                dientichTextField.setText("");
                 // dientichTextField.requestFocus();
             }
         }

@@ -89,7 +89,7 @@ public class LoginDAO {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, userName);
-            ResultSet resultSet = preparedStatement.executeQuery(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
             int num = 1;
             while (resultSet.next()) {
                 num = resultSet.getInt(1);

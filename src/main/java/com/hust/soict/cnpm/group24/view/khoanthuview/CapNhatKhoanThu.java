@@ -286,6 +286,9 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
             loaiKhoanThu = loaikhoanthuComboBox.getSelectedItem().toString();
             try {
                 donGia = Double.parseDouble(this.dongiaTextField.getText());
+                if(donGia<0) throw new NumberFormatException("Đơn giá không thể âm!");
+                if(donGia == 0 && (loaiKhoanThu.equals("Bắt buộc") || loaiKhoanThu.equals("Phí gửi xe máy") || loaiKhoanThu.equals("Phí gửi ô tô")))
+                    throw new NumberFormatException("Đơn giá phải lớn hơn 0 với loại bắt buộc!");
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(this, "Thêm thất bại!", "Thêm khoản phí", JOptionPane.ERROR_MESSAGE);
                 return;
@@ -334,7 +337,6 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
         if (this.isVisible()) {
             if (dongiaTextField.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(rootPane, "Đơn giá không được để trống");
-                //  dientichTextField.requestFocus();
                 return;
             }
             if(String.valueOf(loaikhoanthuComboBox.getSelectedItem()).equals("Tự Nguyện")
@@ -343,16 +345,11 @@ public class CapNhatKhoanThu extends javax.swing.JFrame {
                 double donGia = Double.parseDouble(dongiaTextField.getText());
 
                 if (donGia <= 0) {
-                    JOptionPane.showMessageDialog(rootPane, "Đơn giá lớn hơn không");
-                    dongiaTextField.setText("");
-                    // dientichTextField.requestFocus();
-                    return;
+                    JOptionPane.showMessageDialog(rootPane, "Đơn giá phải lớn hơn không");
                 }
 
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(rootPane, "Nhập sai định dạng số");
-                dongiaTextField.setText("");
-                // dientichTextField.requestFocus();
             }
         }
     }//GEN-LAST:event_dongiaTextFieldFocusLost

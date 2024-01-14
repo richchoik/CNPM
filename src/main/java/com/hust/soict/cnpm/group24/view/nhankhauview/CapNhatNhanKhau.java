@@ -473,8 +473,8 @@ public class CapNhatNhanKhau extends javax.swing.JFrame {
             String socccd = this.socccdTextField.getText();
             if (socccd.length() == 0) {
                 JOptionPane.showMessageDialog(this.rootPane, "Căn cước công dân không được để trống");
-            } else if (socccd.length() > 30) {
-                JOptionPane.showMessageDialog(this.rootPane, "Căn cước công dân không được dài hơn 30 chữ số");
+            } else if (socccd.length() > 20) {
+                JOptionPane.showMessageDialog(this.rootPane, "Căn cước công dân không được dài hơn 20 chữ số");
             } else if (!this.kiemTraToanChuSo(socccd)) {
                 JOptionPane.showMessageDialog(this.rootPane, "Căn cước công dân không được chứa ký tự");
             }
